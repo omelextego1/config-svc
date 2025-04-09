@@ -24,7 +24,7 @@
         "subRuleRef": ".03",
         "value": "TRANSFER",
         "reason": "The transaction is identified as a direct funds transfer",
-      },
-    ],
-  },
+      }
+    ]
+  }
 }
