@@ -1,29 +1,29 @@
 {
-  id: '078@1.0.0',
-  cfg: '1.0.0',
-  desc: 'Cash withdrawal',
-  config: {
-    exitConditions: [],
-    cases: [
+  "id": '078@1.0.0',
+  "cfg": '1.0.0',
+  "desc": 'Cash withdrawal',
+  "config": {
+    "exitConditions": [],
+    "cases": [
       {
-        subRuleRef: '.00',
-        value: '',
-        reason: 'The transaction type is not defined in this rule configuration',
+        "subRuleRef": '.00',
+        "value": '',
+        "reason": 'The transaction type is not defined in this rule configuration',
       },
       {
-        subRuleRef: '.01',
-        value: 'WITHDRAWAL',
-        reason: 'The transaction is identified as a cash withdrawal',
+        "subRuleRef": '.01',
+        "value": 'WITHDRAWAL',
+        "reason": 'The transaction is identified as a cash withdrawal',
       },
       {
-        subRuleRef: '.02',
-        value: 'PAYMENT',
-        reason: 'The transaction is identified as a merchant payment',
+        "subRuleRef": '.02',
+        "value": 'PAYMENT',
+        "reason": 'The transaction is identified as a merchant payment',
       },
       {
-        subRuleRef: '.03',
-        value: 'TRANSFER',
-        reason: 'The transaction is identified as a direct funds transfer',
+        "subRuleRef": '.03',
+        "value": 'TRANSFER',
+        "reason": 'The transaction is identified as a direct funds transfer',
       },
     ],
   },
