@@ -4,7 +4,7 @@
   "desc": "Cash withdrawal",
   "config": {
     "exitConditions": [],
-    "cases": [
+    "bands": [
       {
         "subRuleRef": ".00",
         "value": "",
