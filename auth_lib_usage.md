@@ -24,8 +24,8 @@ The auth-lib provides a single exported method:
 The authentication and authorization process is driven by three primary components in `config-svc-be`:
 
 - **JwtAuthGuard**: Responsible for extracting and decoding the JWT token sent from the frontend. It attaches the raw token and the decoded user payload to the request object so that `RolesGuard` can access it.
-- **PrivilegeService**: Calls validateTokenAndClaims from auth-lib, which returns a map of privileges indicating whether the requested access rights are granted (true or false) based on the token provided.
 - **RolesGuard**: Reads the attached token and required privileges for a controller method, and delegates privilege verification to the `PrivilegeService`. It enforces access control by allowing or denying the request.
+- **PrivilegeService**: Calls `validateTokenAndClaims` from `auth-lib`, which returns a map of privileges indicating whether the requested access rights are granted (`true` or `false`) based on the token provided.
 
 
 
@@ -71,7 +71,7 @@ sequenceDiagram
 
 There is a known issue related to template keys, but the root cause remains unclear due to insufficient documentation on the key creation process.
 
- - Verification of test keys received from Tazama works correctly using the auth-lib.
+ - Verification of test keys received from Tazama works correctly using the `auth-lib`.
 
  - Manually created template keys do not work, despite appearing structurally correct.
 
@@ -87,7 +87,7 @@ This indicates that both areas — key creation and key verification — are pot
 
 **Findings So Far**
 
- - Keys received from Tazama validate correctly using validateTokenAndClaims.
+ - Keys received from Tazama validate correctly using `validateTokenAndClaims`.
  - Keys created manually based on assumptions fail validation.
  - Lack of documentation makes it impossible to confirm if keys are being constructed correctly or verified using the right logic.
 
