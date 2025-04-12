@@ -9,52 +9,60 @@ SPDX-License-Identifier: (c) LexTego Ltd
 
 ## Introduction
 
-The `auth-lib` is used within the `config-svc-be` service to validate JWT tokens and determine whether a user has the required privileges to access a specific endpoint. This validation process is critical in ensuring secure role-based access control across both the frontend and backend services in the platform.
+The `auth-lib` is used within the `config-svc-be` backend service to perform JWT validation and privilege verification to determine whether a user has the required privileges to access a specific endpoint. 
+
+It exports a single method, `validateTokenAndClaims`, which is integrated into the backend's role-based access control system via locally implemented guards and services such as `JwtAuthGuard`, `PrivilegeService`, and `RolesGuard`.
+
+This validation process is critical in ensuring secure role-based access control across both the frontend and backend services in the platform.
 
 ## Core Usage Flow
 
-The authentication and authorization process is driven by three primary components:
+The auth-lib provides a single exported method:
 
-- **JwtAuthGuard**: Responsible for decoding the token sent from the frontend.
-- **PrivilegeService**: Implements `validateTokenAndClaims` to verify if the decoded token includes the required privileges.
-- **RolesGuard**: Applied at controller-level to enforce access control based on the results from the PrivilegeService.
+- **validateTokenAndClaims(token, requiredPrivileges[])** – Validates the JWT token and checks whether the user has the specified privileges. This function is the entry point to all auth-lib logic.
+
+The authentication and authorization process is driven by three primary components in `config-svc-be`:
+
+- **JwtAuthGuard**: Responsible for extracting and decoding the JWT token sent from the frontend. It attaches the raw token and the decoded user payload to the request object so that `RolesGuard` can access it.
+- **PrivilegeService**: Calls validateTokenAndClaims from auth-lib, which returns a map of privileges indicating whether the requested access rights are granted (true or false) based on the token provided.
+- **RolesGuard**: Reads the attached token and required privileges for a controller method, and delegates privilege verification to the `PrivilegeService`. It enforces access control by allowing or denying the request.
+
+
 
 ## Access Control Flow
 
 ```mermaid
 sequenceDiagram
-Title: Token Validation and Privilege Check
-autonumber
+    Title: Token Validation and Privilege Check
+    autonumber
 
-actor user as Authenticated User
-participant fe as Frontend
-participant be as Backend (config-svc-be)
-participant jwt as JwtAuthGuard
-participant priv as PrivilegeService
-participant ctrl as RolesGuard
+    actor user as Authenticated User
+    participant fe as Frontend
+    participant be as Backend (config-svc-be)
+    participant jwt as JwtAuthGuard
+    participant ctrl as RolesGuard
+    participant priv as PrivilegeService
 
-user->>fe: Accesses a protected page
-fe->>fe: Check if user has privilege<br/>for the page (UI-level)
-alt No privilege
-    fe->>user: Access Denied (UI Block)
-else Has privilege
-    fe->>be: Send request with JWT token<br/>in Authorization header
+    user->>fe: Accesses a protected page
+    fe->>be: Sends HTTP request with JWT token<br/>in Authorization header
+
     activate be
-    be->>jwt: Decode JWT Token
-    jwt->>fe: Attach user profile
-    be->>priv: validateTokenAndClaims(token, requiredPrivileges[])
-    alt Token invalid or missing privileges
-        priv->>ctrl: return false
-        ctrl->>be: Deny request
-        be->>fe: 403 Forbidden
+    be->>jwt: JwtAuthGuard intercepts request
+    jwt->>be: Attach decoded token and user claims to request
+
+    be->>ctrl: RolesGuard intercepts request
+    ctrl->>priv: validateTokenAndClaims(token, requiredPrivileges[])
+    alt Privileges not granted
+        priv->>ctrl: return { valid: false }
+        ctrl->>be: Deny access (403 Forbidden)
+        be->>fe: Return error response
         fe->>user: Access Denied
-    else Privilege matched
-        priv->>ctrl: return true
-        ctrl->>be: Allow request
+    else Privileges granted
+        priv->>ctrl: return { valid: true, result: privilegeMap }
+        ctrl->>be: Allow access
         be->>fe: Return protected data
         fe->>user: Page loaded successfully
     end
-end
 ```
 
 ## Template Key Verification
