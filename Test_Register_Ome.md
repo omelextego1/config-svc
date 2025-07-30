@@ -6,7 +6,7 @@
 
 | Test Case ID | Method / Target      | Description                                                    | Expected Output                 | Test File   | Status         |
 | ------------ | -------------------- | -------------------------------------------------------------- | ------------------------------- | -------------------- | ---------------|
-| RU-001       | createRule()         | Should create a rule with valid name, description, and version | Rule created and stored         | rule.service.spec.ts |
+| RU-001       | createRule()         | Should create a rule with valid name, description, and version | Rule created and stored         | rule.service.spec.ts | Done |
 | RU-002       | createRule()         | Should reject duplicate rule name/version                      | Error: "Rule already exists"    | rule.service.spec.ts |
 | RU-003       | getRuleById()        | Should fetch rule by valid UUID                                | Rule object returned            | rule.service.spec.ts |
 | RU-004       | updateRule()         | Should update rule fields and increment version correctly      | Updated rule stored             | rule.service.spec.ts |
