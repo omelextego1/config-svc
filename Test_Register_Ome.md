@@ -10,7 +10,7 @@
 | RU-002       | createRule()         | Should reject duplicate rule name/version                      | Error: "Rule already exists"    | rule.service.spec.ts | Done | The method is create() |
 | RU-003       | getRuleById()        | Should fetch rule by valid UUID                                | Rule object returned            | rule.service.spec.ts | Done | None |
 | RU-004       | updateRule()         | Should update rule fields and increment version correctly      | Updated rule stored             | rule.service.spec.ts | Done | The method is update()
-| RU-005       | bumpVersion()        | Should bump minor or patch version properly                    | New version string generated    | rule.service.spec.ts |
+| RU-005       | bumpVersion()        | Should bump minor or patch version properly                    | New version string generated    | rule.service.spec.ts | Done | None |
 | RU-006       | parseRuleId()        | Should parse composite rule ID (rule\@version)                 | Rule UUID and version extracted | rule.service.spec.ts |
 | RU-007       | validateRuleUUID()   | Should reject invalid UUID format                              | Error thrown                    | rule.service.spec.ts |
 | RULE-001     | validateRuleIdFormat | Accepts valid composite ID like rule-abc\@1.0.0                | Parsed and validated            | rule.schema.ts       |
