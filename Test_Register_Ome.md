@@ -23,7 +23,7 @@
 | Test Case ID | Method / Target          | Description                                        | Expected Output                       | Test File                   | Status | Comment |
 | ------------ | ------------------------ | -------------------------------------------------- | ------------------------------------- | --------------------------- | ------------ | ------------------|
 | RC-001       | createRuleConfig()       | Should create a rule config with valid bands       | Config with bands saved               | rule-config.service.spec.ts | Done | None |
-| RC-002       | createRuleConfig()       | Should create a rule config with valid cases       | Config with cases saved               | rule-config.service.spec.ts |
+| RC-002       | createRuleConfig()       | Should create a rule config with valid cases       | Config with cases saved               | rule-config.service.spec.ts | Done | None |
 | RC-003       | createRuleConfig()       | Should reject config missing bands/cases           | Error returned                        | rule-config.service.spec.ts |
 | RC-004       | createRuleConfig()       | Should generate new config version on update       | Config version incremented            | rule-config.service.spec.ts |
 | RC-005       | addExitConditions()      | Should add exit conditions and rationale           | Config includes exit conditions       | rule-config.service.spec.ts |
