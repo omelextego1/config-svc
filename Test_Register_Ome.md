@@ -20,8 +20,8 @@
 
 ## **2. Rule Configurations – Backend Unit Tests**
 
-| Test Case ID | Method / Target          | Description                                        | Expected Output                       | Test File                   |
-| ------------ | ------------------------ | -------------------------------------------------- | ------------------------------------- | --------------------------- |
+| Test Case ID | Method / Target          | Description                                        | Expected Output                       | Test File                   | Status | Comment |
+| ------------ | ------------------------ | -------------------------------------------------- | ------------------------------------- | --------------------------- | ------------ | ------------------|
 | RC-001       | createRuleConfig()       | Should create a rule config with valid bands       | Config with bands saved               | rule-config.service.spec.ts |
 | RC-002       | createRuleConfig()       | Should create a rule config with valid cases       | Config with cases saved               | rule-config.service.spec.ts |
 | RC-003       | createRuleConfig()       | Should reject config missing bands/cases           | Error returned                        | rule-config.service.spec.ts |
