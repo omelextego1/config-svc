@@ -24,17 +24,17 @@
 | ------------ | ------------------------ | -------------------------------------------------- | ------------------------------------- | --------------------------- | ------------ | ------------------|
 | RC-001       | createRuleConfig()       | Should create a rule config with valid bands       | Config with bands saved               | rule-config.service.spec.ts | Done | None |
 | RC-002       | createRuleConfig()       | Should create a rule config with valid cases       | Config with cases saved               | rule-config.service.spec.ts | Done | None |
-| RC-003       | createRuleConfig()       | Should reject config missing bands/cases           | Error returned                        | rule-config.service.spec.ts |
-| RC-004       | createRuleConfig()       | Should generate new config version on update       | Config version incremented            | rule-config.service.spec.ts |
-| RC-005       | addExitConditions()      | Should add exit conditions and rationale           | Config includes exit conditions       | rule-config.service.spec.ts |
-| RC-006       | parseRuleConfigId()      | Should parse config UUID + version from JSON input | ID and version extracted              | rule-config.service.spec.ts |
-| RC-007       | validateMetadataFields() | Should validate rule config metadata               | Metadata accepted and stored          | rule-config.service.spec.ts |
-| RCFG-001     | validateRuleConfigJson() | Should parse JSON metadata and validate schema     | Valid config stored                   | rule-config.service.spec.ts |
-| RCFG-002     | checkDuplicateConfig()   | Should reject duplicate rule config ID + version   | Error: "Configuration already exists" | rule-config.service.spec.ts |
-| RCFG-003     | processBands()           | Should correctly persist bands metadata            | Bands saved properly                  | rule-config.service.spec.ts |
-| RCFG-004     | processCases()           | Should correctly persist cases metadata            | Cases saved properly                  | rule-config.service.spec.ts |
-| RCFG-005     | checkEmptyConfig()       | Should reject config without bands or cases        | Error returned                        | rule-config.service.spec.ts |
-| RCFG-006     | addExitsToConfig()       | Should create config with exits and reasons        | Exits visible in config               | rule-config.service.spec.ts |
+| RC-003       | createRuleConfig()       | Should reject config missing bands/cases           | Error returned                        | rule-config.service.spec.ts | Done | None |
+| RC-004       | createRuleConfig()       | Should generate new config version on update       | Config version incremented            | rule-config.service.spec.ts | Done | None |
+| RC-005       | addExitConditions()      | Should add exit conditions and rationale           | Config includes exit conditions       | rule-config.service.spec.ts | Done | None |
+| RC-006       | parseRuleConfigId()      | Should parse config UUID + version from JSON input | ID and version extracted              | rule-config.service.spec.ts | Done | None |
+| RC-007       | validateMetadataFields() | Should validate rule config metadata               | Metadata accepted and stored          | rule-config.service.spec.ts | Done | None |
+| RCFG-001     | validateRuleConfigJson() | Should parse JSON metadata and validate schema     | Valid config stored                   | rule-config.service.spec.ts | Done | None |
+| RCFG-002     | checkDuplicateConfig()   | Should reject duplicate rule config ID + version   | Error: "Configuration already exists" | rule-config.service.spec.ts | Done | None |
+| RCFG-003     | processBands()           | Should correctly persist bands metadata            | Bands saved properly                  | rule-config.service.spec.ts | Done | None |
+| RCFG-004     | processCases()           | Should correctly persist cases metadata            | Cases saved properly                  | rule-config.service.spec.ts | Done | None |
+| RCFG-005     | checkEmptyConfig()       | Should reject config without bands or cases        | Error returned                        | rule-config.service.spec.ts | Done | None |
+| RCFG-006     | addExitsToConfig()       | Should create config with exits and reasons        | Exits visible in config               | rule-config.service.spec.ts | Done | None |
 
 ---
 
