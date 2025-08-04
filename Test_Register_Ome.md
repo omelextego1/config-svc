@@ -451,131 +451,134 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 ## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DATA-001 | RuleConfigService | Validation | financialAmountValidation() | Validate monetary amounts and ranges | Accept valid amounts reject invalid formats | rule-config.validation.spec.ts | Decimal Precision | Financial accuracy |  |
-| DATA-002 | RuleConfigService | Validation | decimalPrecisionHandling() | Handle decimal precision for financial calculations | Maintain precision to required decimal places | rule-config.validation.spec.ts | Math Libraries | Calculation accuracy |  |
-| DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  |
-| DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| DATA-001 | RuleConfigService | Validation | financialAmountValidation() | Validate monetary amounts and ranges | Accept valid amounts reject invalid formats | rule-config.validation.spec.ts | Decimal Precision | Financial accuracy |  
+| DATA-002 | RuleConfigService | Validation | decimalPrecisionHandling() | Handle decimal precision for financial calculations | Maintain precision to required decimal places | rule-config.validation.spec.ts | Math Libraries | Calculation accuracy |  
+| DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  
+| DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
 ## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| WORK-001 | StateTransitionService | Workflow | invalidStateTransitions() | Attempt invalid state transitions | Block transition and maintain current state | state.workflow.spec.ts | State Machine | Workflow integrity |  |
-| WORK-002 | ApprovalWorkflow | Workflow | selfApprovalPrevention() | User attempts to approve own submissions | Block self-approval and require different approver | approval.workflow.spec.ts | User Management | Segregation of duties |  |
-| WORK-003 | ApprovalWorkflow | Workflow | approvalChainValidation() | Multi-level approval process validation | Enforce correct approval sequence | approval.workflow.spec.ts | Role Management | Process compliance |  |
-| WORK-004 | DeploymentWorkflow | Workflow | productionDeploymentValidation() | Deploy only approved configurations | Block deployment of non-approved items | deployment.workflow.spec.ts | State Validation | Production safety |  |
-| WORK-005 | VersioningWorkflow | Workflow | backwardsCompatibilityCheck() | Version updates maintain compatibility | New versions don't break existing configurations | versioning.workflow.spec.ts | Version Management | System stability |  |
-| WORK-006 | RetirementWorkflow | Workflow | gracefulRetirement() | Retire deployed configurations safely | Ensure no active dependencies before retirement | retirement.workflow.spec.ts | Dependency Tracking | Operational continuity |  |
-| WORK-007 | ConfigurationWorkflow | Workflow | configurationDependencyValidation() | Validate rule-config dependencies before deployment | Ensure all dependencies exist and are approved | config.workflow.spec.ts | Dependency Management | Deployment safety |  |
-| WORK-008 | AuditWorkflow | Workflow | changeAuditTrail() | Complete audit trail for all configuration changes | Log all changes with user timestamps and reasons | audit.workflow.spec.ts | Audit Logging | Regulatory compliance |  |
-| WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  |
-| WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| WORK-001 | StateTransitionService | Workflow | invalidStateTransitions() | Attempt invalid state transitions | Block transition and maintain current state | state.workflow.spec.ts | State Machine | Workflow integrity |  
+| WORK-002 | ApprovalWorkflow | Workflow | selfApprovalPrevention() | User attempts to approve own submissions | Block self-approval and require different approver | approval.workflow.spec.ts | User Management | Segregation of duties |  
+| WORK-003 | ApprovalWorkflow | Workflow | approvalChainValidation() | Multi-level approval process validation | Enforce correct approval sequence | approval.workflow.spec.ts | Role Management | Process compliance |  
+| WORK-004 | DeploymentWorkflow | Workflow | productionDeploymentValidation() | Deploy only approved configurations | Block deployment of non-approved items | deployment.workflow.spec.ts | State Validation | Production safety |  
+| WORK-005 | VersioningWorkflow | Workflow | backwardsCompatibilityCheck() | Version updates maintain compatibility | New versions don't break existing configurations | versioning.workflow.spec.ts | Version Management | System stability |  
+| WORK-006 | RetirementWorkflow | Workflow | gracefulRetirement() | Retire deployed configurations safely | Ensure no active dependencies before retirement | retirement.workflow.spec.ts | Dependency Tracking | Operational continuity |  
+| WORK-007 | ConfigurationWorkflow | Workflow | configurationDependencyValidation() | Validate rule-config dependencies before deployment | Ensure all dependencies exist and are approved | config.workflow.spec.ts | Dependency Management | Deployment safety |  
+| WORK-008 | AuditWorkflow | Workflow | changeAuditTrail() | Complete audit trail for all configuration changes | Log all changes with user timestamps and reasons | audit.workflow.spec.ts | Audit Logging | Regulatory compliance |  
+| WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  
+| WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  
 ## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| PERF-001 | RuleConfigService | Performance | largeDatasetHandling() | Handle configurations with thousands of bands/cases | Maintain performance with large datasets | rule-config.performance.spec.ts | Memory Management | System scalability |  |
-| PERF-002 | TypologyService | Performance | complexScoringPerformance() | Performance of complex scoring calculations | Complete scoring within acceptable time limits | typology.performance.spec.ts | Algorithm Optimization | User experience |  |
-| PERF-003 | NetworkMapService | Performance | largeNetworkMapRendering() | Render network maps with hundreds of nodes | Maintain UI responsiveness with large maps | network-map.performance.spec.ts | Rendering Optimization | User experience |  |
-| PERF-004 | DatabaseService | Performance | concurrentUserLoad() | Handle multiple concurrent users | Maintain performance under concurrent load | database.performance.spec.ts | Connection Pooling | System capacity |  |
-| PERF-005 | APIEndpoints | Performance | responseTimeValidation() | API response times within SLA | All endpoints respond within defined time limits | api.performance.spec.ts | Performance Monitoring | User experience |  |
-| PERF-006 | CacheService | Performance | cacheEfficiency() | Validate caching improves performance | Cached responses significantly faster than DB queries | cache.performance.spec.ts | Caching Layer | System efficiency |  |
-| PERF-007 | SearchService | Performance | complexSearchPerformance() | Performance of complex search queries | Search results returned within acceptable time | search.performance.spec.ts | Query Optimization | User experience |  |
-| PERF-008 | ExportService | Performance | largeExportGeneration() | Generate exports for large datasets | Export large configurations without timeout | export.performance.spec.ts | File Generation | Operational efficiency |  |
-| PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  |
-| PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| PERF-001 | RuleConfigService | Performance | largeDatasetHandling() | Handle configurations with thousands of bands/cases | Maintain performance with large datasets | rule-config.performance.spec.ts | Memory Management | System scalability |  
+| PERF-002 | TypologyService | Performance | complexScoringPerformance() | Performance of complex scoring calculations | Complete scoring within acceptable time limits | typology.performance.spec.ts | Algorithm Optimization | User experience |  
+| PERF-003 | NetworkMapService | Performance | largeNetworkMapRendering() | Render network maps with hundreds of nodes | Maintain UI responsiveness with large maps | network-map.performance.spec.ts | Rendering Optimization | User experience |  
+| PERF-004 | DatabaseService | Performance | concurrentUserLoad() | Handle multiple concurrent users | Maintain performance under concurrent load | database.performance.spec.ts | Connection Pooling | System capacity |  
+| PERF-005 | APIEndpoints | Performance | responseTimeValidation() | API response times within SLA | All endpoints respond within defined time limits | api.performance.spec.ts | Performance Monitoring | User experience |  
+| PERF-006 | CacheService | Performance | cacheEfficiency() | Validate caching improves performance | Cached responses significantly faster than DB queries | cache.performance.spec.ts | Caching Layer | System efficiency |  
+| PERF-007 | SearchService | Performance | complexSearchPerformance() | Performance of complex search queries | Search results returned within acceptable time | search.performance.spec.ts | Query Optimization | User experience |  
+| PERF-008 | ExportService | Performance | largeExportGeneration() | Generate exports for large datasets | Export large configurations without timeout | export.performance.spec.ts | File Generation | Operational efficiency |  
+| PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  
+| PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  
 ## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| ERR-001 | DatabaseService | Resilience | databaseConnectionFailure() | Handle database connectivity loss | Graceful degradation and automatic retry | database.resilience.spec.ts | Connection Management | System availability |  |
-| ERR-002 | ExternalAuthService | Resilience | authServiceDowntime() | Handle external auth service unavailability | Appropriate error handling and user notification | auth.resilience.spec.ts | Circuit Breaker | System availability |  |
-| ERR-003 | FileUploadService | Resilience | corruptedFileHandling() | Handle corrupted or malformed file uploads | Graceful error handling without system crash | upload.resilience.spec.ts | File Validation | System stability |  |
-| ERR-004 | ValidationService | Resilience | malformedDataHandling() | Handle malformed input data gracefully | Validate and reject malformed data safely | validation.resilience.spec.ts | Input Validation | Data integrity |  |
-| ERR-005 | APIGateway | Resilience | timeoutHandling() | Handle API request timeouts appropriately | Proper timeout responses and cleanup | api.resilience.spec.ts | Timeout Management | User experience |  |
-| ERR-006 | StateService | Resilience | concurrentStateModification() | Handle concurrent modifications to same entity | Prevent race conditions and maintain consistency | state.resilience.spec.ts | Concurrency Control | Data integrity |  |
-| ERR-007 | BackupService | Resilience | dataRecovery() | Validate data recovery procedures | Successfully restore from backup data | backup.resilience.spec.ts | Backup Systems | Business continuity |  |
-| ERR-008 | NetworkService | Resilience | networkPartitionHandling() | Handle network partition scenarios | Maintain system functionality during network issues | network.resilience.spec.ts | Network Management | System availability |  |
-| ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  |
-| ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| ERR-001 | DatabaseService | Resilience | databaseConnectionFailure() | Handle database connectivity loss | Graceful degradation and automatic retry | database.resilience.spec.ts | Connection Management | System availability |  
+| ERR-002 | ExternalAuthService | Resilience | authServiceDowntime() | Handle external auth service unavailability | Appropriate error handling and user notification | auth.resilience.spec.ts | Circuit Breaker | System availability |  
+| ERR-003 | FileUploadService | Resilience | corruptedFileHandling() | Handle corrupted or malformed file uploads | Graceful error handling without system crash | upload.resilience.spec.ts | File Validation | System stability |  
+| ERR-004 | ValidationService | Resilience | malformedDataHandling() | Handle malformed input data gracefully | Validate and reject malformed data safely | validation.resilience.spec.ts | Input Validation | Data integrity |  
+| ERR-005 | APIGateway | Resilience | timeoutHandling() | Handle API request timeouts appropriately | Proper timeout responses and cleanup | api.resilience.spec.ts | Timeout Management | User experience |  
+| ERR-006 | StateService | Resilience | concurrentStateModification() | Handle concurrent modifications to same entity | Prevent race conditions and maintain consistency | state.resilience.spec.ts | Concurrency Control | Data integrity |  
+| ERR-007 | BackupService | Resilience | dataRecovery() | Validate data recovery procedures | Successfully restore from backup data | backup.resilience.spec.ts | Backup Systems | Business continuity |  
+| ERR-008 | NetworkService | Resilience | networkPartitionHandling() | Handle network partition scenarios | Maintain system functionality during network issues | network.resilience.spec.ts | Network Management | System availability |  
+| ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  
+| ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  
 ## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| UX-001 | RuleConfigForm | UX | formValidationFeedback() | Real-time validation feedback during form input | Immediate validation messages for user guidance | rule-config.ux.spec.tsx | Form Validation | User productivity |  |
-| UX-002 | TypologyCanvas | UX | dragDropInteractionFeedback() | Visual feedback during drag and drop operations | Clear visual indicators during drag operations | typology.ux.spec.tsx | UI Interactions | User experience |  |
-| UX-003 | LoadingStates | UX | loadingIndicators() | Appropriate loading states for async operations | Loading indicators for all async operations | loading.ux.spec.tsx | UI Components | User experience |  |
-| UX-004 | ErrorStates | UX | userFriendlyErrorMessages() | Clear error messages for user errors | Non-technical error messages with guidance | error.ux.spec.tsx | Error Handling | User experience |  |
-| UX-005 | Navigation | UX | breadcrumbNavigation() | Consistent breadcrumb navigation across pages | Clear navigation path for complex workflows | navigation.ux.spec.tsx | Navigation System | User orientation |  |
-| UX-006 | ResponsiveDesign | UX | mobileTabletCompatibility() | Responsive design across device sizes | Functional interface on mobile and tablet devices | responsive.ux.spec.tsx | CSS Framework | Accessibility |  |
-| UX-007 | KeyboardNavigation | UX | keyboardAccessibility() | Full keyboard navigation support | All functionality accessible via keyboard | keyboard.ux.spec.tsx | Accessibility | Compliance |  |
-| UX-008 | ContextualHelp | UX | tooltipsAndHelpText() | Contextual help for complex features | Helpful tooltips and guidance for complex operations | help.ux.spec.tsx | UI Components | User productivity |  |
-| UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  |
-| UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| UX-001 | RuleConfigForm | UX | formValidationFeedback() | Real-time validation feedback during form input | Immediate validation messages for user guidance | rule-config.ux.spec.tsx | Form Validation | User productivity |  
+| UX-002 | TypologyCanvas | UX | dragDropInteractionFeedback() | Visual feedback during drag and drop operations | Clear visual indicators during drag operations | typology.ux.spec.tsx | UI Interactions | User experience |  
+| UX-003 | LoadingStates | UX | loadingIndicators() | Appropriate loading states for async operations | Loading indicators for all async operations | loading.ux.spec.tsx | UI Components | User experience |  
+| UX-004 | ErrorStates | UX | userFriendlyErrorMessages() | Clear error messages for user errors | Non-technical error messages with guidance | error.ux.spec.tsx | Error Handling | User experience |  
+| UX-005 | Navigation | UX | breadcrumbNavigation() | Consistent breadcrumb navigation across pages | Clear navigation path for complex workflows | navigation.ux.spec.tsx | Navigation System | User orientation |  
+| UX-006 | ResponsiveDesign | UX | mobileTabletCompatibility() | Responsive design across device sizes | Functional interface on mobile and tablet devices | responsive.ux.spec.tsx | CSS Framework | Accessibility |  
+| UX-007 | KeyboardNavigation | UX | keyboardAccessibility() | Full keyboard navigation support | All functionality accessible via keyboard | keyboard.ux.spec.tsx | Accessibility | Compliance |  
+| UX-008 | ContextualHelp | UX | tooltipsAndHelpText() | Contextual help for complex features | Helpful tooltips and guidance for complex operations | help.ux.spec.tsx | UI Components | User productivity |  
+| UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  
+| UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  
 ## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| INT-001 | RuleToDeployment | Integration | completeRuleLifecycle() | Complete rule lifecycle from creation to deployment | Rule successfully deployed to production | rule.integration.spec.ts | Multiple Services | Business workflow |  |
-| INT-002 | TypologyToNetworkMap | Integration | typologyNetworkMapIntegration() | Typology integration with network maps | Typologies correctly integrated into network maps | typology-network.integration.spec.ts | Multiple Services | Business workflow |  |
-| INT-003 | UserRoleWorkflow | Integration | endToEndUserRoleWorkflow() | Complete user workflow with role transitions | Users can complete tasks according to role permissions | user-role.integration.spec.ts | Auth System | Business process |  |
-| INT-004 | DataImportExport | Integration | completeImportExportCycle() | Import and export configuration data | Successfully import exported configurations | import-export.integration.spec.ts | File System | Data portability |  |
-| INT-005 | ApprovalToDeployment | Integration | approvalDeploymentPipeline() | Approval workflow to deployment pipeline | Approved items successfully deployed | approval-deployment.integration.spec.ts | Workflow System | Business process |  |
-| INT-006 | BackupRestore | Integration | completeBackupRestoreCycle() | Backup and restore system functionality | Successfully restore system from backup | backup-restore.integration.spec.ts | Backup System | Business continuity |  |
-| INT-007 | MultiUserConcurrency | Integration | concurrentUserInteractions() | Multiple users working on same configurations | Handle concurrent modifications gracefully | multi-user.integration.spec.ts | Concurrency Control | System reliability |  |
-| INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  |
-| INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| INT-001 | RuleToDeployment | Integration | completeRuleLifecycle() | Complete rule lifecycle from creation to deployment | Rule successfully deployed to production | rule.integration.spec.ts | Multiple Services | Business workflow |  
+| INT-002 | TypologyToNetworkMap | Integration | typologyNetworkMapIntegration() | Typology integration with network maps | Typologies correctly integrated into network maps | typology-network.integration.spec.ts | Multiple Services | Business workflow |  
+| INT-003 | UserRoleWorkflow | Integration | endToEndUserRoleWorkflow() | Complete user workflow with role transitions | Users can complete tasks according to role permissions | user-role.integration.spec.ts | Auth System | Business process |  
+| INT-004 | DataImportExport | Integration | completeImportExportCycle() | Import and export configuration data | Successfully import exported configurations | import-export.integration.spec.ts | File System | Data portability |  
+| INT-005 | ApprovalToDeployment | Integration | approvalDeploymentPipeline() | Approval workflow to deployment pipeline | Approved items successfully deployed | approval-deployment.integration.spec.ts | Workflow System | Business process |  
+| INT-006 | BackupRestore | Integration | completeBackupRestoreCycle() | Backup and restore system functionality | Successfully restore system from backup | backup-restore.integration.spec.ts | Backup System | Business continuity |  
+| INT-007 | MultiUserConcurrency | Integration | concurrentUserInteractions() | Multiple users working on same configurations | Handle concurrent modifications gracefully | multi-user.integration.spec.ts | Concurrency Control | System reliability |  
+| INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  
+| INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  
 ## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| E2E-RULE-001 | Rule API | E2E | Complete rule management endpoints | All rule CRUD operations with enhanced edge cases | All endpoints working with comprehensive validation | rule.e2e-spec.ts | ArangoDB | Well tested - enhance with edge cases |  |
-| E2E-RULECONFIG-001 | Rule Config API | E2E | Complete rule config management endpoints | All rule config CRUD operations | All endpoints working with financial compliance | rule-config.e2e-spec.ts | ArangoDB | Well tested - enhance with compliance |  |
-| E2E-TYPOLOGY-001 | Typology API | E2E | Complete typology management endpoints | All typology CRUD operations with scoring validation | All endpoints working with accurate scoring | typology.e2e-spec.ts | ArangoDB | Well tested - enhance with scoring accuracy |  |
-| E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  |
-| E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| E2E-RULE-001 | Rule API | E2E | Complete rule management endpoints | All rule CRUD operations with enhanced edge cases | All endpoints working with comprehensive validation | rule.e2e-spec.ts | ArangoDB | Well tested - enhance with edge cases |  
+| E2E-RULECONFIG-001 | Rule Config API | E2E | Complete rule config management endpoints | All rule config CRUD operations | All endpoints working with financial compliance | rule-config.e2e-spec.ts | ArangoDB | Well tested - enhance with compliance |  
+| E2E-TYPOLOGY-001 | Typology API | E2E | Complete typology management endpoints | All typology CRUD operations with scoring validation | All endpoints working with accurate scoring | typology.e2e-spec.ts | ArangoDB | Well tested - enhance with scoring accuracy |  
+| E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  
+| E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  
 ## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FE-LOGIN-001 | LoginPage | Component | Login page with multi-step authentication | Email and password form progression with security features | Successful login flow with enhanced security | LoginPage.test.tsx | Auth Context | Well tested - enhance security features |  |
-| FE-EMAIL-001 | EmailInputForm | Component | Email input with validation | Email validation and submission with security checks | Email validation working with security validation | EmailInputForm.test.tsx | None | Well tested - enhance security validation |  |
-| FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  |
-| FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | ## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT |
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FE-LOGIN-001 | LoginPage | Component | Login page with multi-step authentication | Email and password form progression with security features | Successful login flow with enhanced security | LoginPage.test.tsx | Auth Context | Well tested - enhance security features |  
+| FE-EMAIL-001 | EmailInputForm | Component | Email input with validation | Email validation and submission with security checks | Email validation working with security validation | EmailInputForm.test.tsx | None | Well tested - enhance security validation |  
+| FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  
+| FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | 
+
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT 
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 
 ## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DR-001 | BackupSystem | DR | automatedBackupValidation() | Validate automated backup procedures | Backups created automatically and verified | backup.dr.spec.ts | Backup System | Business continuity |  |
-| DR-002 | RecoveryProcedures | DR | recoveryTimeObjective() | Meet recovery time objectives | System recovery within defined RTO | recovery.dr.spec.ts | Recovery Systems | Business continuity |  |
-| DR-003 | DataReplication | DR | realTimeDataReplication() | Validate real-time data replication | Data replicated to secondary systems in real-time | replication.dr.spec.ts | Replication System | Business continuity |  |
-| DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  |
-| DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| DR-001 | BackupSystem | DR | automatedBackupValidation() | Validate automated backup procedures | Backups created automatically and verified | backup.dr.spec.ts | Backup System | Business continuity |  
+| DR-002 | RecoveryProcedures | DR | recoveryTimeObjective() | Meet recovery time objectives | System recovery within defined RTO | recovery.dr.spec.ts | Recovery Systems | Business continuity |  
+| DR-003 | DataReplication | DR | realTimeDataReplication() | Validate real-time data replication | Data replicated to secondary systems in real-time | replication.dr.spec.ts | Replication System | Business continuity |  
+| DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  
+| DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  
+
 ## MONITORING & OBSERVABILITY TESTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| MON-001 | HealthChecks | Monitoring | systemHealthMonitoring() | Comprehensive system health monitoring | All system components properly monitored | health.monitoring.spec.ts | Monitoring System | Operational visibility |  |
-| MON-002 | PerformanceMetrics | Monitoring | performanceMetricCollection() | Collect comprehensive performance metrics | All key metrics collected and accessible | metrics.monitoring.spec.ts | Metrics System | Operational efficiency |  |
-| MON-003 | AlertingSystem | Monitoring | intelligentAlerting() | Intelligent alerting for system issues | Alerts generated for critical issues without noise | alerting.monitoring.spec.ts | Alert System | Operational response |  |
-| MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  |
-| MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| MON-001 | HealthChecks | Monitoring | systemHealthMonitoring() | Comprehensive system health monitoring | All system components properly monitored | health.monitoring.spec.ts | Monitoring System | Operational visibility |  
+| MON-002 | PerformanceMetrics | Monitoring | performanceMetricCollection() | Collect comprehensive performance metrics | All key metrics collected and accessible | metrics.monitoring.spec.ts | Metrics System | Operational efficiency |  
+| MON-003 | AlertingSystem | Monitoring | intelligentAlerting() | Intelligent alerting for system issues | Alerts generated for critical issues without noise | alerting.monitoring.spec.ts | Alert System | Operational response |  
+| MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  
+| MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  
 
 ## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DATA-005 | TypologyService | Validation | scoreCalculationAccuracy() | Validate typology scoring calculations | Accurate scores within acceptable tolerance | typology.validation.spec.ts | Math Libraries | Risk assessment accuracy |  |
-| DATA-006 | TypologyService | Validation | thresholdBoundaryTesting() | Test alert/interdiction threshold boundaries | Correct alerts at exact threshold values | typology.validation.spec.ts | Business Logic | Alert accuracy |  |
-| DATA-007 | DatabaseService | Integrity | transactionRollback() | Database transaction failure handling | Complete rollback on transaction failure | database.integrity.spec.ts | Database Transactions | Data consistency |  |
-| DATA-008 | DatabaseService | Integrity | dataConsistencyChecks() | Validate referential integrity | Maintain consistent relationships between entities | database.integrity.spec.ts | Database Constraints | Data reliability |  |
-| DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  |
-| DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| DATA-005 | TypologyService | Validation | scoreCalculationAccuracy() | Validate typology scoring calculations | Accurate scores within acceptable tolerance | typology.validation.spec.ts | Math Libraries | Risk assessment accuracy |  
+| DATA-006 | TypologyService | Validation | thresholdBoundaryTesting() | Test alert/interdiction threshold boundaries | Correct alerts at exact threshold values | typology.validation.spec.ts | Business Logic | Alert accuracy |  
+| DATA-007 | DatabaseService | Integrity | transactionRollback() | Database transaction failure handling | Complete rollback on transaction failure | database.integrity.spec.ts | Database Transactions | Data consistency |  
+| DATA-008 | DatabaseService | Integrity | dataConsistencyChecks() | Validate referential integrity | Maintain consistent relationships between entities | database.integrity.spec.ts | Database Constraints | Data reliability |  
+| DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
+| DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  
 
 ## Auth Service
 
@@ -640,296 +643,318 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FE-RULE-001 | RuleListPage | Component | Rule management dashboard functionality | List, filter, sort, and paginate rules | Proper rule display with user actions | RuleListPage.test.tsx | Rule API | Core business functionality |  |
-| FE-RULE-002 | RuleCreateModal | Component | Rule creation form validation | Create new rules with proper validation | Form validation and successful submission | RuleCreateModal.test.tsx | Form Validation | Data integrity |  |
-| FE-RULE-003 | RuleEditModal | Component | Rule editing functionality | Edit existing rules with state validation | Proper editing based on user permissions | RuleEditModal.test.tsx | State Management | Data consistency |  |
-| FE-CONFIG-001 | RuleConfigPage | Component | Rule configuration interface | Complex rule configuration with multiple sections | Complete configuration workflow | RuleConfigPage.test.tsx | Multiple APIs | Business critical |  |
-| FE-CONFIG-002 | ParametersSection | Component | Rule parameters configuration | Dynamic parameter management | Parameter addition, editing, deletion | ParametersSection.test.tsx | Form Validation | Configuration accuracy |  |
-| FE-CONFIG-003 | BandsSection | Component | Rule bands configuration | Financial band configuration | Proper band validation and calculation | BandsSection.test.tsx | Financial Validation | Financial accuracy |  |
-| FE-CONFIG-004 | CasesSection | Component | Rule cases configuration | Case condition management | Case logic validation | CasesSection.test.tsx | Business Logic | Logic accuracy |  |
-| FE-CONFIG-005 | ExitConditionsSection | Component | Exit conditions configuration | Exit condition management | Proper exit condition validation | ExitConditionsSection.test.tsx | Business Logic | Logic integrity |  |
-| FE-TYPOLOGY-001 | TypologyBuilder | Component | Drag-and-drop typology creation | React Flow based typology builder | Proper node and edge management | TypologyBuilder.test.tsx | React Flow | Core functionality |  |
-| FE-TYPOLOGY-002 | TypologyCanvas | Component | Canvas interaction handling | Node placement and connection | Proper canvas state management | TypologyCanvas.test.tsx | React Flow | User experience |  |
-| FE-TYPOLOGY-003 | RuleNodeComponent | Component | Rule node rendering and interaction | Individual rule node functionality | Proper node rendering and events | RuleNodeComponent.test.tsx | React Flow | Visual accuracy |  |
-| FE-NETWORK-001 | NetworkMapPage | Component | Network map management | Network map creation and editing | Complete network map functionality | NetworkMapPage.test.tsx | Multiple APIs | System integration |  |
-| FE-NETWORK-002 | NetworkMapBuilder | Component | Network map builder interface | Visual network map construction | Proper network map building | NetworkMapBuilder.test.tsx | React Flow | Configuration accuracy |  |
-| FE-REVIEW-001 | ReviewPage | Component | Review workflow interface | Review and approval functionality | Proper review workflow execution | ReviewPage.test.tsx | State Management | Business process |  |
-| FE-REVIEW-002 | ApprovalButtons | Component | Approval action buttons | Approve, reject, withdraw actions | Proper action execution with validation | ApprovalButtons.test.tsx | State Management | Process integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FE-RULE-001 | RuleListPage | Component | Rule management dashboard functionality | List, filter, sort, and paginate rules | Proper rule display with user actions | RuleListPage.test.tsx | Rule API | Core business functionality |  
+| FE-RULE-002 | RuleCreateModal | Component | Rule creation form validation | Create new rules with proper validation | Form validation and successful submission | RuleCreateModal.test.tsx | Form Validation | Data integrity |  
+| FE-RULE-003 | RuleEditModal | Component | Rule editing functionality | Edit existing rules with state validation | Proper editing based on user permissions | RuleEditModal.test.tsx | State Management | Data consistency |  
+| FE-CONFIG-001 | RuleConfigPage | Component | Rule configuration interface | Complex rule configuration with multiple sections | Complete configuration workflow | RuleConfigPage.test.tsx | Multiple APIs | Business critical |  
+| FE-CONFIG-002 | ParametersSection | Component | Rule parameters configuration | Dynamic parameter management | Parameter addition, editing, deletion | ParametersSection.test.tsx | Form Validation | Configuration accuracy |  
+| FE-CONFIG-003 | BandsSection | Component | Rule bands configuration | Financial band configuration | Proper band validation and calculation | BandsSection.test.tsx | Financial Validation | Financial accuracy |  
+| FE-CONFIG-004 | CasesSection | Component | Rule cases configuration | Case condition management | Case logic validation | CasesSection.test.tsx | Business Logic | Logic accuracy |  
+| FE-CONFIG-005 | ExitConditionsSection | Component | Exit conditions configuration | Exit condition management | Proper exit condition validation | ExitConditionsSection.test.tsx | Business Logic | Logic integrity |  
+| FE-TYPOLOGY-001 | TypologyBuilder | Component | Drag-and-drop typology creation | React Flow based typology builder | Proper node and edge management | TypologyBuilder.test.tsx | React Flow | Core functionality |  
+| FE-TYPOLOGY-002 | TypologyCanvas | Component | Canvas interaction handling | Node placement and connection | Proper canvas state management | TypologyCanvas.test.tsx | React Flow | User experience |  
+| FE-TYPOLOGY-003 | RuleNodeComponent | Component | Rule node rendering and interaction | Individual rule node functionality | Proper node rendering and events | RuleNodeComponent.test.tsx | React Flow | Visual accuracy |  
+| FE-NETWORK-001 | NetworkMapPage | Component | Network map management | Network map creation and editing | Complete network map functionality | NetworkMapPage.test.tsx | Multiple APIs | System integration |  
+| FE-NETWORK-002 | NetworkMapBuilder | Component | Network map builder interface | Visual network map construction | Proper network map building | NetworkMapBuilder.test.tsx | React Flow | Configuration accuracy |  
+| FE-REVIEW-001 | ReviewPage | Component | Review workflow interface | Review and approval functionality | Proper review workflow execution | ReviewPage.test.tsx | State Management | Business process |  
+| FE-REVIEW-002 | ApprovalButtons | Component | Approval action buttons | Approve, reject, withdraw actions | Proper action execution with validation | ApprovalButtons.test.tsx | State Management | Process integrity |  
+
 ## STATE MANAGEMENT TESTING - XSTATE INTEGRATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  |
-| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  |
-| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  |
-| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  |
-| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  
+| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  
+| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  
+| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  
+| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  
+
 ## API INTEGRATION TESTING - ACTUAL ENDPOINTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| API-RULE-001 | RuleAPI | Integration | GET /api/rule | Fetch all rules with pagination | Proper rule list with metadata | ruleAPI.test.ts | Backend API | Data retrieval |  |
-| API-RULE-002 | RuleAPI | Integration | POST /api/rule | Create new rule | Successful rule creation | ruleAPI.test.ts | Backend API | Data creation |  |
-| API-RULE-003 | RuleAPI | Integration | PUT /api/rule/:id | Update existing rule | Successful rule update | ruleAPI.test.ts | Backend API | Data modification |  |
-| API-RULE-004 | RuleAPI | Integration | DELETE /api/rule/:id | Delete rule | Successful rule deletion | ruleAPI.test.ts | Backend API | Data removal |  |
-| API-CONFIG-001 | RuleConfigAPI | Integration | GET /api/rule-config | Fetch rule configurations | Proper configuration list | ruleConfigAPI.test.ts | Backend API | Configuration retrieval |  |
-| API-CONFIG-002 | RuleConfigAPI | Integration | POST /api/rule-config | Create rule configuration | Successful configuration creation | ruleConfigAPI.test.ts | Backend API | Configuration creation |  |
-| API-TYPOLOGY-001 | TypologyAPI | Integration | GET /api/typology | Fetch typologies | Proper typology list | typologyAPI.test.ts | Backend API | Typology retrieval |  |
-| API-TYPOLOGY-002 | TypologyAPI | Integration | POST /api/typology | Create typology | Successful typology creation | typologyAPI.test.ts | Backend API | Typology creation |  |
-| API-NETWORK-001 | NetworkMapAPI | Integration | GET /api/network-map | Fetch network maps | Proper network map list | networkMapAPI.test.ts | Backend API | Network map retrieval |  |
-| API-NETWORK-002 | NetworkMapAPI | Integration | POST /api/network-map | Create network map | Successful network map creation | networkMapAPI.test.ts | Backend API | Network map creation |  |
-| API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  |
-| API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| API-RULE-001 | RuleAPI | Integration | GET /api/rule | Fetch all rules with pagination | Proper rule list with metadata | ruleAPI.test.ts | Backend API | Data retrieval |  
+| API-RULE-002 | RuleAPI | Integration | POST /api/rule | Create new rule | Successful rule creation | ruleAPI.test.ts | Backend API | Data creation |  
+| API-RULE-003 | RuleAPI | Integration | PUT /api/rule/:id | Update existing rule | Successful rule update | ruleAPI.test.ts | Backend API | Data modification |  
+| API-RULE-004 | RuleAPI | Integration | DELETE /api/rule/:id | Delete rule | Successful rule deletion | ruleAPI.test.ts | Backend API | Data removal |  
+| API-CONFIG-001 | RuleConfigAPI | Integration | GET /api/rule-config | Fetch rule configurations | Proper configuration list | ruleConfigAPI.test.ts | Backend API | Configuration retrieval |  
+| API-CONFIG-002 | RuleConfigAPI | Integration | POST /api/rule-config | Create rule configuration | Successful configuration creation | ruleConfigAPI.test.ts | Backend API | Configuration creation |  
+| API-TYPOLOGY-001 | TypologyAPI | Integration | GET /api/typology | Fetch typologies | Proper typology list | typologyAPI.test.ts | Backend API | Typology retrieval |  
+| API-TYPOLOGY-002 | TypologyAPI | Integration | POST /api/typology | Create typology | Successful typology creation | typologyAPI.test.ts | Backend API | Typology creation |  
+| API-NETWORK-001 | NetworkMapAPI | Integration | GET /api/network-map | Fetch network maps | Proper network map list | networkMapAPI.test.ts | Backend API | Network map retrieval |  
+| API-NETWORK-002 | NetworkMapAPI | Integration | POST /api/network-map | Create network map | Successful network map creation | networkMapAPI.test.ts | Backend API | Network map creation |  
+| API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  
+| API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  
+
 ## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FIN-001 | BandsValidation | Unit | Financial band validation | Validate monetary amounts in bands | Proper validation of financial ranges | financialValidation.test.ts | Decimal.js | Financial accuracy |  |
-| FIN-002 | CurrencyValidation | Unit | Currency code validation | Validate ISO currency codes | Accept valid currencies, reject invalid | currencyValidation.test.ts | Currency Standards | International compliance |  |
-| FIN-003 | DecimalPrecision | Unit | Decimal precision handling | Test decimal precision in calculations | Maintain precision to required places | decimalPrecision.test.ts | Math Libraries | Calculation accuracy |  |
-| FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  |
-| FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FIN-001 | BandsValidation | Unit | Financial band validation | Validate monetary amounts in bands | Proper validation of financial ranges | financialValidation.test.ts | Decimal.js | Financial accuracy |  
+| FIN-002 | CurrencyValidation | Unit | Currency code validation | Validate ISO currency codes | Accept valid currencies, reject invalid | currencyValidation.test.ts | Currency Standards | International compliance |  
+| FIN-003 | DecimalPrecision | Unit | Decimal precision handling | Test decimal precision in calculations | Maintain precision to required places | decimalPrecision.test.ts | Math Libraries | Calculation accuracy |  
+| FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  
+| FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  
+
 ## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| A11Y-001 | LoginPage | Accessibility | Screen reader compatibility | Test screen reader navigation | Proper ARIA labels and navigation | loginPage.a11y.test.tsx | Screen Reader | Legal compliance |  |
-| A11Y-002 | RuleConfigPage | Accessibility | Keyboard navigation | Test full keyboard navigation | All functionality accessible via keyboard | ruleConfigPage.a11y.test.tsx | Keyboard Navigation | Legal compliance |  |
-| A11Y-003 | TypologyBuilder | Accessibility | Accessible drag-and-drop | Test accessible drag-and-drop operations | Alternative interactions for accessibility | typologyBuilder.a11y.test.tsx | Accessibility Tools | Legal compliance |  |
-| A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  |
-| A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| A11Y-001 | LoginPage | Accessibility | Screen reader compatibility | Test screen reader navigation | Proper ARIA labels and navigation | loginPage.a11y.test.tsx | Screen Reader | Legal compliance |  
+| A11Y-002 | RuleConfigPage | Accessibility | Keyboard navigation | Test full keyboard navigation | All functionality accessible via keyboard | ruleConfigPage.a11y.test.tsx | Keyboard Navigation | Legal compliance |  
+| A11Y-003 | TypologyBuilder | Accessibility | Accessible drag-and-drop | Test accessible drag-and-drop operations | Alternative interactions for accessibility | typologyBuilder.a11y.test.tsx | Accessibility Tools | Legal compliance |  
+| A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  
+| A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  
+
 ## INTERNATIONALIZATION TESTING - I18N SUPPORT
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| I18N-001 | LanguageSupport | Unit | Language switching | Test language switching functionality | Proper language switching | languageSupport.test.ts | i18next | International support |  |
-| I18N-002 | TextTranslation | Unit | Text translation coverage | Test all text elements are translated | Complete translation coverage | textTranslation.test.ts | i18next | International support |  |
-| I18N-003 | NumberFormatting | Unit | Number formatting localization | Test number formatting for different locales | Proper locale-specific formatting | numberFormatting.test.ts | Intl API | Financial accuracy |  |
-| I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  |
-| I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| I18N-001 | LanguageSupport | Unit | Language switching | Test language switching functionality | Proper language switching | languageSupport.test.ts | i18next | International support |  
+| I18N-002 | TextTranslation | Unit | Text translation coverage | Test all text elements are translated | Complete translation coverage | textTranslation.test.ts | i18next | International support |  
+| I18N-003 | NumberFormatting | Unit | Number formatting localization | Test number formatting for different locales | Proper locale-specific formatting | numberFormatting.test.ts | Intl API | Financial accuracy |  
+| I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  
+| I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  
+
 ## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FORM-001 | DynamicFormGeneration | Unit | Dynamic form generation | Test dynamic form creation based on schema | Proper form generation | dynamicForms.test.ts | Form Generation | Configuration flexibility |  |
-| FORM-002 | ConditionalFields | Unit | Conditional field display | Test conditional field logic | Proper field visibility based on conditions | conditionalFields.test.ts | Form Logic | User experience |  |
-| FORM-003 | FormValidation | Unit | Complex form validation | Test multi-level form validation | Comprehensive validation coverage | formValidation.test.ts | Validation Logic | Data integrity |  |
-| FORM-004 | FormAutoSave | Unit | Auto-save functionality | Test automatic form saving | Proper auto-save behavior | formAutoSave.test.ts | Local Storage | User experience |  |
-| FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FORM-001 | DynamicFormGeneration | Unit | Dynamic form generation | Test dynamic form creation based on schema | Proper form generation | dynamicForms.test.ts | Form Generation | Configuration flexibility |  
+| FORM-002 | ConditionalFields | Unit | Conditional field display | Test conditional field logic | Proper field visibility based on conditions | conditionalFields.test.ts | Form Logic | User experience |  
+| FORM-003 | FormValidation | Unit | Complex form validation | Test multi-level form validation | Comprehensive validation coverage | formValidation.test.ts | Validation Logic | Data integrity |  
+| FORM-004 | FormAutoSave | Unit | Auto-save functionality | Test automatic form saving | Proper auto-save behavior | formAutoSave.test.ts | Local Storage | User experience |  
+| FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  
 | REV-ACCESS-001 | Review pages | Screen reader headings | Accessibility | Screen reader enabled | Navigate through page landmarks | Not Run | ACC-REQ-005 | Planned |
+
 ## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| PERM-001 | RuleController | Permission | createRuleWithPermission() | User with SECURITY_CREATE_RULE can create rules | Rule created successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-002 | RuleController | Permission | createRuleWithoutPermission() | User without SECURITY_CREATE_RULE blocked from creating rules | 403 Forbidden error returned | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-003 | RuleController | Permission | approveRuleWithPermission() | User with SECURITY_APPROVE_RULE can approve rules | Rule approved successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-004 | RuleController | Permission | selfApprovalPrevention() | User cannot approve their own created rules | 403 Forbidden with self-approval message | rule.permissions.spec.ts | Role Management | Segregation of duties |  |
-| PERM-005 | RuleController | Permission | deployRuleWithPermission() | User with SECURITY_DEPLOY_RULE can deploy approved rules | Rule deployed successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-006 | RuleController | Permission | deployRuleWithoutApproval() | User cannot deploy non-approved rules | 403 Forbidden with approval required message | rule.permissions.spec.ts | State Management | Workflow integrity |  |
-| PERM-007 | RuleConfigController | Permission | createRuleConfigWithPermission() | User with SECURITY_CREATE_RULE_CONFIG can create rule configs | Rule config created successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-008 | RuleConfigController | Permission | updateRuleConfigWithPermission() | User with SECURITY_UPDATE_RULE_CONFIG can update rule configs | Rule config updated successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-009 | RuleConfigController | Permission | deleteRuleConfigWithoutPermission() | User without SECURITY_DELETE_RULE_CONFIG blocked from deleting | 403 Forbidden error returned | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-010 | TypologyController | Permission | createTypologyWithPermission() | User with SECURITY_CREATE_TYPOLOGY can create typologies | Typology created successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-011 | TypologyController | Permission | approveTypologyWithPermission() | User with SECURITY_APPROVE_TYPOLOGY can approve typologies | Typology approved successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-012 | TypologyController | Permission | retireTypologyWithPermission() | User with SECURITY_RETIRE_TYPOLOGY can retire deployed typologies | Typology retired successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-013 | NetworkMapController | Permission | createNetworkMapWithPermission() | User with SECURITY_CREATE_NETWORK_MAP can create network maps | Network map created successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-014 | NetworkMapController | Permission | exportNetworkMapWithPermission() | User with SECURITY_EXPORT_NETWORK_MAP can export network maps | Network map exported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-015 | NetworkMapController | Permission | importNetworkMapWithPermission() | User with SECURITY_IMPORT_NETWORK_MAP can import network maps | Network map imported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-016 | ExitConditionController | Permission | viewExitConditionsWithPermission() | User with EXIT_COND_GET_ALL can view all exit conditions | Exit conditions returned successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-017 | ExitConditionController | Permission | createUserExitConditionWithPermission() | User with EXIT_COND_CREATE_USER can create user-specific exit conditions | User exit condition created successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-018 | AuthGuard | Permission | roleHierarchyValidation() | Admin role includes all permissions of lower roles | Admin can perform all editor and viewer actions | role-hierarchy.permissions.spec.ts | Role Management | Role hierarchy integrity |  |
-| PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  |
-| PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| PERM-001 | RuleController | Permission | createRuleWithPermission() | User with SECURITY_CREATE_RULE can create rules | Rule created successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-002 | RuleController | Permission | createRuleWithoutPermission() | User without SECURITY_CREATE_RULE blocked from creating rules | 403 Forbidden error returned | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-003 | RuleController | Permission | approveRuleWithPermission() | User with SECURITY_APPROVE_RULE can approve rules | Rule approved successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-004 | RuleController | Permission | selfApprovalPrevention() | User cannot approve their own created rules | 403 Forbidden with self-approval message | rule.permissions.spec.ts | Role Management | Segregation of duties |  
+| PERM-005 | RuleController | Permission | deployRuleWithPermission() | User with SECURITY_DEPLOY_RULE can deploy approved rules | Rule deployed successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-006 | RuleController | Permission | deployRuleWithoutApproval() | User cannot deploy non-approved rules | 403 Forbidden with approval required message | rule.permissions.spec.ts | State Management | Workflow integrity |  
+| PERM-007 | RuleConfigController | Permission | createRuleConfigWithPermission() | User with SECURITY_CREATE_RULE_CONFIG can create rule configs | Rule config created successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-008 | RuleConfigController | Permission | updateRuleConfigWithPermission() | User with SECURITY_UPDATE_RULE_CONFIG can update rule configs | Rule config updated successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-009 | RuleConfigController | Permission | deleteRuleConfigWithoutPermission() | User without SECURITY_DELETE_RULE_CONFIG blocked from deleting | 403 Forbidden error returned | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-010 | TypologyController | Permission | createTypologyWithPermission() | User with SECURITY_CREATE_TYPOLOGY can create typologies | Typology created successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-011 | TypologyController | Permission | approveTypologyWithPermission() | User with SECURITY_APPROVE_TYPOLOGY can approve typologies | Typology approved successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-012 | TypologyController | Permission | retireTypologyWithPermission() | User with SECURITY_RETIRE_TYPOLOGY can retire deployed typologies | Typology retired successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-013 | NetworkMapController | Permission | createNetworkMapWithPermission() | User with SECURITY_CREATE_NETWORK_MAP can create network maps | Network map created successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-014 | NetworkMapController | Permission | exportNetworkMapWithPermission() | User with SECURITY_EXPORT_NETWORK_MAP can export network maps | Network map exported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-015 | NetworkMapController | Permission | importNetworkMapWithPermission() | User with SECURITY_IMPORT_NETWORK_MAP can import network maps | Network map imported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-016 | ExitConditionController | Permission | viewExitConditionsWithPermission() | User with EXIT_COND_GET_ALL can view all exit conditions | Exit conditions returned successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-017 | ExitConditionController | Permission | createUserExitConditionWithPermission() | User with EXIT_COND_CREATE_USER can create user-specific exit conditions | User exit condition created successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-018 | AuthGuard | Permission | roleHierarchyValidation() | Admin role includes all permissions of lower roles | Admin can perform all editor and viewer actions | role-hierarchy.permissions.spec.ts | Role Management | Role hierarchy integrity |  
+| PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
+| PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
+
 ## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| STATE-006 | RuleStateService | StateTransition | skipStateTransitionBlocked() | User cannot skip intermediate states in workflow | 400 Bad Request with workflow violation message | rule.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-007 | RuleConfigStateService | StateTransition | ruleConfigApprovalWorkflow() | Rule config follows same approval workflow as rules | Rule config transitions through correct states | rule-config.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-008 | TypologyStateService | StateTransition | typologyApprovalWorkflow() | Typology follows same approval workflow as rules | Typology transitions through correct states | typology.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| STATE-006 | RuleStateService | StateTransition | skipStateTransitionBlocked() | User cannot skip intermediate states in workflow | 400 Bad Request with workflow violation message | rule.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-007 | RuleConfigStateService | StateTransition | ruleConfigApprovalWorkflow() | Rule config follows same approval workflow as rules | Rule config transitions through correct states | rule-config.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-008 | TypologyStateService | StateTransition | typologyApprovalWorkflow() | Typology follows same approval workflow as rules | Typology transitions through correct states | typology.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  
+
 ## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| INJ-001 | RuleService | Security | aqlInjectionInRuleId() | Test AQL injection in rule ID parameter | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-002 | RuleService | Security | aqlInjectionInRuleName() | Test AQL injection in rule name search | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-003 | RuleService | Security | aqlInjectionInRuleDescription() | Test AQL injection in rule description field | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-004 | RuleConfigService | Security | aqlInjectionInConfigData() | Test AQL injection in rule config JSON data | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-005 | RuleConfigService | Security | aqlInjectionInConfigSearch() | Test AQL injection in rule config search parameters | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-006 | TypologyService | Security | aqlInjectionInTypologyId() | Test AQL injection in typology ID parameter | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-007 | TypologyService | Security | aqlInjectionInScoringFormula() | Test AQL injection in typology scoring formula | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-008 | NetworkMapService | Security | aqlInjectionInNetworkMapQuery() | Test AQL injection in network map queries | Input sanitized, no malicious query executed | network-map.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-009 | DatabaseService | Security | maliciousCollectionDropAttempt() | Test attempt to drop collections via injection | Malicious query blocked, collections intact | database.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-010 | DatabaseService | Security | maliciousDataModificationAttempt() | Test attempt to modify data via injection | Malicious query blocked, data unchanged | database.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-011 | AuthService | Security | aqlInjectionInUsernameLookup() | Test AQL injection in username lookup queries | Input sanitized, no malicious query executed | auth.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-012 | UserMappingService | Security | aqlInjectionInUserMapping() | Test AQL injection in user email mapping queries | Input sanitized, no malicious query executed | user-mapping.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-013 | BandService | Security | aqlInjectionInBandParameters() | Test AQL injection in rule band parameters | Input sanitized, no malicious query executed | band.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| INJ-001 | RuleService | Security | aqlInjectionInRuleId() | Test AQL injection in rule ID parameter | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-002 | RuleService | Security | aqlInjectionInRuleName() | Test AQL injection in rule name search | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-003 | RuleService | Security | aqlInjectionInRuleDescription() | Test AQL injection in rule description field | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-004 | RuleConfigService | Security | aqlInjectionInConfigData() | Test AQL injection in rule config JSON data | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-005 | RuleConfigService | Security | aqlInjectionInConfigSearch() | Test AQL injection in rule config search parameters | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-006 | TypologyService | Security | aqlInjectionInTypologyId() | Test AQL injection in typology ID parameter | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-007 | TypologyService | Security | aqlInjectionInScoringFormula() | Test AQL injection in typology scoring formula | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-008 | NetworkMapService | Security | aqlInjectionInNetworkMapQuery() | Test AQL injection in network map queries | Input sanitized, no malicious query executed | network-map.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-009 | DatabaseService | Security | maliciousCollectionDropAttempt() | Test attempt to drop collections via injection | Malicious query blocked, collections intact | database.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-010 | DatabaseService | Security | maliciousDataModificationAttempt() | Test attempt to modify data via injection | Malicious query blocked, data unchanged | database.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-011 | AuthService | Security | aqlInjectionInUsernameLookup() | Test AQL injection in username lookup queries | Input sanitized, no malicious query executed | auth.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-012 | UserMappingService | Security | aqlInjectionInUserMapping() | Test AQL injection in user email mapping queries | Input sanitized, no malicious query executed | user-mapping.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-013 | BandService | Security | aqlInjectionInBandParameters() | Test AQL injection in rule band parameters | Input sanitized, no malicious query executed | band.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  
+
 ## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| VAL-001 | RuleController | Validation | scriptInjectionInRuleDescription() | Test script injection in rule description field | HTML/script tags sanitized or escaped | rule.validation.spec.ts | Input Sanitization | XSS prevention |  |
-| VAL-002 | RuleController | Validation | oversizedRuleNameValidation() | Test extremely long rule names | Request rejected with validation error | rule.validation.spec.ts | Input Validation | System stability |  |
-| VAL-003 | RuleController | Validation | specialCharacterHandling() | Test special characters in rule fields | Special characters properly escaped or validated | rule.validation.spec.ts | Input Validation | Data integrity |  |
-| VAL-004 | RuleConfigController | Validation | invalidJSONConfigValidation() | Test invalid JSON in rule config data | Request rejected with JSON validation error | rule-config.validation.spec.ts | Input Validation | Data integrity |  |
-| VAL-005 | RuleConfigController | Validation | maliciousJSONPayloadValidation() | Test malicious JSON payloads in config | Malicious payload rejected or sanitized | rule-config.validation.spec.ts | Input Validation | Security |  |
-| VAL-006 | RuleConfigController | Validation | financialAmountValidation() | Test financial amount validation in config | Invalid amounts rejected with validation error | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  |
-| VAL-007 | RuleConfigController | Validation | decimalPrecisionValidation() | Test decimal precision in financial amounts | Precision maintained or validated according to requirements | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  |
-| VAL-008 | RuleConfigController | Validation | currencyCodeValidation() | Test ISO currency code validation | Invalid currency codes rejected | rule-config.validation.spec.ts | Input Validation | Financial compliance |  |
-| VAL-009 | TypologyController | Validation | scoringFormulaValidation() | Test typology scoring formula validation | Invalid formulas rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  |
-| VAL-010 | TypologyController | Validation | thresholdValueValidation() | Test threshold value validation | Invalid thresholds rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  |
-| VAL-011 | NetworkMapController | Validation | nodeRelationshipValidation() | Test network map node relationship validation | Invalid relationships rejected with validation error | network-map.validation.spec.ts | Input Validation | Logic integrity |  |
-| VAL-012 | NetworkMapController | Validation | cyclicDependencyValidation() | Test prevention of cyclic dependencies in network maps | Cyclic dependencies detected and rejected | network-map.validation.spec.ts | Input Validation | Logic integrity |  |
-| VAL-013 | FileUploadController | Validation | maliciousFileUploadValidation() | Test malicious file upload prevention | Non-JSON files rejected, malicious content blocked | file-upload.validation.spec.ts | Input Validation | System security |  |
-| VAL-014 | FileUploadController | Validation | oversizedFileUploadValidation() | Test oversized file upload prevention | Large files rejected with size validation error | file-upload.validation.spec.ts | Input Validation | System stability |  |
-| VAL-015 | GlobalValidation | Validation | unicodeCharacterHandling() | Test unicode character handling across all inputs | Unicode characters properly handled or validated | global.validation.spec.ts | Input Validation | Internationalization |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| VAL-001 | RuleController | Validation | scriptInjectionInRuleDescription() | Test script injection in rule description field | HTML/script tags sanitized or escaped | rule.validation.spec.ts | Input Sanitization | XSS prevention |  
+| VAL-002 | RuleController | Validation | oversizedRuleNameValidation() | Test extremely long rule names | Request rejected with validation error | rule.validation.spec.ts | Input Validation | System stability |  
+| VAL-003 | RuleController | Validation | specialCharacterHandling() | Test special characters in rule fields | Special characters properly escaped or validated | rule.validation.spec.ts | Input Validation | Data integrity |  
+| VAL-004 | RuleConfigController | Validation | invalidJSONConfigValidation() | Test invalid JSON in rule config data | Request rejected with JSON validation error | rule-config.validation.spec.ts | Input Validation | Data integrity |  
+| VAL-005 | RuleConfigController | Validation | maliciousJSONPayloadValidation() | Test malicious JSON payloads in config | Malicious payload rejected or sanitized | rule-config.validation.spec.ts | Input Validation | Security |  
+| VAL-006 | RuleConfigController | Validation | financialAmountValidation() | Test financial amount validation in config | Invalid amounts rejected with validation error | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  
+| VAL-007 | RuleConfigController | Validation | decimalPrecisionValidation() | Test decimal precision in financial amounts | Precision maintained or validated according to requirements | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  
+| VAL-008 | RuleConfigController | Validation | currencyCodeValidation() | Test ISO currency code validation | Invalid currency codes rejected | rule-config.validation.spec.ts | Input Validation | Financial compliance |  
+| VAL-009 | TypologyController | Validation | scoringFormulaValidation() | Test typology scoring formula validation | Invalid formulas rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  
+| VAL-010 | TypologyController | Validation | thresholdValueValidation() | Test threshold value validation | Invalid thresholds rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  
+| VAL-011 | NetworkMapController | Validation | nodeRelationshipValidation() | Test network map node relationship validation | Invalid relationships rejected with validation error | network-map.validation.spec.ts | Input Validation | Logic integrity |  
+| VAL-012 | NetworkMapController | Validation | cyclicDependencyValidation() | Test prevention of cyclic dependencies in network maps | Cyclic dependencies detected and rejected | network-map.validation.spec.ts | Input Validation | Logic integrity |  
+| VAL-013 | FileUploadController | Validation | maliciousFileUploadValidation() | Test malicious file upload prevention | Non-JSON files rejected, malicious content blocked | file-upload.validation.spec.ts | Input Validation | System security |  
+| VAL-014 | FileUploadController | Validation | oversizedFileUploadValidation() | Test oversized file upload prevention | Large files rejected with size validation error | file-upload.validation.spec.ts | Input Validation | System stability |  
+| VAL-015 | GlobalValidation | Validation | unicodeCharacterHandling() | Test unicode character handling across all inputs | Unicode characters properly handled or validated | global.validation.spec.ts | Input Validation | Internationalization |  
+
 ## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| SEC-001 | AuthService | Security | tokenValidation() | JWT token tampering detection | Reject tampered tokens with security error | auth.security.spec.ts | JWT Library | Prevent privilege escalation |  |
-| SEC-002 | AuthService | Security | sessionTimeout() | Automatic session timeout enforcement | Force logout after inactivity | auth.security.spec.ts | Timer Management | Compliance requirement |  |
-| SEC-003 | RolesGuard | Security | privilegeEscalation() | Attempt to access higher privilege endpoints | Block access and log security event | roles.security.spec.ts | Privilege System | Prevent unauthorized access |  |
-| SEC-004 | AuthController | Security | bruteForceProtection() | Multiple failed login attempts | Rate limit and temporary account lock | auth.security.spec.ts | Rate Limiting | Prevent brute force attacks |  |
-| SEC-005 | DatabaseService | Security | sqlInjectionPrevention() | Malicious query injection attempts | Sanitize and reject malicious inputs | database.security.spec.ts | Input Sanitization | Data protection |  |
-| SEC-006 | InputValidation | Security | crossSiteScripting() | XSS payload in form inputs | Sanitize and escape malicious scripts | input.security.spec.ts | Input Sanitization | UI security |  |
-| SEC-007 | FileUpload | Security | maliciousFileUpload() | Upload of executable or malicious files | Reject non-JSON files and validate content | upload.security.spec.ts | File Validation | System security |  |
-| SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  |
-| SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| SEC-001 | AuthService | Security | tokenValidation() | JWT token tampering detection | Reject tampered tokens with security error | auth.security.spec.ts | JWT Library | Prevent privilege escalation |  
+| SEC-002 | AuthService | Security | sessionTimeout() | Automatic session timeout enforcement | Force logout after inactivity | auth.security.spec.ts | Timer Management | Compliance requirement |  
+| SEC-003 | RolesGuard | Security | privilegeEscalation() | Attempt to access higher privilege endpoints | Block access and log security event | roles.security.spec.ts | Privilege System | Prevent unauthorized access |  
+| SEC-004 | AuthController | Security | bruteForceProtection() | Multiple failed login attempts | Rate limit and temporary account lock | auth.security.spec.ts | Rate Limiting | Prevent brute force attacks |  
+| SEC-005 | DatabaseService | Security | sqlInjectionPrevention() | Malicious query injection attempts | Sanitize and reject malicious inputs | database.security.spec.ts | Input Sanitization | Data protection |  
+| SEC-006 | InputValidation | Security | crossSiteScripting() | XSS payload in form inputs | Sanitize and escape malicious scripts | input.security.spec.ts | Input Sanitization | UI security |  
+| SEC-007 | FileUpload | Security | maliciousFileUpload() | Upload of executable or malicious files | Reject non-JSON files and validate content | upload.security.spec.ts | File Validation | System security |  
+| SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  
+| SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
+
 ## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DATA-001 | RuleConfigService | Validation | financialAmountValidation() | Validate monetary amounts and ranges | Accept valid amounts reject invalid formats | rule-config.validation.spec.ts | Decimal Precision | Financial accuracy |  |
-| DATA-002 | RuleConfigService | Validation | decimalPrecisionHandling() | Handle decimal precision for financial calculations | Maintain precision to required decimal places | rule-config.validation.spec.ts | Math Libraries | Calculation accuracy |  |
-| DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  |
-| DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| DATA-001 | RuleConfigService | Validation | financialAmountValidation() | Validate monetary amounts and ranges | Accept valid amounts reject invalid formats | rule-config.validation.spec.ts | Decimal Precision | Financial accuracy |  
+| DATA-002 | RuleConfigService | Validation | decimalPrecisionHandling() | Handle decimal precision for financial calculations | Maintain precision to required decimal places | rule-config.validation.spec.ts | Math Libraries | Calculation accuracy |  
+| DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  
+| DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
+
 ## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| WORK-001 | StateTransitionService | Workflow | invalidStateTransitions() | Attempt invalid state transitions | Block transition and maintain current state | state.workflow.spec.ts | State Machine | Workflow integrity |  |
-| WORK-002 | ApprovalWorkflow | Workflow | selfApprovalPrevention() | User attempts to approve own submissions | Block self-approval and require different approver | approval.workflow.spec.ts | User Management | Segregation of duties |  |
-| WORK-003 | ApprovalWorkflow | Workflow | approvalChainValidation() | Multi-level approval process validation | Enforce correct approval sequence | approval.workflow.spec.ts | Role Management | Process compliance |  |
-| WORK-004 | DeploymentWorkflow | Workflow | productionDeploymentValidation() | Deploy only approved configurations | Block deployment of non-approved items | deployment.workflow.spec.ts | State Validation | Production safety |  |
-| WORK-005 | VersioningWorkflow | Workflow | backwardsCompatibilityCheck() | Version updates maintain compatibility | New versions don't break existing configurations | versioning.workflow.spec.ts | Version Management | System stability |  |
-| WORK-006 | RetirementWorkflow | Workflow | gracefulRetirement() | Retire deployed configurations safely | Ensure no active dependencies before retirement | retirement.workflow.spec.ts | Dependency Tracking | Operational continuity |  |
-| WORK-007 | ConfigurationWorkflow | Workflow | configurationDependencyValidation() | Validate rule-config dependencies before deployment | Ensure all dependencies exist and are approved | config.workflow.spec.ts | Dependency Management | Deployment safety |  |
-| WORK-008 | AuditWorkflow | Workflow | changeAuditTrail() | Complete audit trail for all configuration changes | Log all changes with user timestamps and reasons | audit.workflow.spec.ts | Audit Logging | Regulatory compliance |  |
-| WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  |
-| WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| WORK-001 | StateTransitionService | Workflow | invalidStateTransitions() | Attempt invalid state transitions | Block transition and maintain current state | state.workflow.spec.ts | State Machine | Workflow integrity |  
+| WORK-002 | ApprovalWorkflow | Workflow | selfApprovalPrevention() | User attempts to approve own submissions | Block self-approval and require different approver | approval.workflow.spec.ts | User Management | Segregation of duties |  
+| WORK-003 | ApprovalWorkflow | Workflow | approvalChainValidation() | Multi-level approval process validation | Enforce correct approval sequence | approval.workflow.spec.ts | Role Management | Process compliance |  
+| WORK-004 | DeploymentWorkflow | Workflow | productionDeploymentValidation() | Deploy only approved configurations | Block deployment of non-approved items | deployment.workflow.spec.ts | State Validation | Production safety |  
+| WORK-005 | VersioningWorkflow | Workflow | backwardsCompatibilityCheck() | Version updates maintain compatibility | New versions don't break existing configurations | versioning.workflow.spec.ts | Version Management | System stability |  
+| WORK-006 | RetirementWorkflow | Workflow | gracefulRetirement() | Retire deployed configurations safely | Ensure no active dependencies before retirement | retirement.workflow.spec.ts | Dependency Tracking | Operational continuity |  
+| WORK-007 | ConfigurationWorkflow | Workflow | configurationDependencyValidation() | Validate rule-config dependencies before deployment | Ensure all dependencies exist and are approved | config.workflow.spec.ts | Dependency Management | Deployment safety |  
+| WORK-008 | AuditWorkflow | Workflow | changeAuditTrail() | Complete audit trail for all configuration changes | Log all changes with user timestamps and reasons | audit.workflow.spec.ts | Audit Logging | Regulatory compliance |  
+| WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  
+| WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  
+
 ## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| PERF-001 | RuleConfigService | Performance | largeDatasetHandling() | Handle configurations with thousands of bands/cases | Maintain performance with large datasets | rule-config.performance.spec.ts | Memory Management | System scalability |  |
-| PERF-002 | TypologyService | Performance | complexScoringPerformance() | Performance of complex scoring calculations | Complete scoring within acceptable time limits | typology.performance.spec.ts | Algorithm Optimization | User experience |  |
-| PERF-003 | NetworkMapService | Performance | largeNetworkMapRendering() | Render network maps with hundreds of nodes | Maintain UI responsiveness with large maps | network-map.performance.spec.ts | Rendering Optimization | User experience |  |
-| PERF-004 | DatabaseService | Performance | concurrentUserLoad() | Handle multiple concurrent users | Maintain performance under concurrent load | database.performance.spec.ts | Connection Pooling | System capacity |  |
-| PERF-005 | APIEndpoints | Performance | responseTimeValidation() | API response times within SLA | All endpoints respond within defined time limits | api.performance.spec.ts | Performance Monitoring | User experience |  |
-| PERF-006 | CacheService | Performance | cacheEfficiency() | Validate caching improves performance | Cached responses significantly faster than DB queries | cache.performance.spec.ts | Caching Layer | System efficiency |  |
-| PERF-007 | SearchService | Performance | complexSearchPerformance() | Performance of complex search queries | Search results returned within acceptable time | search.performance.spec.ts | Query Optimization | User experience |  |
-| PERF-008 | ExportService | Performance | largeExportGeneration() | Generate exports for large datasets | Export large configurations without timeout | export.performance.spec.ts | File Generation | Operational efficiency |  |
-| PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  |
-| PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| PERF-001 | RuleConfigService | Performance | largeDatasetHandling() | Handle configurations with thousands of bands/cases | Maintain performance with large datasets | rule-config.performance.spec.ts | Memory Management | System scalability |  
+| PERF-002 | TypologyService | Performance | complexScoringPerformance() | Performance of complex scoring calculations | Complete scoring within acceptable time limits | typology.performance.spec.ts | Algorithm Optimization | User experience |  
+| PERF-003 | NetworkMapService | Performance | largeNetworkMapRendering() | Render network maps with hundreds of nodes | Maintain UI responsiveness with large maps | network-map.performance.spec.ts | Rendering Optimization | User experience |  
+| PERF-004 | DatabaseService | Performance | concurrentUserLoad() | Handle multiple concurrent users | Maintain performance under concurrent load | database.performance.spec.ts | Connection Pooling | System capacity |  
+| PERF-005 | APIEndpoints | Performance | responseTimeValidation() | API response times within SLA | All endpoints respond within defined time limits | api.performance.spec.ts | Performance Monitoring | User experience |  
+| PERF-006 | CacheService | Performance | cacheEfficiency() | Validate caching improves performance | Cached responses significantly faster than DB queries | cache.performance.spec.ts | Caching Layer | System efficiency |  
+| PERF-007 | SearchService | Performance | complexSearchPerformance() | Performance of complex search queries | Search results returned within acceptable time | search.performance.spec.ts | Query Optimization | User experience |  
+| PERF-008 | ExportService | Performance | largeExportGeneration() | Generate exports for large datasets | Export large configurations without timeout | export.performance.spec.ts | File Generation | Operational efficiency |  
+| PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  
+| PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  
+
 ## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| ERR-001 | DatabaseService | Resilience | databaseConnectionFailure() | Handle database connectivity loss | Graceful degradation and automatic retry | database.resilience.spec.ts | Connection Management | System availability |  |
-| ERR-002 | ExternalAuthService | Resilience | authServiceDowntime() | Handle external auth service unavailability | Appropriate error handling and user notification | auth.resilience.spec.ts | Circuit Breaker | System availability |  |
-| ERR-003 | FileUploadService | Resilience | corruptedFileHandling() | Handle corrupted or malformed file uploads | Graceful error handling without system crash | upload.resilience.spec.ts | File Validation | System stability |  |
-| ERR-004 | ValidationService | Resilience | malformedDataHandling() | Handle malformed input data gracefully | Validate and reject malformed data safely | validation.resilience.spec.ts | Input Validation | Data integrity |  |
-| ERR-005 | APIGateway | Resilience | timeoutHandling() | Handle API request timeouts appropriately | Proper timeout responses and cleanup | api.resilience.spec.ts | Timeout Management | User experience |  |
-| ERR-006 | StateService | Resilience | concurrentStateModification() | Handle concurrent modifications to same entity | Prevent race conditions and maintain consistency | state.resilience.spec.ts | Concurrency Control | Data integrity |  |
-| ERR-007 | BackupService | Resilience | dataRecovery() | Validate data recovery procedures | Successfully restore from backup data | backup.resilience.spec.ts | Backup Systems | Business continuity |  |
-| ERR-008 | NetworkService | Resilience | networkPartitionHandling() | Handle network partition scenarios | Maintain system functionality during network issues | network.resilience.spec.ts | Network Management | System availability |  |
-| ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  |
-| ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| ERR-001 | DatabaseService | Resilience | databaseConnectionFailure() | Handle database connectivity loss | Graceful degradation and automatic retry | database.resilience.spec.ts | Connection Management | System availability |  
+| ERR-002 | ExternalAuthService | Resilience | authServiceDowntime() | Handle external auth service unavailability | Appropriate error handling and user notification | auth.resilience.spec.ts | Circuit Breaker | System availability |  
+| ERR-003 | FileUploadService | Resilience | corruptedFileHandling() | Handle corrupted or malformed file uploads | Graceful error handling without system crash | upload.resilience.spec.ts | File Validation | System stability |  
+| ERR-004 | ValidationService | Resilience | malformedDataHandling() | Handle malformed input data gracefully | Validate and reject malformed data safely | validation.resilience.spec.ts | Input Validation | Data integrity |  
+| ERR-005 | APIGateway | Resilience | timeoutHandling() | Handle API request timeouts appropriately | Proper timeout responses and cleanup | api.resilience.spec.ts | Timeout Management | User experience |  
+| ERR-006 | StateService | Resilience | concurrentStateModification() | Handle concurrent modifications to same entity | Prevent race conditions and maintain consistency | state.resilience.spec.ts | Concurrency Control | Data integrity |  
+| ERR-007 | BackupService | Resilience | dataRecovery() | Validate data recovery procedures | Successfully restore from backup data | backup.resilience.spec.ts | Backup Systems | Business continuity |  
+| ERR-008 | NetworkService | Resilience | networkPartitionHandling() | Handle network partition scenarios | Maintain system functionality during network issues | network.resilience.spec.ts | Network Management | System availability |  
+| ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  
+| ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  
+
 ## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| UX-001 | RuleConfigForm | UX | formValidationFeedback() | Real-time validation feedback during form input | Immediate validation messages for user guidance | rule-config.ux.spec.tsx | Form Validation | User productivity |  |
-| UX-002 | TypologyCanvas | UX | dragDropInteractionFeedback() | Visual feedback during drag and drop operations | Clear visual indicators during drag operations | typology.ux.spec.tsx | UI Interactions | User experience |  |
-| UX-003 | LoadingStates | UX | loadingIndicators() | Appropriate loading states for async operations | Loading indicators for all async operations | loading.ux.spec.tsx | UI Components | User experience |  |
-| UX-004 | ErrorStates | UX | userFriendlyErrorMessages() | Clear error messages for user errors | Non-technical error messages with guidance | error.ux.spec.tsx | Error Handling | User experience |  |
-| UX-005 | Navigation | UX | breadcrumbNavigation() | Consistent breadcrumb navigation across pages | Clear navigation path for complex workflows | navigation.ux.spec.tsx | Navigation System | User orientation |  |
-| UX-006 | ResponsiveDesign | UX | mobileTabletCompatibility() | Responsive design across device sizes | Functional interface on mobile and tablet devices | responsive.ux.spec.tsx | CSS Framework | Accessibility |  |
-| UX-007 | KeyboardNavigation | UX | keyboardAccessibility() | Full keyboard navigation support | All functionality accessible via keyboard | keyboard.ux.spec.tsx | Accessibility | Compliance |  |
-| UX-008 | ContextualHelp | UX | tooltipsAndHelpText() | Contextual help for complex features | Helpful tooltips and guidance for complex operations | help.ux.spec.tsx | UI Components | User productivity |  |
-| UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  |
-| UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| UX-001 | RuleConfigForm | UX | formValidationFeedback() | Real-time validation feedback during form input | Immediate validation messages for user guidance | rule-config.ux.spec.tsx | Form Validation | User productivity |  
+| UX-002 | TypologyCanvas | UX | dragDropInteractionFeedback() | Visual feedback during drag and drop operations | Clear visual indicators during drag operations | typology.ux.spec.tsx | UI Interactions | User experience |  
+| UX-003 | LoadingStates | UX | loadingIndicators() | Appropriate loading states for async operations | Loading indicators for all async operations | loading.ux.spec.tsx | UI Components | User experience |  
+| UX-004 | ErrorStates | UX | userFriendlyErrorMessages() | Clear error messages for user errors | Non-technical error messages with guidance | error.ux.spec.tsx | Error Handling | User experience |  
+| UX-005 | Navigation | UX | breadcrumbNavigation() | Consistent breadcrumb navigation across pages | Clear navigation path for complex workflows | navigation.ux.spec.tsx | Navigation System | User orientation |  
+| UX-006 | ResponsiveDesign | UX | mobileTabletCompatibility() | Responsive design across device sizes | Functional interface on mobile and tablet devices | responsive.ux.spec.tsx | CSS Framework | Accessibility |  
+| UX-007 | KeyboardNavigation | UX | keyboardAccessibility() | Full keyboard navigation support | All functionality accessible via keyboard | keyboard.ux.spec.tsx | Accessibility | Compliance |  
+| UX-008 | ContextualHelp | UX | tooltipsAndHelpText() | Contextual help for complex features | Helpful tooltips and guidance for complex operations | help.ux.spec.tsx | UI Components | User productivity |  
+| UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  
+| UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  
+
 ## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| INT-001 | RuleToDeployment | Integration | completeRuleLifecycle() | Complete rule lifecycle from creation to deployment | Rule successfully deployed to production | rule.integration.spec.ts | Multiple Services | Business workflow |  |
-| INT-002 | TypologyToNetworkMap | Integration | typologyNetworkMapIntegration() | Typology integration with network maps | Typologies correctly integrated into network maps | typology-network.integration.spec.ts | Multiple Services | Business workflow |  |
-| INT-003 | UserRoleWorkflow | Integration | endToEndUserRoleWorkflow() | Complete user workflow with role transitions | Users can complete tasks according to role permissions | user-role.integration.spec.ts | Auth System | Business process |  |
-| INT-004 | DataImportExport | Integration | completeImportExportCycle() | Import and export configuration data | Successfully import exported configurations | import-export.integration.spec.ts | File System | Data portability |  |
-| INT-005 | ApprovalToDeployment | Integration | approvalDeploymentPipeline() | Approval workflow to deployment pipeline | Approved items successfully deployed | approval-deployment.integration.spec.ts | Workflow System | Business process |  |
-| INT-006 | BackupRestore | Integration | completeBackupRestoreCycle() | Backup and restore system functionality | Successfully restore system from backup | backup-restore.integration.spec.ts | Backup System | Business continuity |  |
-| INT-007 | MultiUserConcurrency | Integration | concurrentUserInteractions() | Multiple users working on same configurations | Handle concurrent modifications gracefully | multi-user.integration.spec.ts | Concurrency Control | System reliability |  |
-| INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  |
-| INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| INT-001 | RuleToDeployment | Integration | completeRuleLifecycle() | Complete rule lifecycle from creation to deployment | Rule successfully deployed to production | rule.integration.spec.ts | Multiple Services | Business workflow |  
+| INT-002 | TypologyToNetworkMap | Integration | typologyNetworkMapIntegration() | Typology integration with network maps | Typologies correctly integrated into network maps | typology-network.integration.spec.ts | Multiple Services | Business workflow |  
+| INT-003 | UserRoleWorkflow | Integration | endToEndUserRoleWorkflow() | Complete user workflow with role transitions | Users can complete tasks according to role permissions | user-role.integration.spec.ts | Auth System | Business process |  
+| INT-004 | DataImportExport | Integration | completeImportExportCycle() | Import and export configuration data | Successfully import exported configurations | import-export.integration.spec.ts | File System | Data portability |  
+| INT-005 | ApprovalToDeployment | Integration | approvalDeploymentPipeline() | Approval workflow to deployment pipeline | Approved items successfully deployed | approval-deployment.integration.spec.ts | Workflow System | Business process |  
+| INT-006 | BackupRestore | Integration | completeBackupRestoreCycle() | Backup and restore system functionality | Successfully restore system from backup | backup-restore.integration.spec.ts | Backup System | Business continuity |  
+| INT-007 | MultiUserConcurrency | Integration | concurrentUserInteractions() | Multiple users working on same configurations | Handle concurrent modifications gracefully | multi-user.integration.spec.ts | Concurrency Control | System reliability |  
+| INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  
+| INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  
+
 ## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| E2E-RULE-001 | Rule API | E2E | Complete rule management endpoints | All rule CRUD operations with enhanced edge cases | All endpoints working with comprehensive validation | rule.e2e-spec.ts | ArangoDB | Well tested - enhance with edge cases |  |
-| E2E-RULECONFIG-001 | Rule Config API | E2E | Complete rule config management endpoints | All rule config CRUD operations | All endpoints working with financial compliance | rule-config.e2e-spec.ts | ArangoDB | Well tested - enhance with compliance |  |
-| E2E-TYPOLOGY-001 | Typology API | E2E | Complete typology management endpoints | All typology CRUD operations with scoring validation | All endpoints working with accurate scoring | typology.e2e-spec.ts | ArangoDB | Well tested - enhance with scoring accuracy |  |
-| E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  |
-| E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| E2E-RULE-001 | Rule API | E2E | Complete rule management endpoints | All rule CRUD operations with enhanced edge cases | All endpoints working with comprehensive validation | rule.e2e-spec.ts | ArangoDB | Well tested - enhance with edge cases |  
+| E2E-RULECONFIG-001 | Rule Config API | E2E | Complete rule config management endpoints | All rule config CRUD operations | All endpoints working with financial compliance | rule-config.e2e-spec.ts | ArangoDB | Well tested - enhance with compliance |  
+| E2E-TYPOLOGY-001 | Typology API | E2E | Complete typology management endpoints | All typology CRUD operations with scoring validation | All endpoints working with accurate scoring | typology.e2e-spec.ts | ArangoDB | Well tested - enhance with scoring accuracy |  
+| E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  
+| E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  
+
 ## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FE-LOGIN-001 | LoginPage | Component | Login page with multi-step authentication | Email and password form progression with security features | Successful login flow with enhanced security | LoginPage.test.tsx | Auth Context | Well tested - enhance security features |  |
-| FE-EMAIL-001 | EmailInputForm | Component | Email input with validation | Email validation and submission with security checks | Email validation working with security validation | EmailInputForm.test.tsx | None | Well tested - enhance security validation |  |
-| FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  |
-| FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | ## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT |
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FE-LOGIN-001 | LoginPage | Component | Login page with multi-step authentication | Email and password form progression with security features | Successful login flow with enhanced security | LoginPage.test.tsx | Auth Context | Well tested - enhance security features |  
+| FE-EMAIL-001 | EmailInputForm | Component | Email input with validation | Email validation and submission with security checks | Email validation working with security validation | EmailInputForm.test.tsx | None | Well tested - enhance security validation |  
+| FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  
+| FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | 
+
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 
 ## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DR-001 | BackupSystem | DR | automatedBackupValidation() | Validate automated backup procedures | Backups created automatically and verified | backup.dr.spec.ts | Backup System | Business continuity |  |
-| DR-002 | RecoveryProcedures | DR | recoveryTimeObjective() | Meet recovery time objectives | System recovery within defined RTO | recovery.dr.spec.ts | Recovery Systems | Business continuity |  |
-| DR-003 | DataReplication | DR | realTimeDataReplication() | Validate real-time data replication | Data replicated to secondary systems in real-time | replication.dr.spec.ts | Replication System | Business continuity |  |
-| DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  |
-| DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| DR-001 | BackupSystem | DR | automatedBackupValidation() | Validate automated backup procedures | Backups created automatically and verified | backup.dr.spec.ts | Backup System | Business continuity |  
+| DR-002 | RecoveryProcedures | DR | recoveryTimeObjective() | Meet recovery time objectives | System recovery within defined RTO | recovery.dr.spec.ts | Recovery Systems | Business continuity |  
+| DR-003 | DataReplication | DR | realTimeDataReplication() | Validate real-time data replication | Data replicated to secondary systems in real-time | replication.dr.spec.ts | Replication System | Business continuity |  
+| DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  
+| DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  
+
 ## MONITORING & OBSERVABILITY TESTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| MON-001 | HealthChecks | Monitoring | systemHealthMonitoring() | Comprehensive system health monitoring | All system components properly monitored | health.monitoring.spec.ts | Monitoring System | Operational visibility |  |
-| MON-002 | PerformanceMetrics | Monitoring | performanceMetricCollection() | Collect comprehensive performance metrics | All key metrics collected and accessible | metrics.monitoring.spec.ts | Metrics System | Operational efficiency |  |
-| MON-003 | AlertingSystem | Monitoring | intelligentAlerting() | Intelligent alerting for system issues | Alerts generated for critical issues without noise | alerting.monitoring.spec.ts | Alert System | Operational response |  |
-| MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  |
-| MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| MON-001 | HealthChecks | Monitoring | systemHealthMonitoring() | Comprehensive system health monitoring | All system components properly monitored | health.monitoring.spec.ts | Monitoring System | Operational visibility |  
+| MON-002 | PerformanceMetrics | Monitoring | performanceMetricCollection() | Collect comprehensive performance metrics | All key metrics collected and accessible | metrics.monitoring.spec.ts | Metrics System | Operational efficiency |  
+| MON-003 | AlertingSystem | Monitoring | intelligentAlerting() | Intelligent alerting for system issues | Alerts generated for critical issues without noise | alerting.monitoring.spec.ts | Alert System | Operational response |  
+| MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  
+| MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  
 
 ## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| DATA-005 | TypologyService | Validation | scoreCalculationAccuracy() | Validate typology scoring calculations | Accurate scores within acceptable tolerance | typology.validation.spec.ts | Math Libraries | Risk assessment accuracy |  |
-| DATA-006 | TypologyService | Validation | thresholdBoundaryTesting() | Test alert/interdiction threshold boundaries | Correct alerts at exact threshold values | typology.validation.spec.ts | Business Logic | Alert accuracy |  |
-| DATA-007 | DatabaseService | Integrity | transactionRollback() | Database transaction failure handling | Complete rollback on transaction failure | database.integrity.spec.ts | Database Transactions | Data consistency |  |
-| DATA-008 | DatabaseService | Integrity | dataConsistencyChecks() | Validate referential integrity | Maintain consistent relationships between entities | database.integrity.spec.ts | Database Constraints | Data reliability |  |
-| DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  |
-| DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| DATA-005 | TypologyService | Validation | scoreCalculationAccuracy() | Validate typology scoring calculations | Accurate scores within acceptable tolerance | typology.validation.spec.ts | Math Libraries | Risk assessment accuracy |  
+| DATA-006 | TypologyService | Validation | thresholdBoundaryTesting() | Test alert/interdiction threshold boundaries | Correct alerts at exact threshold values | typology.validation.spec.ts | Business Logic | Alert accuracy |  
+| DATA-007 | DatabaseService | Integrity | transactionRollback() | Database transaction failure handling | Complete rollback on transaction failure | database.integrity.spec.ts | Database Transactions | Data consistency |  
+| DATA-008 | DatabaseService | Integrity | dataConsistencyChecks() | Validate referential integrity | Maintain consistent relationships between entities | database.integrity.spec.ts | Database Constraints | Data reliability |  
+| DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
+| DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  
 
 ## Auth Service
 
@@ -994,153 +1019,163 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FE-RULE-001 | RuleListPage | Component | Rule management dashboard functionality | List, filter, sort, and paginate rules | Proper rule display with user actions | RuleListPage.test.tsx | Rule API | Core business functionality |  |
-| FE-RULE-002 | RuleCreateModal | Component | Rule creation form validation | Create new rules with proper validation | Form validation and successful submission | RuleCreateModal.test.tsx | Form Validation | Data integrity |  |
-| FE-RULE-003 | RuleEditModal | Component | Rule editing functionality | Edit existing rules with state validation | Proper editing based on user permissions | RuleEditModal.test.tsx | State Management | Data consistency |  |
-| FE-CONFIG-001 | RuleConfigPage | Component | Rule configuration interface | Complex rule configuration with multiple sections | Complete configuration workflow | RuleConfigPage.test.tsx | Multiple APIs | Business critical |  |
-| FE-CONFIG-002 | ParametersSection | Component | Rule parameters configuration | Dynamic parameter management | Parameter addition, editing, deletion | ParametersSection.test.tsx | Form Validation | Configuration accuracy |  |
-| FE-CONFIG-003 | BandsSection | Component | Rule bands configuration | Financial band configuration | Proper band validation and calculation | BandsSection.test.tsx | Financial Validation | Financial accuracy |  |
-| FE-CONFIG-004 | CasesSection | Component | Rule cases configuration | Case condition management | Case logic validation | CasesSection.test.tsx | Business Logic | Logic accuracy |  |
-| FE-CONFIG-005 | ExitConditionsSection | Component | Exit conditions configuration | Exit condition management | Proper exit condition validation | ExitConditionsSection.test.tsx | Business Logic | Logic integrity |  |
-| FE-TYPOLOGY-001 | TypologyBuilder | Component | Drag-and-drop typology creation | React Flow based typology builder | Proper node and edge management | TypologyBuilder.test.tsx | React Flow | Core functionality |  |
-| FE-TYPOLOGY-002 | TypologyCanvas | Component | Canvas interaction handling | Node placement and connection | Proper canvas state management | TypologyCanvas.test.tsx | React Flow | User experience |  |
-| FE-TYPOLOGY-003 | RuleNodeComponent | Component | Rule node rendering and interaction | Individual rule node functionality | Proper node rendering and events | RuleNodeComponent.test.tsx | React Flow | Visual accuracy |  |
-| FE-NETWORK-001 | NetworkMapPage | Component | Network map management | Network map creation and editing | Complete network map functionality | NetworkMapPage.test.tsx | Multiple APIs | System integration |  |
-| FE-NETWORK-002 | NetworkMapBuilder | Component | Network map builder interface | Visual network map construction | Proper network map building | NetworkMapBuilder.test.tsx | React Flow | Configuration accuracy |  |
-| FE-REVIEW-001 | ReviewPage | Component | Review workflow interface | Review and approval functionality | Proper review workflow execution | ReviewPage.test.tsx | State Management | Business process |  |
-| FE-REVIEW-002 | ApprovalButtons | Component | Approval action buttons | Approve, reject, withdraw actions | Proper action execution with validation | ApprovalButtons.test.tsx | State Management | Process integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FE-RULE-001 | RuleListPage | Component | Rule management dashboard functionality | List, filter, sort, and paginate rules | Proper rule display with user actions | RuleListPage.test.tsx | Rule API | Core business functionality |  
+| FE-RULE-002 | RuleCreateModal | Component | Rule creation form validation | Create new rules with proper validation | Form validation and successful submission | RuleCreateModal.test.tsx | Form Validation | Data integrity |  
+| FE-RULE-003 | RuleEditModal | Component | Rule editing functionality | Edit existing rules with state validation | Proper editing based on user permissions | RuleEditModal.test.tsx | State Management | Data consistency |  
+| FE-CONFIG-001 | RuleConfigPage | Component | Rule configuration interface | Complex rule configuration with multiple sections | Complete configuration workflow | RuleConfigPage.test.tsx | Multiple APIs | Business critical |  
+| FE-CONFIG-002 | ParametersSection | Component | Rule parameters configuration | Dynamic parameter management | Parameter addition, editing, deletion | ParametersSection.test.tsx | Form Validation | Configuration accuracy |  
+| FE-CONFIG-003 | BandsSection | Component | Rule bands configuration | Financial band configuration | Proper band validation and calculation | BandsSection.test.tsx | Financial Validation | Financial accuracy |  
+| FE-CONFIG-004 | CasesSection | Component | Rule cases configuration | Case condition management | Case logic validation | CasesSection.test.tsx | Business Logic | Logic accuracy |  
+| FE-CONFIG-005 | ExitConditionsSection | Component | Exit conditions configuration | Exit condition management | Proper exit condition validation | ExitConditionsSection.test.tsx | Business Logic | Logic integrity |  
+| FE-TYPOLOGY-001 | TypologyBuilder | Component | Drag-and-drop typology creation | React Flow based typology builder | Proper node and edge management | TypologyBuilder.test.tsx | React Flow | Core functionality |  
+| FE-TYPOLOGY-002 | TypologyCanvas | Component | Canvas interaction handling | Node placement and connection | Proper canvas state management | TypologyCanvas.test.tsx | React Flow | User experience |  
+| FE-TYPOLOGY-003 | RuleNodeComponent | Component | Rule node rendering and interaction | Individual rule node functionality | Proper node rendering and events | RuleNodeComponent.test.tsx | React Flow | Visual accuracy |  
+| FE-NETWORK-001 | NetworkMapPage | Component | Network map management | Network map creation and editing | Complete network map functionality | NetworkMapPage.test.tsx | Multiple APIs | System integration |  
+| FE-NETWORK-002 | NetworkMapBuilder | Component | Network map builder interface | Visual network map construction | Proper network map building | NetworkMapBuilder.test.tsx | React Flow | Configuration accuracy |  
+| FE-REVIEW-001 | ReviewPage | Component | Review workflow interface | Review and approval functionality | Proper review workflow execution | ReviewPage.test.tsx | State Management | Business process |  
+| FE-REVIEW-002 | ApprovalButtons | Component | Approval action buttons | Approve, reject, withdraw actions | Proper action execution with validation | ApprovalButtons.test.tsx | State Management | Process integrity |  
+
 ## STATE MANAGEMENT TESTING - XSTATE INTEGRATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  |
-| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  |
-| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  |
-| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  |
-| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  
+| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  
+| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  
+| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  
+| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  
+
 ## API INTEGRATION TESTING - ACTUAL ENDPOINTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| API-RULE-001 | RuleAPI | Integration | GET /api/rule | Fetch all rules with pagination | Proper rule list with metadata | ruleAPI.test.ts | Backend API | Data retrieval |  |
-| API-RULE-002 | RuleAPI | Integration | POST /api/rule | Create new rule | Successful rule creation | ruleAPI.test.ts | Backend API | Data creation |  |
-| API-RULE-003 | RuleAPI | Integration | PUT /api/rule/:id | Update existing rule | Successful rule update | ruleAPI.test.ts | Backend API | Data modification |  |
-| API-RULE-004 | RuleAPI | Integration | DELETE /api/rule/:id | Delete rule | Successful rule deletion | ruleAPI.test.ts | Backend API | Data removal |  |
-| API-CONFIG-001 | RuleConfigAPI | Integration | GET /api/rule-config | Fetch rule configurations | Proper configuration list | ruleConfigAPI.test.ts | Backend API | Configuration retrieval |  |
-| API-CONFIG-002 | RuleConfigAPI | Integration | POST /api/rule-config | Create rule configuration | Successful configuration creation | ruleConfigAPI.test.ts | Backend API | Configuration creation |  |
-| API-TYPOLOGY-001 | TypologyAPI | Integration | GET /api/typology | Fetch typologies | Proper typology list | typologyAPI.test.ts | Backend API | Typology retrieval |  |
-| API-TYPOLOGY-002 | TypologyAPI | Integration | POST /api/typology | Create typology | Successful typology creation | typologyAPI.test.ts | Backend API | Typology creation |  |
-| API-NETWORK-001 | NetworkMapAPI | Integration | GET /api/network-map | Fetch network maps | Proper network map list | networkMapAPI.test.ts | Backend API | Network map retrieval |  |
-| API-NETWORK-002 | NetworkMapAPI | Integration | POST /api/network-map | Create network map | Successful network map creation | networkMapAPI.test.ts | Backend API | Network map creation |  |
-| API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  |
-| API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| API-RULE-001 | RuleAPI | Integration | GET /api/rule | Fetch all rules with pagination | Proper rule list with metadata | ruleAPI.test.ts | Backend API | Data retrieval |  
+| API-RULE-002 | RuleAPI | Integration | POST /api/rule | Create new rule | Successful rule creation | ruleAPI.test.ts | Backend API | Data creation |  
+| API-RULE-003 | RuleAPI | Integration | PUT /api/rule/:id | Update existing rule | Successful rule update | ruleAPI.test.ts | Backend API | Data modification |  
+| API-RULE-004 | RuleAPI | Integration | DELETE /api/rule/:id | Delete rule | Successful rule deletion | ruleAPI.test.ts | Backend API | Data removal |  
+| API-CONFIG-001 | RuleConfigAPI | Integration | GET /api/rule-config | Fetch rule configurations | Proper configuration list | ruleConfigAPI.test.ts | Backend API | Configuration retrieval | 
+| API-CONFIG-002 | RuleConfigAPI | Integration | POST /api/rule-config | Create rule configuration | Successful configuration creation | ruleConfigAPI.test.ts | Backend API | Configuration creation |  
+| API-TYPOLOGY-001 | TypologyAPI | Integration | GET /api/typology | Fetch typologies | Proper typology list | typologyAPI.test.ts | Backend API | Typology retrieval |  
+| API-TYPOLOGY-002 | TypologyAPI | Integration | POST /api/typology | Create typology | Successful typology creation | typologyAPI.test.ts | Backend API | Typology creation |  
+| API-NETWORK-001 | NetworkMapAPI | Integration | GET /api/network-map | Fetch network maps | Proper network map list | networkMapAPI.test.ts | Backend API | Network map retrieval |  
+| API-NETWORK-002 | NetworkMapAPI | Integration | POST /api/network-map | Create network map | Successful network map creation | networkMapAPI.test.ts | Backend API | Network map creation |  
+| API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  
+| API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  
+
 ## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FIN-001 | BandsValidation | Unit | Financial band validation | Validate monetary amounts in bands | Proper validation of financial ranges | financialValidation.test.ts | Decimal.js | Financial accuracy |  |
-| FIN-002 | CurrencyValidation | Unit | Currency code validation | Validate ISO currency codes | Accept valid currencies, reject invalid | currencyValidation.test.ts | Currency Standards | International compliance |  |
-| FIN-003 | DecimalPrecision | Unit | Decimal precision handling | Test decimal precision in calculations | Maintain precision to required places | decimalPrecision.test.ts | Math Libraries | Calculation accuracy |  |
-| FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  |
-| FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FIN-001 | BandsValidation | Unit | Financial band validation | Validate monetary amounts in bands | Proper validation of financial ranges | financialValidation.test.ts | Decimal.js | Financial accuracy |  
+| FIN-002 | CurrencyValidation | Unit | Currency code validation | Validate ISO currency codes | Accept valid currencies, reject invalid | currencyValidation.test.ts | Currency Standards | International compliance |  
+| FIN-003 | DecimalPrecision | Unit | Decimal precision handling | Test decimal precision in calculations | Maintain precision to required places | decimalPrecision.test.ts | Math Libraries | Calculation accuracy |  
+| FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  
+| FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  
+
 ## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| A11Y-001 | LoginPage | Accessibility | Screen reader compatibility | Test screen reader navigation | Proper ARIA labels and navigation | loginPage.a11y.test.tsx | Screen Reader | Legal compliance |  |
-| A11Y-002 | RuleConfigPage | Accessibility | Keyboard navigation | Test full keyboard navigation | All functionality accessible via keyboard | ruleConfigPage.a11y.test.tsx | Keyboard Navigation | Legal compliance |  |
-| A11Y-003 | TypologyBuilder | Accessibility | Accessible drag-and-drop | Test accessible drag-and-drop operations | Alternative interactions for accessibility | typologyBuilder.a11y.test.tsx | Accessibility Tools | Legal compliance |  |
-| A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  |
-| A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| A11Y-001 | LoginPage | Accessibility | Screen reader compatibility | Test screen reader navigation | Proper ARIA labels and navigation | loginPage.a11y.test.tsx | Screen Reader | Legal compliance |  
+| A11Y-002 | RuleConfigPage | Accessibility | Keyboard navigation | Test full keyboard navigation | All functionality accessible via keyboard | ruleConfigPage.a11y.test.tsx | Keyboard Navigation | Legal compliance |  
+| A11Y-003 | TypologyBuilder | Accessibility | Accessible drag-and-drop | Test accessible drag-and-drop operations | Alternative interactions for accessibility | typologyBuilder.a11y.test.tsx | Accessibility Tools | Legal compliance |  
+| A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  
+| A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  
+
 ## INTERNATIONALIZATION TESTING - I18N SUPPORT
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| I18N-001 | LanguageSupport | Unit | Language switching | Test language switching functionality | Proper language switching | languageSupport.test.ts | i18next | International support |  |
-| I18N-002 | TextTranslation | Unit | Text translation coverage | Test all text elements are translated | Complete translation coverage | textTranslation.test.ts | i18next | International support |  |
-| I18N-003 | NumberFormatting | Unit | Number formatting localization | Test number formatting for different locales | Proper locale-specific formatting | numberFormatting.test.ts | Intl API | Financial accuracy |  |
-| I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  |
-| I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| I18N-001 | LanguageSupport | Unit | Language switching | Test language switching functionality | Proper language switching | languageSupport.test.ts | i18next | International support |  
+| I18N-002 | TextTranslation | Unit | Text translation coverage | Test all text elements are translated | Complete translation coverage | textTranslation.test.ts | i18next | International support |  
+| I18N-003 | NumberFormatting | Unit | Number formatting localization | Test number formatting for different locales | Proper locale-specific formatting | numberFormatting.test.ts | Intl API | Financial accuracy |  
+| I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  
+| I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  
+
 ## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| FORM-001 | DynamicFormGeneration | Unit | Dynamic form generation | Test dynamic form creation based on schema | Proper form generation | dynamicForms.test.ts | Form Generation | Configuration flexibility |  |
-| FORM-002 | ConditionalFields | Unit | Conditional field display | Test conditional field logic | Proper field visibility based on conditions | conditionalFields.test.ts | Form Logic | User experience |  |
-| FORM-003 | FormValidation | Unit | Complex form validation | Test multi-level form validation | Comprehensive validation coverage | formValidation.test.ts | Validation Logic | Data integrity |  |
-| FORM-004 | FormAutoSave | Unit | Auto-save functionality | Test automatic form saving | Proper auto-save behavior | formAutoSave.test.ts | Local Storage | User experience |  |
-| FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| FORM-001 | DynamicFormGeneration | Unit | Dynamic form generation | Test dynamic form creation based on schema | Proper form generation | dynamicForms.test.ts | Form Generation | Configuration flexibility |  
+| FORM-002 | ConditionalFields | Unit | Conditional field display | Test conditional field logic | Proper field visibility based on conditions | conditionalFields.test.ts | Form Logic | User experience |  
+| FORM-003 | FormValidation | Unit | Complex form validation | Test multi-level form validation | Comprehensive validation coverage | formValidation.test.ts | Validation Logic | Data integrity |  
+| FORM-004 | FormAutoSave | Unit | Auto-save functionality | Test automatic form saving | Proper auto-save behavior | formAutoSave.test.ts | Local Storage | User experience |  
+| FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  
 | REV-ACCESS-001 | Review pages | Screen reader headings | Accessibility | Screen reader enabled | Navigate through page landmarks | Not Run | ACC-REQ-005 | Planned |
+
 ## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| PERM-001 | RuleController | Permission | createRuleWithPermission() | User with SECURITY_CREATE_RULE can create rules | Rule created successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-002 | RuleController | Permission | createRuleWithoutPermission() | User without SECURITY_CREATE_RULE blocked from creating rules | 403 Forbidden error returned | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-003 | RuleController | Permission | approveRuleWithPermission() | User with SECURITY_APPROVE_RULE can approve rules | Rule approved successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-004 | RuleController | Permission | selfApprovalPrevention() | User cannot approve their own created rules | 403 Forbidden with self-approval message | rule.permissions.spec.ts | Role Management | Segregation of duties |  |
-| PERM-005 | RuleController | Permission | deployRuleWithPermission() | User with SECURITY_DEPLOY_RULE can deploy approved rules | Rule deployed successfully | rule.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-006 | RuleController | Permission | deployRuleWithoutApproval() | User cannot deploy non-approved rules | 403 Forbidden with approval required message | rule.permissions.spec.ts | State Management | Workflow integrity |  |
-| PERM-007 | RuleConfigController | Permission | createRuleConfigWithPermission() | User with SECURITY_CREATE_RULE_CONFIG can create rule configs | Rule config created successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-008 | RuleConfigController | Permission | updateRuleConfigWithPermission() | User with SECURITY_UPDATE_RULE_CONFIG can update rule configs | Rule config updated successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-009 | RuleConfigController | Permission | deleteRuleConfigWithoutPermission() | User without SECURITY_DELETE_RULE_CONFIG blocked from deleting | 403 Forbidden error returned | rule-config.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-010 | TypologyController | Permission | createTypologyWithPermission() | User with SECURITY_CREATE_TYPOLOGY can create typologies | Typology created successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-011 | TypologyController | Permission | approveTypologyWithPermission() | User with SECURITY_APPROVE_TYPOLOGY can approve typologies | Typology approved successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-012 | TypologyController | Permission | retireTypologyWithPermission() | User with SECURITY_RETIRE_TYPOLOGY can retire deployed typologies | Typology retired successfully | typology.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-013 | NetworkMapController | Permission | createNetworkMapWithPermission() | User with SECURITY_CREATE_NETWORK_MAP can create network maps | Network map created successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-014 | NetworkMapController | Permission | exportNetworkMapWithPermission() | User with SECURITY_EXPORT_NETWORK_MAP can export network maps | Network map exported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-015 | NetworkMapController | Permission | importNetworkMapWithPermission() | User with SECURITY_IMPORT_NETWORK_MAP can import network maps | Network map imported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-016 | ExitConditionController | Permission | viewExitConditionsWithPermission() | User with EXIT_COND_GET_ALL can view all exit conditions | Exit conditions returned successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-017 | ExitConditionController | Permission | createUserExitConditionWithPermission() | User with EXIT_COND_CREATE_USER can create user-specific exit conditions | User exit condition created successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  |
-| PERM-018 | AuthGuard | Permission | roleHierarchyValidation() | Admin role includes all permissions of lower roles | Admin can perform all editor and viewer actions | role-hierarchy.permissions.spec.ts | Role Management | Role hierarchy integrity |  |
-| PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  |
-| PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| PERM-001 | RuleController | Permission | createRuleWithPermission() | User with SECURITY_CREATE_RULE can create rules | Rule created successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-002 | RuleController | Permission | createRuleWithoutPermission() | User without SECURITY_CREATE_RULE blocked from creating rules | 403 Forbidden error returned | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-003 | RuleController | Permission | approveRuleWithPermission() | User with SECURITY_APPROVE_RULE can approve rules | Rule approved successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-004 | RuleController | Permission | selfApprovalPrevention() | User cannot approve their own created rules | 403 Forbidden with self-approval message | rule.permissions.spec.ts | Role Management | Segregation of duties |  
+| PERM-005 | RuleController | Permission | deployRuleWithPermission() | User with SECURITY_DEPLOY_RULE can deploy approved rules | Rule deployed successfully | rule.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-006 | RuleController | Permission | deployRuleWithoutApproval() | User cannot deploy non-approved rules | 403 Forbidden with approval required message | rule.permissions.spec.ts | State Management | Workflow integrity |  
+| PERM-007 | RuleConfigController | Permission | createRuleConfigWithPermission() | User with SECURITY_CREATE_RULE_CONFIG can create rule configs | Rule config created successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-008 | RuleConfigController | Permission | updateRuleConfigWithPermission() | User with SECURITY_UPDATE_RULE_CONFIG can update rule configs | Rule config updated successfully | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-009 | RuleConfigController | Permission | deleteRuleConfigWithoutPermission() | User without SECURITY_DELETE_RULE_CONFIG blocked from deleting | 403 Forbidden error returned | rule-config.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-010 | TypologyController | Permission | createTypologyWithPermission() | User with SECURITY_CREATE_TYPOLOGY can create typologies | Typology created successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-011 | TypologyController | Permission | approveTypologyWithPermission() | User with SECURITY_APPROVE_TYPOLOGY can approve typologies | Typology approved successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-012 | TypologyController | Permission | retireTypologyWithPermission() | User with SECURITY_RETIRE_TYPOLOGY can retire deployed typologies | Typology retired successfully | typology.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-013 | NetworkMapController | Permission | createNetworkMapWithPermission() | User with SECURITY_CREATE_NETWORK_MAP can create network maps | Network map created successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-014 | NetworkMapController | Permission | exportNetworkMapWithPermission() | User with SECURITY_EXPORT_NETWORK_MAP can export network maps | Network map exported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-015 | NetworkMapController | Permission | importNetworkMapWithPermission() | User with SECURITY_IMPORT_NETWORK_MAP can import network maps | Network map imported successfully | network-map.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-016 | ExitConditionController | Permission | viewExitConditionsWithPermission() | User with EXIT_COND_GET_ALL can view all exit conditions | Exit conditions returned successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-017 | ExitConditionController | Permission | createUserExitConditionWithPermission() | User with EXIT_COND_CREATE_USER can create user-specific exit conditions | User exit condition created successfully | exit-condition.permissions.spec.ts | Role Management | Authorization control |  
+| PERM-018 | AuthGuard | Permission | roleHierarchyValidation() | Admin role includes all permissions of lower roles | Admin can perform all editor and viewer actions | role-hierarchy.permissions.spec.ts | Role Management | Role hierarchy integrity |  
+| PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
+| PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
+
 ## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| STATE-006 | RuleStateService | StateTransition | skipStateTransitionBlocked() | User cannot skip intermediate states in workflow | 400 Bad Request with workflow violation message | rule.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-007 | RuleConfigStateService | StateTransition | ruleConfigApprovalWorkflow() | Rule config follows same approval workflow as rules | Rule config transitions through correct states | rule-config.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-008 | TypologyStateService | StateTransition | typologyApprovalWorkflow() | Typology follows same approval workflow as rules | Typology transitions through correct states | typology.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  |
-| STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| STATE-006 | RuleStateService | StateTransition | skipStateTransitionBlocked() | User cannot skip intermediate states in workflow | 400 Bad Request with workflow violation message | rule.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-007 | RuleConfigStateService | StateTransition | ruleConfigApprovalWorkflow() | Rule config follows same approval workflow as rules | Rule config transitions through correct states | rule-config.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-008 | TypologyStateService | StateTransition | typologyApprovalWorkflow() | Typology follows same approval workflow as rules | Typology transitions through correct states | typology.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  
+| STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  
+
 ## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| INJ-001 | RuleService | Security | aqlInjectionInRuleId() | Test AQL injection in rule ID parameter | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-002 | RuleService | Security | aqlInjectionInRuleName() | Test AQL injection in rule name search | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-003 | RuleService | Security | aqlInjectionInRuleDescription() | Test AQL injection in rule description field | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-004 | RuleConfigService | Security | aqlInjectionInConfigData() | Test AQL injection in rule config JSON data | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-005 | RuleConfigService | Security | aqlInjectionInConfigSearch() | Test AQL injection in rule config search parameters | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-006 | TypologyService | Security | aqlInjectionInTypologyId() | Test AQL injection in typology ID parameter | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-007 | TypologyService | Security | aqlInjectionInScoringFormula() | Test AQL injection in typology scoring formula | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-008 | NetworkMapService | Security | aqlInjectionInNetworkMapQuery() | Test AQL injection in network map queries | Input sanitized, no malicious query executed | network-map.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-009 | DatabaseService | Security | maliciousCollectionDropAttempt() | Test attempt to drop collections via injection | Malicious query blocked, collections intact | database.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-010 | DatabaseService | Security | maliciousDataModificationAttempt() | Test attempt to modify data via injection | Malicious query blocked, data unchanged | database.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-011 | AuthService | Security | aqlInjectionInUsernameLookup() | Test AQL injection in username lookup queries | Input sanitized, no malicious query executed | auth.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-012 | UserMappingService | Security | aqlInjectionInUserMapping() | Test AQL injection in user email mapping queries | Input sanitized, no malicious query executed | user-mapping.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-013 | BandService | Security | aqlInjectionInBandParameters() | Test AQL injection in rule band parameters | Input sanitized, no malicious query executed | band.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  |
-| INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| INJ-001 | RuleService | Security | aqlInjectionInRuleId() | Test AQL injection in rule ID parameter | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-002 | RuleService | Security | aqlInjectionInRuleName() | Test AQL injection in rule name search | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-003 | RuleService | Security | aqlInjectionInRuleDescription() | Test AQL injection in rule description field | Input sanitized, no malicious query executed | rule.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-004 | RuleConfigService | Security | aqlInjectionInConfigData() | Test AQL injection in rule config JSON data | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-005 | RuleConfigService | Security | aqlInjectionInConfigSearch() | Test AQL injection in rule config search parameters | Input sanitized, no malicious query executed | rule-config.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-006 | TypologyService | Security | aqlInjectionInTypologyId() | Test AQL injection in typology ID parameter | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-007 | TypologyService | Security | aqlInjectionInScoringFormula() | Test AQL injection in typology scoring formula | Input sanitized, no malicious query executed | typology.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-008 | NetworkMapService | Security | aqlInjectionInNetworkMapQuery() | Test AQL injection in network map queries | Input sanitized, no malicious query executed | network-map.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-009 | DatabaseService | Security | maliciousCollectionDropAttempt() | Test attempt to drop collections via injection | Malicious query blocked, collections intact | database.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-010 | DatabaseService | Security | maliciousDataModificationAttempt() | Test attempt to modify data via injection | Malicious query blocked, data unchanged | database.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-011 | AuthService | Security | aqlInjectionInUsernameLookup() | Test AQL injection in username lookup queries | Input sanitized, no malicious query executed | auth.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-012 | UserMappingService | Security | aqlInjectionInUserMapping() | Test AQL injection in user email mapping queries | Input sanitized, no malicious query executed | user-mapping.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-013 | BandService | Security | aqlInjectionInBandParameters() | Test AQL injection in rule band parameters | Input sanitized, no malicious query executed | band.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  
+| INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  
+
 ## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| VAL-001 | RuleController | Validation | scriptInjectionInRuleDescription() | Test script injection in rule description field | HTML/script tags sanitized or escaped | rule.validation.spec.ts | Input Sanitization | XSS prevention |  |
-| VAL-002 | RuleController | Validation | oversizedRuleNameValidation() | Test extremely long rule names | Request rejected with validation error | rule.validation.spec.ts | Input Validation | System stability |  |
-| VAL-003 | RuleController | Validation | specialCharacterHandling() | Test special characters in rule fields | Special characters properly escaped or validated | rule.validation.spec.ts | Input Validation | Data integrity |  |
-| VAL-004 | RuleConfigController | Validation | invalidJSONConfigValidation() | Test invalid JSON in rule config data | Request rejected with JSON validation error | rule-config.validation.spec.ts | Input Validation | Data integrity |  |
-| VAL-005 | RuleConfigController | Validation | maliciousJSONPayloadValidation() | Test malicious JSON payloads in config | Malicious payload rejected or sanitized | rule-config.validation.spec.ts | Input Validation | Security |  |
-| VAL-006 | RuleConfigController | Validation | financialAmountValidation() | Test financial amount validation in config | Invalid amounts rejected with validation error | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  |
-| VAL-007 | RuleConfigController | Validation | decimalPrecisionValidation() | Test decimal precision in financial amounts | Precision maintained or validated according to requirements | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  |
-| VAL-008 | RuleConfigController | Validation | currencyCodeValidation() | Test ISO currency code validation | Invalid currency codes rejected | rule-config.validation.spec.ts | Input Validation | Financial compliance |  |
-| VAL-009 | TypologyController | Validation | scoringFormulaValidation() | Test typology scoring formula validation | Invalid formulas rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  |
-| VAL-010 | TypologyController | Validation | thresholdValueValidation() | Test threshold value validation | Invalid thresholds rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  |
-| VAL-011 | NetworkMapController | Validation | nodeRelationshipValidation() | Test network map node relationship validation | Invalid relationships rejected with validation error | network-map.validation.spec.ts | Input Validation | Logic integrity |  |
-| VAL-012 | NetworkMapController | Validation | cyclicDependencyValidation() | Test prevention of cyclic dependencies in network maps | Cyclic dependencies detected and rejected | network-map.validation.spec.ts | Input Validation | Logic integrity |  |
-| VAL-013 | FileUploadController | Validation | maliciousFileUploadValidation() | Test malicious file upload prevention | Non-JSON files rejected, malicious content blocked | file-upload.validation.spec.ts | Input Validation | System security |  |
-| VAL-014 | FileUploadController | Validation | oversizedFileUploadValidation() | Test oversized file upload prevention | Large files rejected with size validation error | file-upload.validation.spec.ts | Input Validation | System stability |  |
-| VAL-015 | GlobalValidation | Validation | unicodeCharacterHandling() | Test unicode character handling across all inputs | Unicode characters properly handled or validated | global.validation.spec.ts | Input Validation | Internationalization |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| VAL-001 | RuleController | Validation | scriptInjectionInRuleDescription() | Test script injection in rule description field | HTML/script tags sanitized or escaped | rule.validation.spec.ts | Input Sanitization | XSS prevention |  
+| VAL-002 | RuleController | Validation | oversizedRuleNameValidation() | Test extremely long rule names | Request rejected with validation error | rule.validation.spec.ts | Input Validation | System stability |  
+| VAL-003 | RuleController | Validation | specialCharacterHandling() | Test special characters in rule fields | Special characters properly escaped or validated | rule.validation.spec.ts | Input Validation | Data integrity |  
+| VAL-004 | RuleConfigController | Validation | invalidJSONConfigValidation() | Test invalid JSON in rule config data | Request rejected with JSON validation error | rule-config.validation.spec.ts | Input Validation | Data integrity |  
+| VAL-005 | RuleConfigController | Validation | maliciousJSONPayloadValidation() | Test malicious JSON payloads in config | Malicious payload rejected or sanitized | rule-config.validation.spec.ts | Input Validation | Security |  
+| VAL-006 | RuleConfigController | Validation | financialAmountValidation() | Test financial amount validation in config | Invalid amounts rejected with validation error | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  
+| VAL-007 | RuleConfigController | Validation | decimalPrecisionValidation() | Test decimal precision in financial amounts | Precision maintained or validated according to requirements | rule-config.validation.spec.ts | Input Validation | Financial accuracy |  
+| VAL-008 | RuleConfigController | Validation | currencyCodeValidation() | Test ISO currency code validation | Invalid currency codes rejected | rule-config.validation.spec.ts | Input Validation | Financial compliance |  
+| VAL-009 | TypologyController | Validation | scoringFormulaValidation() | Test typology scoring formula validation | Invalid formulas rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  
+| VAL-010 | TypologyController | Validation | thresholdValueValidation() | Test threshold value validation | Invalid thresholds rejected with validation error | typology.validation.spec.ts | Input Validation | Risk assessment accuracy |  
+| VAL-011 | NetworkMapController | Validation | nodeRelationshipValidation() | Test network map node relationship validation | Invalid relationships rejected with validation error | network-map.validation.spec.ts | Input Validation | Logic integrity |  
+| VAL-012 | NetworkMapController | Validation | cyclicDependencyValidation() | Test prevention of cyclic dependencies in network maps | Cyclic dependencies detected and rejected | network-map.validation.spec.ts | Input Validation | Logic integrity |  
+| VAL-013 | FileUploadController | Validation | maliciousFileUploadValidation() | Test malicious file upload prevention | Non-JSON files rejected, malicious content blocked | file-upload.validation.spec.ts | Input Validation | System security |  
+| VAL-014 | FileUploadController | Validation | oversizedFileUploadValidation() | Test oversized file upload prevention | Large files rejected with size validation error | file-upload.validation.spec.ts | Input Validation | System stability |  
+| VAL-015 | GlobalValidation | Validation | unicodeCharacterHandling() | Test unicode character handling across all inputs | Unicode characters properly handled or validated | global.validation.spec.ts | Input Validation | Internationalization |  
