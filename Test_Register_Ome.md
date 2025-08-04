@@ -42,12 +42,12 @@
 
 | Test Case ID | Method / Target           | Description                                               | Expected Output                       | Test File                  | Status | Comment |
 | ------------ | ------------------------- | --------------------------------------------------------- | ------------------------------------- | -------------------------- | ----------- | -----------------|
-| TY-001       | createTypology()          | Create a new typology with metadata and rules             | Typology created and stored           | typology.service.spec.ts   |
-| TY-002       | addRuleToTypology()       | Add rule to typology structure                            | Rule listed under typology            | typology.service.spec.ts   |
-| TY-003       | preventDuplicateRules()   | Prevent adding same rule twice                            | Validation error                      | typology.service.spec.ts   |
+| TY-001       | createTypology()          | Create a new typology with metadata and rules             | Typology created and stored           | typology.service.spec.ts   | Done | None |
+| TY-002       | addRuleToTypology()       | Add rule to typology structure                            | Rule listed under typology            | typology.service.spec.ts   | Done | None |
+| TY-003       | preventDuplicateRules()   | Prevent adding same rule twice                            | Validation error                      | typology.service.spec.ts   | Done | None |
 | TY-004       | fetchRuleMetadata()       | Display metadata of a rule in typology                    | Metadata rendered                     | Frontend UI                |
 | TY-005       | deleteBandAndReindex()    | Delete band and reindex                                   | Band 2 becomes Band 1                 | Frontend UI                |
-| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts |
+| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts | Done | This was implemented in the frontend |
 | TY-007       | evaluateExpression()      | Validate and parse expression JSON                        | Valid score calculated                | typology-config.service.ts |
 | TY-008       | storeThresholds()         | Store alert + interdiction thresholds                     | Thresholds saved                      | typology-config.service.ts |
 | TY-009       | evaluateThresholdBreach() | Trigger alert + interdiction if score breaches thresholds | Alert and interdiction flags returned | typology-config.service.ts |
