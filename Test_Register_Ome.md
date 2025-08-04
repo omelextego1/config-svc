@@ -40,8 +40,8 @@
 
 ## **3. Typology Management – Backend Unit Tests**
 
-| Test Case ID | Method / Target           | Description                                               | Expected Output                       | Test File                  |
-| ------------ | ------------------------- | --------------------------------------------------------- | ------------------------------------- | -------------------------- |
+| Test Case ID | Method / Target           | Description                                               | Expected Output                       | Test File                  | Status | Comment |
+| ------------ | ------------------------- | --------------------------------------------------------- | ------------------------------------- | -------------------------- | ----------- | -----------------|
 | TY-001       | createTypology()          | Create a new typology with metadata and rules             | Typology created and stored           | typology.service.spec.ts   |
 | TY-002       | addRuleToTypology()       | Add rule to typology structure                            | Rule listed under typology            | typology.service.spec.ts   |
 | TY-003       | preventDuplicateRules()   | Prevent adding same rule twice                            | Validation error                      | typology.service.spec.ts   |
@@ -438,17 +438,17 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  |
-| SEC-001 | AuthService | Security | tokenValidation() | JWT token tampering detection | Reject tampered tokens with security error | auth.security.spec.ts | JWT Library | Prevent privilege escalation |  |
-| SEC-002 | AuthService | Security | sessionTimeout() | Automatic session timeout enforcement | Force logout after inactivity | auth.security.spec.ts | Timer Management | Compliance requirement |  |
-| SEC-003 | RolesGuard | Security | privilegeEscalation() | Attempt to access higher privilege endpoints | Block access and log security event | roles.security.spec.ts | Privilege System | Prevent unauthorized access |  |
-| SEC-004 | AuthController | Security | bruteForceProtection() | Multiple failed login attempts | Rate limit and temporary account lock | auth.security.spec.ts | Rate Limiting | Prevent brute force attacks |  |
-| SEC-005 | DatabaseService | Security | sqlInjectionPrevention() | Malicious query injection attempts | Sanitize and reject malicious inputs | database.security.spec.ts | Input Sanitization | Data protection |  |
-| SEC-006 | InputValidation | Security | crossSiteScripting() | XSS payload in form inputs | Sanitize and escape malicious scripts | input.security.spec.ts | Input Sanitization | UI security |  |
-| SEC-007 | FileUpload | Security | maliciousFileUpload() | Upload of executable or malicious files | Reject non-JSON files and validate content | upload.security.spec.ts | File Validation | System security |  |
-| SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  |
-| SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  |
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| SEC-001 | AuthService | Security | tokenValidation() | JWT token tampering detection | Reject tampered tokens with security error | auth.security.spec.ts | JWT Library | Prevent privilege escalation |  
+| SEC-002 | AuthService | Security | sessionTimeout() | Automatic session timeout enforcement | Force logout after inactivity | auth.security.spec.ts | Timer Management | Compliance requirement |  
+| SEC-003 | RolesGuard | Security | privilegeEscalation() | Attempt to access higher privilege endpoints | Block access and log security event | roles.security.spec.ts | Privilege System | Prevent unauthorized access |  
+| SEC-004 | AuthController | Security | bruteForceProtection() | Multiple failed login attempts | Rate limit and temporary account lock | auth.security.spec.ts | Rate Limiting | Prevent brute force attacks |  
+| SEC-005 | DatabaseService | Security | sqlInjectionPrevention() | Malicious query injection attempts | Sanitize and reject malicious inputs | database.security.spec.ts | Input Sanitization | Data protection |  
+| SEC-006 | InputValidation | Security | crossSiteScripting() | XSS payload in form inputs | Sanitize and escape malicious scripts | input.security.spec.ts | Input Sanitization | UI security |  
+| SEC-007 | FileUpload | Security | maliciousFileUpload() | Upload of executable or malicious files | Reject non-JSON files and validate content | upload.security.spec.ts | File Validation | System security |  
+| SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  
+| SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 ## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  |
