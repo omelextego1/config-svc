@@ -55,7 +55,7 @@
 ---
 
 ## **4. Typology Rule Config Logic – Backend Unit Tests**
-### ***NB: there is a folder in the backend called typology config that came from the mojaloop implementation. If this test is referring to the rule config inside typology, then this test should not exit and should rather be merged to typology test and rule and rule configs should go hand in hand***
+### ***NB: there is a folder in the backend called typology config that came from the mojaloop implementation. If this test is referring to the rule config inside typology, then this test should not exist and should rather be merged to typology test and rule and rule configs should go hand in hand***
 
 | Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File | Status | Comment                       |
 | ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- | ----------- | -------------- |
@@ -130,10 +130,10 @@
 
 #### **Backend Unit Tests**
 
-| Test Case ID | Component        | Method / Function Tested | Description                                    | Expected Output              | Test File                 |
-| ------------ | ---------------- | ------------------------ | ---------------------------------------------- | ---------------------------- | ------------------------- |
-| ACL-001      | RolesGuard       | canActivate()            | Ensures unauthorized roles are blocked         | Access denied (false)        | roles.guard.ts            |
-| ACL-002      | RolesGuard       | canActivate()            | Allows access for users with appropriate roles | Access granted (true)        | roles.guard.ts            |
+| Test Case ID | Component        | Method / Function Tested | Description                                    | Expected Output              | Test File                 | Status | Comment |
+| ------------ | ---------------- | ------------------------ | ---------------------------------------------- | ---------------------------- | ------------------------- | ---------- | ---------- |
+| ACL-001      | RolesGuard       | canActivate()            | Ensures unauthorized roles are blocked         | Access denied (false)        | roles.guard.ts            | Already Done | Duplicate of AUTH-004 |
+| ACL-002      | RolesGuard       | canActivate()            | Allows access for users with appropriate roles | Access granted (true)        | roles.guard.ts            | Already Done | Duplicate of AUTH-004 |
 | ACL-003      | PrivilegeService | checkPrivilege()         | Checks if the user has a specific privilege    | Boolean: true/false          | privilege.service.spec.ts |
 | ACL-004      | PrivilegeService | getUserPrivileges()      | Retrieves all privileges assigned to a user    | Array of privilege constants | privilege.service.spec.ts |
 
