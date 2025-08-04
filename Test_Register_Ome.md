@@ -47,32 +47,32 @@
 | TY-003       | preventDuplicateRules()   | Prevent adding same rule twice                            | Validation error                      | typology.service.spec.ts   | Done | None |
 | TY-004       | fetchRuleMetadata()       | Display metadata of a rule in typology                    | Metadata rendered                     | Frontend UI                |
 | TY-005       | deleteBandAndReindex()    | Delete band and reindex                                   | Band 2 becomes Band 1                 | Frontend UI                |
-| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts | Done | This was implemented in the frontend |
-| TY-007       | evaluateExpression()      | Validate and parse expression JSON                        | Valid score calculated                | typology-config.service.ts |
-| TY-008       | storeThresholds()         | Store alert + interdiction thresholds                     | Thresholds saved                      | typology-config.service.ts |
-| TY-009       | evaluateThresholdBreach() | Trigger alert + interdiction if score breaches thresholds | Alert and interdiction flags returned | typology-config.service.ts |
+| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts | No Action | This belongs to the Frontend |
+| TY-007       | evaluateExpression()      | Validate and parse expression JSON                        | Valid score calculated                | typology-config.service.ts | No Action | This belongs to the Frontend |
+| TY-008       | storeThresholds()         | Store alert + interdiction thresholds                     | Thresholds saved                      | typology-config.service.ts | No Action | This belongs to the Frontend |
+| TY-009       | evaluateThresholdBreach() | Trigger alert + interdiction if score breaches thresholds | Alert and interdiction flags returned | typology-config.service.ts | No Action | This belongs to the Frontend |
 
 ---
 
 ## **4. Typology Rule Config Logic – Backend Unit Tests**
 
-| Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File                       |
-| ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- |
-| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts |
-| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts |
-| TRC-003      | recordLayoutMetadata()      | Save layout coordinates (x, y, z)              | Metadata saved correctly    | typology-config.service.spec.ts |
-| TRC-004      | validateRuleConfigReference | Ensure UUIDs exist and are linked              | Validation passed/failed    | typology-config.service.spec.ts |
-| TRC-005      | fetchLinkedRules()          | Get all rule-configs in typology               | Full mapping returned       | typology-config.service.ts      |
-| TRC-006      | updateVisualLayout()        | Update (x, y) node positions                   | New layout persisted        | typology-config.service.ts      |
-| TRC-007      | deleteLinkById()            | Remove rule-config from typology               | Mapping removed             | typology-config.service.ts      |
-| TRC-008      | preventDeleteOnMissingId()  | Reject deletion with invalid/missing UUID      | Error: "Invalid identifier" | typology-config.service.spec.ts |
+| Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File | Status | Comment                       |
+| ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- | ----------- | -------------- |
+| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-003      | recordLayoutMetadata()      | Save layout coordinates (x, y, z)              | Metadata saved correctly    | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-004      | validateRuleConfigReference | Ensure UUIDs exist and are linked              | Validation passed/failed    | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-005      | fetchLinkedRules()          | Get all rule-configs in typology               | Full mapping returned       | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-006      | updateVisualLayout()        | Update (x, y) node positions                   | New layout persisted        | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-007      | deleteLinkById()            | Remove rule-config from typology               | Mapping removed             | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-008      | preventDeleteOnMissingId()  | Reject deletion with invalid/missing UUID      | Error: "Invalid identifier" | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
 
 ---
 
 ## **5. Workflow Transitions & Logic – Backend Unit Tests**
 
-| Test Case ID | Method / Transition  | Description                    | Expected Output             |
-| ------------ | -------------------- | ------------------------------ | --------------------------- |
+| Test Case ID | Method / Transition  | Description                    | Expected Output             | Status | Comment |
+| ------------ | -------------------- | ------------------------------ | --------------------------- | ------- | -------- |
 | WF-001       | Draft → Review       | Submit from draft state        | Status: 10-Pending Review   |
 | WF-002       | Review → Approved    | Reviewer approves item         | Status: 20-Approved         |
 | WF-003       | Review → Rejected    | Reviewer rejects item          | Status: 11-Rejected         |
