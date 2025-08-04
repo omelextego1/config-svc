@@ -116,7 +116,7 @@
 #### **End-to-End Tests**
 
 | Test Case ID | Endpoint         | Method | Scenario                   | Expected Result             | Test File         | Status | Comment |
-| ------------ | ---------------- | ------ | -------------------------- | --------------------------- | ----------------- |
+| ------------ | ---------------- | ------ | -------------------------- | --------------------------- | ----------------- | ------ | ------- |
 | E2E-AUTH-001 | /auth/login      | POST   | Valid login                | 201 response with JWT       | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-005 |
 | E2E-AUTH-002 | /auth/login      | POST   | Invalid credentials        | 401 Unauthorized            | auth.e2e-spec.ts  |
 | E2E-AUTH-003 | /auth/profile    | GET    | Valid token, fetch profile | 200 response with user info | auth.e2e-spec.ts  |
