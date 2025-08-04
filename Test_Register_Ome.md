@@ -55,6 +55,7 @@
 ---
 
 ## **4. Typology Rule Config Logic – Backend Unit Tests**
+### ***NB: there is a folder in the backend called typology config that came from the mojaloop implementation. If this test is referring to the rule config inside typology, then this test should not exit and should rather be merged to typology test and rule and rule configs should go hand in hand***
 
 | Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File | Status | Comment                       |
 | ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- | ----------- | -------------- |
@@ -70,31 +71,32 @@
 ---
 
 ## **5. Workflow Transitions & Logic – Backend Unit Tests**
+### ***NB: these where impelemented inside the various artifact service.spec.ts file***
 
 | Test Case ID | Method / Transition  | Description                    | Expected Output             | Status | Comment |
 | ------------ | -------------------- | ------------------------------ | --------------------------- | ------- | -------- |
-| WF-001       | Draft → Review       | Submit from draft state        | Status: 10-Pending Review   |
-| WF-002       | Review → Approved    | Reviewer approves item         | Status: 20-Approved         |
-| WF-003       | Review → Rejected    | Reviewer rejects item          | Status: 11-Rejected         |
-| WF-004       | Withdrawn → Archived | Archive withdrawn items        | Status: 91-Archived         |
-| WF-005       | Rejected → Abandoned | Mark rejected as abandoned     | Status: 90-Abandoned        |
-| WF-006       | Rejected → Draft     | Resubmit resets to draft       | Status: 01-Draft            |
-| WF-007       | Approved → Deployed  | Deploy approved items          | Status: 30-Deployed         |
-| WF-008       | Deployed → Retired   | Retire deployed item           | Status: 32-Retired          |
-| WF-009       | Missing thresholds   | Typology without thresholds    | No action taken             |
-| WF-010       | Invalid transition   | Unsupported transition attempt | Error: "Invalid transition" |
+| WF-001       | Draft → Review       | Submit from draft state        | Status: 10-Pending Review   | Done    | None     |
+| WF-002       | Review → Approved    | Reviewer approves item         | Status: 20-Approved         | Done    | None     |
+| WF-003       | Review → Rejected    | Reviewer rejects item          | Status: 11-Rejected         | Done    | None     |
+| WF-004       | Withdrawn → Archived | Archive withdrawn items        | Status: 91-Archived         | Done    | None     |
+| WF-005       | Rejected → Abandoned | Mark rejected as abandoned     | Status: 90-Abandoned        | Done    | None     |
+| WF-006       | Rejected → Draft     | Resubmit resets to draft       | Status: 01-Draft            | Done    | None     |
+| WF-007       | Approved → Deployed  | Deploy approved items          | Status: 30-Deployed         | Done    | None     |
+| WF-008       | Deployed → Retired   | Retire deployed item           | Status: 32-Retired          | Done    | None     |
+| WF-009       | Missing thresholds   | Typology without thresholds    | No action taken             | Done    | Not Required |
+| WF-010       | Invalid transition   | Unsupported transition attempt | Error: "Invalid transition" | Done    | Not Required because it is tied to enums     |
 
 ---
 
 ## **6. Utility / Helper Logic – Backend Unit Tests**
 
-| Test Case ID | Method / Feature         | Description                   | Expected Output                |
-| ------------ | ------------------------ | ----------------------------- | ------------------------------ |
-| UT-001       | generateExportFilename() | Generate export file name     | Filename like rule123.cfg.json |
-| UT-002       | isDuplicateRule()        | Check for duplicates          | Returns true/false             |
-| UT-003       | sanitizeInput()          | Sanitize inputs               | Cleaned strings returned       |
-| UT-004       | applyExpressionFormula() | Evaluate scoring formula      | Correct score computed         |
-| UT-005       | mergeBandIndexes()       | Re-index bands after deletion | Bands reindexed (1, 2, ...)    |
+| Test Case ID | Method / Feature         | Description                   | Expected Output                | Status | Comment |
+| ------------ | ------------------------ | ----------------------------- | ------------------------------ | ------ | ------- |
+| UT-001       | generateExportFilename() | Generate export file name     | Filename like rule123.cfg.json | Not Required | File Export is handled by the frontend |
+| UT-002       | isDuplicateRule()        | Check for duplicates          | Returns true/false             | Not Required | This test was already done in the various artifact tests |
+| UT-003       | sanitizeInput()          | Sanitize inputs               | Cleaned strings returned       | Not Done | The backend does not have a utility NextJs handles this automatically |
+| UT-004       | applyExpressionFormula() | Evaluate scoring formula      | Correct score computed         | Not Done | This is handled by the frontend |
+| UT-005       | mergeBandIndexes()       | Re-index bands after deletion | Bands reindexed (1, 2, ...)    | Not Done | Do not know what this is or where it should have been implemented |
 
 ---
 
@@ -102,20 +104,20 @@
 
 #### **Backend Unit Tests**
 
-| Test Case ID | Component      | Method / Function Tested | Description                                             | Expected Output             | Test File               |
-| ------------ | -------------- | ------------------------ | ------------------------------------------------------- | --------------------------- | ----------------------- |
-| AUTH-001     | AuthService    | validateUser()           | Validates user credentials and returns user object      | Valid user object or null   | auth.service.spec.ts    |
-| AUTH-002     | AuthService    | login()                  | Returns JWT token and user info after authentication    | JWT token and user ID       | auth.service.spec.ts    |
-| AUTH-003     | JwtAuthGuard   | canActivate()            | Ensures only requests with valid JWTs can access routes | Access granted or denied    | jwt-auth.guard.ts       |
-| AUTH-004     | RolesGuard     | canActivate()            | Verifies that user has required roles                   | Access allowed or forbidden | roles.guard.ts          |
-| AUTH-005     | AuthController | POST /auth/login         | Accepts credentials, returns JWT on success             | HTTP 201 with token in body | auth.controller.spec.ts |
-| AUTH-006     | AuthController | GET /auth/profile        | Returns authenticated user profile                      | User object with metadata   | auth.controller.spec.ts |
+| Test Case ID | Component      | Method / Function Tested | Description                                             | Expected Output             | Test File               | Status  | Comment  |
+| ------------ | -------------- | ------------------------ | ------------------------------------------------------- | --------------------------- | ----------------------- | -------- | ----------- |
+| AUTH-001     | AuthService    | validateUser()           | Validates user credentials and returns user object      | Valid user object or null   | auth.service.spec.ts    | Done | None |
+| AUTH-002     | AuthService    | login()                  | Returns JWT token and user info after authentication    | JWT token and user ID       | auth.service.spec.ts    | Done | None |
+| AUTH-003     | JwtAuthGuard   | canActivate()            | Ensures only requests with valid JWTs can access routes | Access granted or denied    | jwt-auth.guard.ts       | Done | Was implemented in jwt-guard.spec.ts file |
+| AUTH-004     | RolesGuard     | canActivate()            | Verifies that user has required roles                   | Access allowed or forbidden | roles.guard.ts          | Done | Was implemented in roles.guard.spec.ts file |
+| AUTH-005     | AuthController | POST /auth/login         | Accepts credentials, returns JWT on success             | HTTP 201 with token in body | auth.controller.spec.ts | Done | None |
+| AUTH-006     | AuthController | GET /auth/profile        | Returns authenticated user profile                      | User object with metadata   | auth.controller.spec.ts | Done | None |
 
 #### **End-to-End Tests**
 
-| Test Case ID | Endpoint         | Method | Scenario                   | Expected Result             | Test File         |
+| Test Case ID | Endpoint         | Method | Scenario                   | Expected Result             | Test File         | Status | Comment |
 | ------------ | ---------------- | ------ | -------------------------- | --------------------------- | ----------------- |
-| E2E-AUTH-001 | /auth/login      | POST   | Valid login                | 201 response with JWT       | auth.e2e-spec.ts  |
+| E2E-AUTH-001 | /auth/login      | POST   | Valid login                | 201 response with JWT       | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-005 |
 | E2E-AUTH-002 | /auth/login      | POST   | Invalid credentials        | 401 Unauthorized            | auth.e2e-spec.ts  |
 | E2E-AUTH-003 | /auth/profile    | GET    | Valid token, fetch profile | 200 response with user info | auth.e2e-spec.ts  |
 | E2E-AUTH-004 | /auth/profile    | GET    | No or expired token        | 401 Unauthorized            | auth.e2e-spec.ts  |
