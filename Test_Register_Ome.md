@@ -55,13 +55,12 @@
 ---
 
 ## **4. Typology Rule Config Logic – Backend Unit Tests**
-### ***NB: there is a folder in the backend called typology config that came from the mojaloop implementation. If this test is referring to the rule config inside typology, then this test should not exist and should rather be merged to typology test and rule and rule configs should go hand in hand***
 
 | Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File | Status | Comment                       |
 | ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- | ----------- | -------------- |
-| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-003      | recordLayoutMetadata()      | Save layout coordinates (x, y, z)              | Metadata saved correctly    | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test | Done | None |
+| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test | Done | None |
+| TRC-003      | recordLayoutMetadata()      | Save layout coordinates (x, y, z)              | Metadata saved correctly    | typology-config.service.spec.ts | Not required | It's of no use because json are not react flow canvas |
 | TRC-004      | validateRuleConfigReference | Ensure UUIDs exist and are linked              | Validation passed/failed    | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
 | TRC-005      | fetchLinkedRules()          | Get all rule-configs in typology               | Full mapping returned       | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
 | TRC-006      | updateVisualLayout()        | Update (x, y) node positions                   | New layout persisted        | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
@@ -118,11 +117,11 @@
 | Test Case ID | Endpoint         | Method | Scenario                   | Expected Result             | Test File         | Status | Comment |
 | ------------ | ---------------- | ------ | -------------------------- | --------------------------- | ----------------- | ------ | ------- |
 | E2E-AUTH-001 | /auth/login      | POST   | Valid login                | 201 response with JWT       | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-005 |
-| E2E-AUTH-002 | /auth/login      | POST   | Invalid credentials        | 401 Unauthorized            | auth.e2e-spec.ts  |
-| E2E-AUTH-003 | /auth/profile    | GET    | Valid token, fetch profile | 200 response with user info | auth.e2e-spec.ts  |
-| E2E-AUTH-004 | /auth/profile    | GET    | No or expired token        | 401 Unauthorized            | auth.e2e-spec.ts  |
-| E2E-AUTH-005 | Protected Routes | ANY    | Access with expired JWT    | 401 Unauthorized            | auth.e2e-spec.ts  |
-| E2E-AUTH-006 | Session Timeout  | –      | Simulate idle session      | Auto logout / redirect      | Frontend (manual) |
+| E2E-AUTH-002 | /auth/login      | POST   | Invalid credentials        | 401 Unauthorized            | auth.e2e-spec.ts  | Done | None |
+| E2E-AUTH-003 | /auth/profile    | GET    | Valid token, fetch profile | 200 response with user info | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-006 |
+| E2E-AUTH-004 | /auth/profile    | GET    | No or expired token        | 401 Unauthorized            | auth.e2e-spec.ts  | Already Done | Duplicate of EZE-AUTH-003 |
+| E2E-AUTH-005 | Protected Routes | ANY    | Access with expired JWT    | 401 Unauthorized            | auth.e2e-spec.ts  | Not Required | This should be in frontend because they are no routes in backend |
+| E2E-AUTH-006 | Session Timeout  | –      | Simulate idle session      | Auto logout / redirect      | Frontend (manual) | Done | it was implemented in LayoutSwitcher.spec.tsx |
 
 ---
 
