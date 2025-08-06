@@ -47,10 +47,10 @@
 | TY-003       | preventDuplicateRules()   | Prevent adding same rule twice                            | Validation error                      | typology.service.spec.ts   | Done | None |
 | TY-004       | fetchRuleMetadata()       | Display metadata of a rule in typology                    | Metadata rendered                     | Frontend UI                |
 | TY-005       | deleteBandAndReindex()    | Delete band and reindex                                   | Band 2 becomes Band 1                 | Frontend UI                |
-| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts | No Action | This belongs to the Frontend |
-| TY-007       | evaluateExpression()      | Validate and parse expression JSON                        | Valid score calculated                | typology-config.service.ts | No Action | This belongs to the Frontend |
-| TY-008       | storeThresholds()         | Store alert + interdiction thresholds                     | Thresholds saved                      | typology-config.service.ts | No Action | This belongs to the Frontend |
-| TY-009       | evaluateThresholdBreach() | Trigger alert + interdiction if score breaches thresholds | Alert and interdiction flags returned | typology-config.service.ts | No Action | This belongs to the Frontend |
+| TY-006       | addAllRuleOutcomes()      | Handle and store rule outcomes (.err, .x, .01, etc.)      | All outcomes saved                    | typology-config.service.ts | No Action | This is not required because it is part of the update typology for score section |
+| TY-007       | evaluateExpression()      | Validate and parse expression JSON                        | Valid score calculated                | typology-config.service.ts | No Action | This is not required because it is part of the update typology for score section |
+| TY-008       | storeThresholds()         | Store alert + interdiction thresholds                     | Thresholds saved                      | typology-config.service.ts | No Action | This is not required because it is auto generated during export for the frontend |
+| TY-009       | evaluateThresholdBreach() | Trigger alert + interdiction if score breaches thresholds | Alert and interdiction flags returned | typology-config.service.ts | No Action | This is not required because it is auto generated during export for the frontend |
 
 ---
 
@@ -58,14 +58,14 @@
 
 | Test Case ID | Method / Target             | Description                                    | Expected Output             | Test File | Status | Comment                       |
 | ------------ | --------------------------- | ---------------------------------------------- | --------------------------- | ------------------------------- | ----------- | -------------- |
-| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test | Done | None |
-| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test | Done | None |
+| TRC-001      | create()                    | Link typology to rule and config               | Entry inserted into DB      | typology-config.service.spec.ts | Done | None |
+| TRC-002      | preventDuplicateLinks()     | Prevent duplicate typology-rule-config entries | Error: "Already exists"     | typology-config.service.spec.ts | Done | None |
 | TRC-003      | recordLayoutMetadata()      | Save layout coordinates (x, y, z)              | Metadata saved correctly    | typology-config.service.spec.ts | Not required | It's of no use because json are not react flow canvas |
-| TRC-004      | validateRuleConfigReference | Ensure UUIDs exist and are linked              | Validation passed/failed    | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-005      | fetchLinkedRules()          | Get all rule-configs in typology               | Full mapping returned       | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-006      | updateVisualLayout()        | Update (x, y) node positions                   | New layout persisted        | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-007      | deleteLinkById()            | Remove rule-config from typology               | Mapping removed             | typology-config.service.ts      | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
-| TRC-008      | preventDeleteOnMissingId()  | Reject deletion with invalid/missing UUID      | Error: "Invalid identifier" | typology-config.service.spec.ts | No Action | This artifact was not implemented although the files exist, its should be part of the typology unit test |
+| TRC-004      | validateRuleConfigReference | Ensure UUIDs exist and are linked              | Validation passed/failed    | typology-config.service.spec.ts | Done | None |
+| TRC-005      | fetchLinkedRules()          | Get all rule-configs in typology               | Full mapping returned       | typology-config.service.ts      | Done | None |
+| TRC-006      | updateVisualLayout()        | Update (x, y) node positions                   | New layout persisted        | typology-config.service.ts      | Not Required | It's of no use because json are not react flow canvas |
+| TRC-007      | deleteLinkById()            | Remove rule-config from typology               | Mapping removed             | typology-config.service.ts      | Not Required | It's of no use because json are not react flow canvas and a delete method exists only in the frontend, what happens here is update of the typology |
+| TRC-008      | preventDeleteOnMissingId()  | Reject deletion with invalid/missing UUID      | Error: "Invalid identifier" | typology-config.service.spec.ts | Not Required | It's of no use because json are not react flow canvas and a delete method exists only in the frontend, what happens here is update of the typology |
 
 ---
 
@@ -95,7 +95,7 @@
 | UT-002       | isDuplicateRule()        | Check for duplicates          | Returns true/false             | Not Required | This test was already done in the various artifact tests |
 | UT-003       | sanitizeInput()          | Sanitize inputs               | Cleaned strings returned       | Not Done | The backend does not have a utility NextJs handles this automatically |
 | UT-004       | applyExpressionFormula() | Evaluate scoring formula      | Correct score computed         | Not Done | This is handled by the frontend |
-| UT-005       | mergeBandIndexes()       | Re-index bands after deletion | Bands reindexed (1, 2, ...)    | Not Done | Do not know what this is or where it should have been implemented |
+| UT-005       | mergeBandIndexes()       | Re-index bands after deletion | Bands reindexed (1, 2, ...)    | Not Done | This is handled by the frontend in the create Rule config section |
 
 ---
 
@@ -133,18 +133,18 @@
 | ------------ | ---------------- | ------------------------ | ---------------------------------------------- | ---------------------------- | ------------------------- | ---------- | ---------- |
 | ACL-001      | RolesGuard       | canActivate()            | Ensures unauthorized roles are blocked         | Access denied (false)        | roles.guard.ts            | Already Done | Duplicate of AUTH-004 |
 | ACL-002      | RolesGuard       | canActivate()            | Allows access for users with appropriate roles | Access granted (true)        | roles.guard.ts            | Already Done | Duplicate of AUTH-004 |
-| ACL-003      | PrivilegeService | checkPrivilege()         | Checks if the user has a specific privilege    | Boolean: true/false          | privilege.service.spec.ts |
-| ACL-004      | PrivilegeService | getUserPrivileges()      | Retrieves all privileges assigned to a user    | Array of privilege constants | privilege.service.spec.ts |
+| ACL-003      | PrivilegeService | checkPrivilege()         | Checks if the user has a specific privilege    | Boolean: true/false          | privilege.service.spec.ts | Done | None |
+| ACL-004      | PrivilegeService | getUserPrivileges()      | Retrieves all privileges assigned to a user    | Array of privilege constants | privilege.service.spec.ts | Done | None |
 
 #### **End-to-End Tests**
 
-| Test Case ID | Endpoint                | Method | Scenario                                       | Expected Result                 | Test File                 |
+| Test Case ID | Endpoint                | Method | Scenario                                       | Expected Result                 | Test File                 | Status | Comment |
 | ------------ | ----------------------- | ------ | ---------------------------------------------- | ------------------------------- | ------------------------- |
-| E2E-ACL-001  | /rule-config/\:id       | PATCH  | Viewer attempts to modify config               | 403 Forbidden or UI blocks edit | rule-config.e2e-spec.ts   |
-| E2E-ACL-002  | /rule/\:id/approve      | POST   | Approver user submits rule                     | 200 OK                          | rule.e2e-spec.ts          |
-| E2E-ACL-003  | /rule/\:id/approve      | POST   | Creator attempts to self-approve               | 403 Forbidden                   | rule.e2e-spec.ts          |
-| E2E-ACL-004  | /typology               | GET    | User lacks required privileges                 | 403 Forbidden or empty list     | typology.e2e-spec.ts      |
-| E2E-ACL-005  | Privilege UI Components | –      | User without access sees restricted components | Buttons hidden or disabled      | Frontend (manual/UI test) |
+| E2E-ACL-001  | /rule-config/\:id       | PATCH  | Viewer attempts to modify config               | 403 Forbidden or UI blocks edit | rule-config.e2e-spec.ts   | Done | None |
+| E2E-ACL-002  | /rule/\:id/approve      | POST   | Approver user submits rule                     | 200 OK                          | rule.e2e-spec.ts          | Not Required | This is part of the transition endpoint |
+| E2E-ACL-003  | /rule/\:id/approve      | POST   | Creator attempts to self-approve               | 403 Forbidden                   | rule.e2e-spec.ts          | Not Required | This is part of the transition endpoint |
+| E2E-ACL-004  | /typology               | GET    | User lacks required privileges                 | 403 Forbidden or empty list     | typology.e2e-spec.ts      | Done | None |
+| E2E-ACL-005  | Privilege UI Components | –      | User without access sees restricted components | Buttons hidden or disabled      | Frontend (manual/UI test) | Not Required | This is part of the state machine |
 
 ---
 
