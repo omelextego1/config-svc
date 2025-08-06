@@ -128,7 +128,7 @@
 ### **8. Access Control & Privileges**
 
 #### **Backend Unit Tests**
-
+#### ***NB: this section is supposed to be for the frontend, but RolesGuard does not exist in the frontend. usePrivileges exists in the frontend. Backed has a privilege service***
 | Test Case ID | Component        | Method / Function Tested | Description                                    | Expected Output              | Test File                 | Status | Comment |
 | ------------ | ---------------- | ------------------------ | ---------------------------------------------- | ---------------------------- | ------------------------- | ---------- | ---------- |
 | ACL-001      | RolesGuard       | canActivate()            | Ensures unauthorized roles are blocked         | Access denied (false)        | roles.guard.ts            | Already Done | Duplicate of AUTH-004 |
@@ -154,7 +154,7 @@
 | ------------ | --------------------------- | ---------------------------------------------- | ----------------------------------- | ----------------------------- | ------- | ------------ |
 | NM-001       | createNetworkMap()          | Should create network map with valid structure | Network map created and stored      | network-map.service.spec.ts   | Done | None |
 | NM-002       | addTypologyToNetworkMap()   | Should link typology to network map           | Mapping created successfully        | network-map.service.spec.ts   | Done | None |
-| NM-003       | validateNetworkMapSchema()  | Should validate network map JSON structure    | Schema validation passes/fails      | network-map.service.spec.ts   | Not Required | it will required this 'npm install ajv' arangoDB also validates documents schema by default |
+| NM-003       | validateNetworkMapSchema()  | Should validate network map JSON structure    | Schema validation passes/fails      | network-map.service.spec.ts   | Not Required | it will require this 'npm install ajv' arangoDB already validates documents schema by default |
 | NM-004       | updateNetworkMapLayout()    | Should update visual layout coordinates       | Layout coordinates updated          | network-map.service.spec.ts   | Not Required | This is not for the backend |
 | NM-005       | deleteNetworkMap()          | Should soft delete network map                | Network map marked as deleted       | network-map.service.spec.ts   | Not Required | Delete method is not required for Network Map |
 | NM-006       | transitionNetworkMapState() | Should transition network map through states  | State transitions correctly         | network-map.service.spec.ts   | Done | Duplicate of the transition workflow tests |
@@ -189,9 +189,10 @@
 
 
 ### **9. Edge Cases & Error Handling**
+#### ***NB: This was implemented in the frontend***
 
-| Test Case ID | Component         | Scenario / Condition                  | Description                         | Expected Outcome                     | Test File / Area            |
-| ------------ | ----------------- | ------------------------------------- | ----------------------------------- | ------------------------------------ | --------------------------- |
+| Test Case ID | Component         | Scenario / Condition                  | Description                         | Expected Outcome                     | Test File / Area            | Status | Comment |
+| ------------ | ----------------- | ------------------------------------- | ----------------------------------- | ------------------------------------ | --------------------------- | ------ | ------------ |
 | EDGE-001     | RuleService       | Empty rule name                       | Submit form without rule name       | Validation error: "Name is required" | rule.service.spec.ts        |
 | EDGE-002     | RuleConfigService | No bands or cases                     | Save config missing structure       | Error: "Invalid configuration"       | rule-config.service.spec.ts |
 | EDGE-003     | ImportService     | Invalid JSON import                   | Malformed file upload               | Error: "Invalid structure"           | utils.ts                    |
