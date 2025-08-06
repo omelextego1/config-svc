@@ -139,7 +139,7 @@
 #### **End-to-End Tests**
 
 | Test Case ID | Endpoint                | Method | Scenario                                       | Expected Result                 | Test File                 | Status | Comment |
-| ------------ | ----------------------- | ------ | ---------------------------------------------- | ------------------------------- | ------------------------- |
+| ------------ | ----------------------- | ------ | ---------------------------------------------- | ------------------------------- | ------------------------- | ------- | ----------- |
 | E2E-ACL-001  | /rule-config/\:id       | PATCH  | Viewer attempts to modify config               | 403 Forbidden or UI blocks edit | rule-config.e2e-spec.ts   | Done | None |
 | E2E-ACL-002  | /rule/\:id/approve      | POST   | Approver user submits rule                     | 200 OK                          | rule.e2e-spec.ts          | Not Required | This is part of the transition endpoint |
 | E2E-ACL-003  | /rule/\:id/approve      | POST   | Creator attempts to self-approve               | 403 Forbidden                   | rule.e2e-spec.ts          | Not Required | This is part of the transition endpoint |
