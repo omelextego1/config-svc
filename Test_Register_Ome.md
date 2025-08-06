@@ -148,6 +148,46 @@
 
 ---
 
+## **7. Network Map Management – Backend Unit Tests**
+
+| Test Case ID | Method / Target             | Description                                    | Expected Output                     | Test File                     |
+| ------------ | --------------------------- | ---------------------------------------------- | ----------------------------------- | ----------------------------- |
+| NM-001       | createNetworkMap()          | Should create network map with valid structure | Network map created and stored      | network-map.service.spec.ts   |
+| NM-002       | addTypologyToNetworkMap()   | Should link typology to network map           | Mapping created successfully        | network-map.service.spec.ts   |
+| NM-003       | validateNetworkMapSchema()  | Should validate network map JSON structure    | Schema validation passes/fails      | network-map.service.spec.ts   |
+| NM-004       | updateNetworkMapLayout()    | Should update visual layout coordinates       | Layout coordinates updated          | network-map.service.spec.ts   |
+| NM-005       | deleteNetworkMap()          | Should soft delete network map                | Network map marked as deleted       | network-map.service.spec.ts   |
+| NM-006       | transitionNetworkMapState() | Should transition network map through states  | State transitions correctly         | network-map.service.spec.ts   |
+| NM-007       | exportNetworkMap()          | Should export network map to JSON format     | Valid JSON export generated         | network-map.service.spec.ts   |
+| NM-008       | importNetworkMap()          | Should import network map from JSON          | Network map imported successfully   | network-map.service.spec.ts   |
+
+---
+
+## **8. Exit Conditions Management – Backend Unit Tests**
+
+| Test Case ID | Method / Target              | Description                                  | Expected Output                    | Test File                      |
+| ------------ | ---------------------------- | -------------------------------------------- | ---------------------------------- | ------------------------------ |
+| EC-001       | createExitCondition()        | Should create exit condition with metadata   | Exit condition created and stored  | exit-conditions.service.spec.ts |
+| EC-002       | getUserExitConditions()      | Should retrieve user-specific exit conditions| User exit conditions returned     | exit-conditions.service.spec.ts |
+| EC-003       | validateExitConditionLogic() | Should validate exit condition business logic| Validation passes/fails correctly  | exit-conditions.service.spec.ts |
+| EC-004       | applyExitConditionToRule()   | Should apply exit condition to rule config   | Exit condition linked to rule     | exit-conditions.service.spec.ts |
+| EC-005       | seedDefaultExitConditions()  | Should seed system with default conditions   | Default conditions created         | exit-conditions.service.spec.ts |
+
+---
+
+## **9. User Mapping Service – Backend Unit Tests**
+
+| Test Case ID | Method / Target               | Description                                | Expected Output                  | Test File                       |
+| ------------ | ----------------------------- | ------------------------------------------ | -------------------------------- | ------------------------------- |
+| UM-001       | createUserEmailMapping()      | Should create user email mapping          | Mapping created successfully     | user-mapping.service.spec.ts    |
+| UM-002       | getUserByEmail()              | Should retrieve user by email address     | User object returned             | user-mapping.service.spec.ts    |
+| UM-003       | updateUserEmailMapping()      | Should update existing email mapping      | Mapping updated successfully     | user-mapping.service.spec.ts    |
+| UM-004       | validateEmailFormat()         | Should validate email address format      | Valid/invalid email detected     | user-mapping.service.spec.ts    |
+| UM-005       | handleDuplicateEmailMapping() | Should prevent duplicate email mappings   | Error on duplicate email         | user-mapping.service.spec.ts    |
+
+---
+
+
 ### **9. Edge Cases & Error Handling**
 
 | Test Case ID | Component         | Scenario / Condition                  | Description                         | Expected Outcome                     | Test File / Area            |
