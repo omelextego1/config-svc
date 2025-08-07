@@ -193,8 +193,8 @@
 
 | Test Case ID | Component         | Scenario / Condition                  | Description                         | Expected Outcome                     | Test File / Area            | Status | Comment |
 | ------------ | ----------------- | ------------------------------------- | ----------------------------------- | ------------------------------------ | --------------------------- | ------ | ------------ |
-| EDGE-001     | RuleService       | Empty rule name                       | Submit form without rule name       | Validation error: "Name is required" | rule.service.spec.ts        |
-| EDGE-002     | RuleConfigService | No bands or cases                     | Save config missing structure       | Error: "Invalid configuration"       | rule-config.service.spec.ts |
+| EDGE-001     | RuleService       | Empty rule name                       | Submit form without rule name       | Validation error: "Name is required" | rule.service.spec.ts        | Done | This was implemented in the frontend for create rule CreateRulePage component. The test file name is rule.service.spec.tsx |
+| EDGE-002     | RuleConfigService | No bands or cases                     | Save config missing structure       | Error: "Invalid configuration"       | rule-config.service.spec.ts | Done | This was implemented in the frontend, the component is CreateRuleConfigPage. the test file is rule-config.service.spec.ts |
 | EDGE-003     | ImportService     | Invalid JSON import                   | Malformed file upload               | Error: "Invalid structure"           | utils.ts                    |
 | EDGE-004     | RuleController    | Rename deployed rule                  | Edit a deployed rule or config      | Update blocked, warning shown        | rule.controller.spec.ts     |
 | EDGE-005     | RuleConfig        | Export unapproved config              | Try to export non-approved config   | Export button disabled in UI         | Frontend (manual)           |
