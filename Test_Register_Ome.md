@@ -223,11 +223,11 @@
 | E2E-RULE-002 | /rule              | GET         | rule.e2e-spec.ts        | Lists all rules                       | Done | The name of the file is rule.controller.spec.ts | 
 | E2E-RULE-003 | /rule/\:id         | GET         | rule.e2e-spec.ts        | Retrieves rule details                | Done | The name of the file is rule.controller.spec.ts |
 | E2E-RULE-004 | /rule/\:id         | PATCH       | rule.e2e-spec.ts        | Updates rule metadata                 | Done | The name of the file is rule.controller.spec.ts |
-| E2E-RULE-005 | /rule/\:id/disable | POST        | rule.e2e-spec.ts        | Disables a rule                       | Not Required | This endpoint does not exist in the project and was not used anywhere |
-| E2E-RULE-006 | /rule/\:id         | DELETE      | rule.e2e-spec.ts        | Marks rule as deleted                 |
-| E2E-RULE-007 | /rule/rule-config  | GET         | rule.e2e-spec.ts        | Gets rule/config mapping              |
-| E2E-RC-001   | /rule-config       | POST        | rule-config.e2e-spec.ts | Creates rule config                   |
-| E2E-TY-001   | /typology          | POST        | typology.e2e-spec.ts    | Creates typology with configs         |
+| E2E-RULE-005 | /rule/\:id/disable | POST        | rule.e2e-spec.ts        | Disables a rule                       | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RULE-006 | /rule/\:id         | DELETE      | rule.e2e-spec.ts        | Marks rule as deleted                 | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RULE-007 | /rule/rule-config  | GET         | rule.e2e-spec.ts        | Gets rule/config mapping              | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RC-001   | /rule-config       | POST        | rule-config.e2e-spec.ts | Creates rule config                   | Done | The name of the file is rule-config.controller.spec.ts |
+| E2E-TY-001   | /typology          | POST        | typology.e2e-spec.ts    | Creates typology with configs         | Done | The name of the file is typology.controller.spec.ts |
 | E2E-TY-002   | /typology          | GET         | typology.e2e-spec.ts    | Lists all typologies                  |
 | E2E-TY-003   | /typology/\:id     | GET         | typology.e2e-spec.ts    | Gets typology details                 |
 | E2E-TY-004   | /typology/\:id     | PATCH       | typology.e2e-spec.ts    | Updates typology scoring/layout       |
