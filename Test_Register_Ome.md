@@ -119,7 +119,7 @@
 | E2E-AUTH-001 | /auth/login      | POST   | Valid login                | 201 response with JWT       | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-005 |
 | E2E-AUTH-002 | /auth/login      | POST   | Invalid credentials        | 401 Unauthorized            | auth.e2e-spec.ts  | Done | None |
 | E2E-AUTH-003 | /auth/profile    | GET    | Valid token, fetch profile | 200 response with user info | auth.e2e-spec.ts  | Already Done | Duplicate of AUTH-006 |
-| E2E-AUTH-004 | /auth/profile    | GET    | No or expired token        | 401 Unauthorized            | auth.e2e-spec.ts  | Already Done | Duplicate of EZE-AUTH-003 |
+| E2E-AUTH-004 | /auth/profile    | GET    | No or expired token        | 401 Unauthorized            | auth.e2e-spec.ts  | Already Done | Part of AUTH-002 |
 | E2E-AUTH-005 | Protected Routes | ANY    | Access with expired JWT    | 401 Unauthorized            | auth.e2e-spec.ts  | Not Required | This should be in frontend because they are no routes in backend |
 | E2E-AUTH-006 | Session Timeout  | –      | Simulate idle session      | Auto logout / redirect      | Frontend (manual) | Done | it was implemented in LayoutSwitcher.spec.tsx |
 
@@ -205,25 +205,25 @@
 | EDGE-010     | RuleConfig        | Delete last band                      | Remove final band in config         | Save blocked; validation triggered   | rule-config.service.ts      | Done | this was implemented in the frontend at rule-config.service.spec.ts |
 | EDGE-011     | ImportService     | Missing UUID                          | Uploaded JSON lacks UUIDs           | Import fails                         | utils.ts                    | Not Required | The json files that are imported do not have UUID's they are created during the import |
 | EDGE-012     | Typology          | Invalid scoring formula               | Broken scoring expression           | Formula validation fails             | typology.service.spec.ts    | Done | this was implemented in the frontend at typology.service.spec.tsx |
-| EDGE-013     | AuthService       | Expired JWT token                     | Use expired session token           | Redirect to login / 401 error        | auth.service.ts             | Done | Duplicate of E2E-AUTH-004 |
-| EDGE-014     | RolesGuard        | Unauthorized access to admin endpoint | Non-admin user attempts access      | 403 Forbidden                        | roles.guard.ts              |
-| EDGE-015     | ImportService     | Duplicate rule+config                 | Import file has duplicate mappings  | Only one version accepted            | import.service.ts (planned) |
-| EDGE-016     | Typology Import   | Missing rule/config references        | JSON refers to missing entities     | Import blocked with warning          | typology.service.ts         |
+| EDGE-013     | AuthService       | Expired JWT token                     | Use expired session token           | Redirect to login / 401 error        | auth.service.ts             | Done | Duplicate of AUTH-002 |
+| EDGE-014     | RolesGuard        | Unauthorized access to admin endpoint | Non-admin user attempts access      | 403 Forbidden                        | roles.guard.ts              | Not Required | Privileges check is already tested in AUTH-004 |
+| EDGE-015     | ImportService     | Duplicate rule+config                 | Import file has duplicate mappings  | Only one version accepted            | import.service.ts (planned) | Not Required | imported files do not have this feature |
+| EDGE-016     | Typology Import   | Missing rule/config references        | JSON refers to missing entities     | Import blocked with warning          | typology.service.ts         | Not Required | Rules can not be missing in the json files. it imports existing rule or creates it if it does not exist if no rules are listed, the import proceeds provided the file is a valid json. This test is similar to EDGE-003 |
 
 ---
 
 ### **10. API Endpoint Coverage**
 
-| Test Case ID | Endpoint           | HTTP Method | Test File               | Purpose                               |
-| ------------ | ------------------ | ----------- | ----------------------- | ------------------------------------- |
-| E2E-APP-001  | /                  | GET         | app.e2e-spec.ts         | Verifies backend server health (ping) |
-| E2E-AUTH-001 | /auth/login        | POST        | auth.e2e-spec.ts        | Logs in user, returns JWT             |
-| E2E-AUTH-002 | /auth/profile      | GET         | auth.e2e-spec.ts        | Retrieves user profile                |
-| E2E-RULE-001 | /rule              | POST        | rule.e2e-spec.ts        | Creates a new rule                    |
-| E2E-RULE-002 | /rule              | GET         | rule.e2e-spec.ts        | Lists all rules                       |
-| E2E-RULE-003 | /rule/\:id         | GET         | rule.e2e-spec.ts        | Retrieves rule details                |
-| E2E-RULE-004 | /rule/\:id         | PATCH       | rule.e2e-spec.ts        | Updates rule metadata                 |
-| E2E-RULE-005 | /rule/\:id/disable | POST        | rule.e2e-spec.ts        | Disables a rule                       |
+| Test Case ID | Endpoint           | HTTP Method | Test File               | Purpose                               | Status     | Comment     |
+| ------------ | ------------------ | ----------- | ----------------------- | ------------------------------------- | ---------- | ----------- |
+| E2E-APP-001  | /                  | GET         | app.e2e-spec.ts         | Verifies backend server health (ping) | Done | None |
+| E2E-AUTH-001 | /auth/login        | POST        | auth.e2e-spec.ts        | Logs in user, returns JWT             | Already Done | Duplicate of AUTH-005 |
+| E2E-AUTH-002 | /auth/profile      | GET         | auth.e2e-spec.ts        | Retrieves user profile                | Already Done | Duplicate of AUTH-006 |
+| E2E-RULE-001 | /rule              | POST        | rule.e2e-spec.ts        | Creates a new rule                    | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RULE-002 | /rule              | GET         | rule.e2e-spec.ts        | Lists all rules                       | Done | The name of the file is rule.controller.spec.ts | 
+| E2E-RULE-003 | /rule/\:id         | GET         | rule.e2e-spec.ts        | Retrieves rule details                | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RULE-004 | /rule/\:id         | PATCH       | rule.e2e-spec.ts        | Updates rule metadata                 | Done | The name of the file is rule.controller.spec.ts |
+| E2E-RULE-005 | /rule/\:id/disable | POST        | rule.e2e-spec.ts        | Disables a rule                       | Not Required | This endpoint does not exist in the project and was not used anywhere |
 | E2E-RULE-006 | /rule/\:id         | DELETE      | rule.e2e-spec.ts        | Marks rule as deleted                 |
 | E2E-RULE-007 | /rule/rule-config  | GET         | rule.e2e-spec.ts        | Gets rule/config mapping              |
 | E2E-RC-001   | /rule-config       | POST        | rule-config.e2e-spec.ts | Creates rule config                   |
