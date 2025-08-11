@@ -228,18 +228,18 @@
 | E2E-RULE-007 | /rule/rule-config  | GET         | rule.e2e-spec.ts        | Gets rule/config mapping              | Done | The name of the file is rule.controller.spec.ts |
 | E2E-RC-001   | /rule-config       | POST        | rule-config.e2e-spec.ts | Creates rule config                   | Done | The name of the file is rule-config.controller.spec.ts |
 | E2E-TY-001   | /typology          | POST        | typology.e2e-spec.ts    | Creates typology with configs         | Done | The name of the file is typology.controller.spec.ts |
-| E2E-TY-002   | /typology          | GET         | typology.e2e-spec.ts    | Lists all typologies                  |
-| E2E-TY-003   | /typology/\:id     | GET         | typology.e2e-spec.ts    | Gets typology details                 |
-| E2E-TY-004   | /typology/\:id     | PATCH       | typology.e2e-spec.ts    | Updates typology scoring/layout       |
-| E2E-NM-001   | /network-map       | POST        | network-map.e2e-spec.ts | Creates a new network map             |
-| E2E-NM-002   | /network-map/\:id  | GET         | network-map.e2e-spec.ts | Retrieves network map by ID           |
+| E2E-TY-002   | /typology          | GET         | typology.e2e-spec.ts    | Lists all typologies                  | Done | The name of the file is typology.controller.spec.ts |
+| E2E-TY-003   | /typology/\:id     | GET         | typology.e2e-spec.ts    | Gets typology details                 | Done | The name of the file is typology.controler.spec.ts |
+| E2E-TY-004   | /typology/\:id     | PATCH       | typology.e2e-spec.ts    | Updates typology scoring/layout       | Done | The name of the file is typology.controller.spec.ts |
+| E2E-NM-001   | /network-map       | POST        | network-map.e2e-spec.ts | Creates a new network map             | Done | The name of the file is network-map.controller.spec.ts |
+| E2E-NM-002   | /network-map/\:id  | GET         | network-map.e2e-spec.ts | Retrieves network map by ID           | Done | The name of the file is network-map.controller.spec.ts |
 
 ---
 
 **Frontend Component Tests – LoginPage**
-
-| Test Case ID | Component | Test Description                                    | Expected Result                               | Test File                  |
-| ------------ | --------- | --------------------------------------------------- | --------------------------------------------- | -------------------------- |
+***NB: This is part of the initial test register done during development in the first deliverables but was not tagged and labeled. All the items where properly executed and are working perfectly ***
+| Test Case ID | Component | Test Description                                    | Expected Result                               | Test File                  | Status | Comment |
+| ------------ | --------- | --------------------------------------------------- | --------------------------------------------- | -------------------------- | --------- | --------- |
 | FE-LOGIN-001 | LoginPage | Renders email and password input fields             | Email & password fields are visible           | LoginPage.test.tsx         |
 | FE-LOGIN-002 | LoginPage | Enables login button when fields are valid          | Button enabled on valid input                 | LoginPage.test.tsx         |
 | FE-LOGIN-003 | LoginPage | Displays error on invalid credentials               | Error message shown                           | LoginPage.test.tsx         |
@@ -250,6 +250,7 @@
 | FE-LOGIN-008 | LoginPage | Displays loading state during login                 | Spinner or disabled button shown on submit    | LoginPage.test.tsx         |
 
 **Frontend Component Tests – EmailInputForm**
+***NB: This is part of the initial test register done during development in the first deliverables but was not tagged and labeled. All the items where properly executed and are working perfectly ***
 
 | Test Case ID | Component      | Test Description                                 | Expected Result                                | Test File               |
 | ------------ | -------------- | ------------------------------------------------ | ---------------------------------------------- | ----------------------- |
@@ -259,6 +260,7 @@
 | FE-EMAIL-004 | EmailInputForm | Allows clearing of input                         | Input is cleared and form reflects empty state | EmailInputForm.test.tsx |
 
 **Frontend Component Tests – PasswordInputForm**
+***NB: This is part of the initial test register done during development in the first deliverables but was not tagged and labeled. All the items where properly executed and are working perfectly ***
 
 | Test Case ID | Component         | Test Description                               | Expected Result                         | Test File                  |
 | ------------ | ----------------- | ---------------------------------------------- | --------------------------------------- | -------------------------- |
@@ -269,16 +271,16 @@
 
 **Frontend Component Tests – Rule Details Page**
 
-| Test Case ID | Page / Component | Test Description                                             | Expected Result                                    |
-| ------------ | ---------------- | ------------------------------------------------------------ | -------------------------------------------------- |
-| FE-RULE-001  | RuleListPage     | Renders rule table with columns (Name, Version, State, etc.) | Table rows displayed with expected rule data       |
-| FE-RULE-002  | RuleListPage     | Clicking "Create" opens rule creation form                   | Rule creation modal opens                          |
-| FE-RULE-003  | RuleForm         | Fills in name, description, version, and submits             | Rule added to list on success                      |
-| FE-RULE-004  | RuleForm         | Form validation triggers for empty name/description          | Error message shown, submit disabled               |
-| FE-RULE-005  | RuleListPage     | Clicking "Modify" opens rule edit form with prefilled values | Edit modal loads rule values                       |
-| FE-RULE-006  | RuleDetailsPage  | Clicking "Review" shows full rule version details            | Version panel renders bands, metadata, and actions |
-| FE-RULE-007  | RuleDetailsPage  | Submit for Review button triggers correct handler            | Status changes or API call is triggered            |
-| FE-RULE-008  | RuleDetailsPage  | Abandon and Cancel buttons function correctly                | Dialogs close or rule returns to list              |
+| Test Case ID | Page / Component | Test Description                                             | Expected Result                                    | Status | Comment |
+| ------------ | ---------------- | ------------------------------------------------------------ | -------------------------------------------------- | ------ | ------- |
+| FE-RULE-001  | RuleListPage     | Renders rule table with columns (Name, Version, State, etc.) | Table rows displayed with expected rule data       | Done | The file name is rule-list-page.spec.tsx |
+| FE-RULE-002  | RuleListPage     | Clicking "Create" opens rule creation form                   | Rule creation modal opens                          | Done | The file name is rule-list-page.spec.tsx |
+| FE-RULE-003  | RuleForm         | Fills in name, description, version, and submits             | Rule added to list on success                      | Done | The name of the file is rule-form.spec.tsx |
+| FE-RULE-004  | RuleForm         | Form validation triggers for empty name/description          | Error message shown, submit disabled               | Done | The name of the file is rule-form.spec.tsx |
+| FE-RULE-005  | RuleListPage     | Clicking "Modify" opens rule edit form with prefilled values | Edit modal loads rule values                       | Done | The |
+| FE-RULE-006  | RuleDetailsPage  | Clicking "Review" shows full rule version details            | Version panel renders bands, metadata, and actions | Done | The name of the file is rule-details.spec.tsx |
+| FE-RULE-007  | RuleDetailsPage  | Submit for Review button triggers correct handler            | Status changes or API call is triggered            | Done | The name of the file is rule-details.spec.tsx |
+| FE-RULE-008  | RuleDetailsPage  | Abandon and Cancel buttons function correctly                | Dialogs close or rule returns to list              | Done | The name of the file is rule-details.spec.tsx |
 
 **Frontend Component Tests – Rule Config Page**
 
