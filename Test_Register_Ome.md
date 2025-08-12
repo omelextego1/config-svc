@@ -284,15 +284,15 @@
 
 **Frontend Component Tests – Rule Config Page**
 
-| Test Case ID | Page / Component   | Test Description                                                  | Expected Result                                       |
-| ------------ | ------------------ | ----------------------------------------------------------------- | ----------------------------------------------------- |
-| FE-RCFG-001  | RuleConfigListPage | Displays all rule configs in table with "Create Config" button    | List of rule configs is rendered                      |
-| FE-RCFG-002  | RuleConfigListPage | Clicking “Create Config” opens rule config editor                 | Modal/form appears                                    |
-| FE-RCFG-003  | RuleConfigEditor   | Allows selection of data type, description, and version           | Form values update and validation enforced            |
-| FE-RCFG-004  | RuleConfigEditor   | Adds band and case entries, validates upper/lower limit           | Entries appear under Band and Case sections           |
-| FE-RCFG-005  | RuleConfigEditor   | Saves and exits from Rule Config editor                           | Form submission triggers backend call or closes modal |
-| FE-RCFG-006  | RuleConfigReview   | Displays config metadata, parameters, bands, cases in review page | Read-only config details rendered                     |
-| FE-RCFG-007  | RuleConfigReview   | Handles edge cases (no parameters, large bands)                   | Empty states and long lists render cleanly            |
+| Test Case ID | Page / Component   | Test Description                                                  | Expected Result                                       | Status | Comment |
+| ------------ | ------------------ | ----------------------------------------------------------------- | ----------------------------------------------------- | --------- | ----------- |
+| FE-RCFG-001  | RuleConfigListPage | Displays all rule configs in table with "Create Config" button    | List of rule configs is rendered                      | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-002  | RuleConfigListPage | Clicking “Create Config” opens rule config editor                 | Modal/form appears                                    | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-003  | RuleConfigEditor   | Allows selection of data type, description, and version           | Form values update and validation enforced            | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-004  | RuleConfigEditor   | Adds band and case entries, validates upper/lower limit           | Entries appear under Band and Case sections           | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-005  | RuleConfigEditor   | Saves and exits from Rule Config editor                           | Form submission triggers backend call or closes modal | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-006  | RuleConfigReview   | Displays config metadata, parameters, bands, cases in review page | Read-only config details rendered                     | Done | The file name is rule-config-page.spec.tsx |
+| FE-RCFG-007  | RuleConfigReview   | Handles edge cases (no parameters, large bands)                   | Empty states and long lists render cleanly            | Done | The file name is rule-config-page.spec.tsx |
 
 Thanks for the clarification. Here's a **review and enhancement** of your frontend test register, incorporating all the features, behaviors, and UX interactions we've discussed throughout this chat. I’ve:
 
