@@ -322,20 +322,21 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ### 🔹 Typology Canvas
 
-| Test Case ID    | Page / Component   | Test Description                                       | Expected Result                           | Rationale                        |
-| --------------- | ------------------ | ------------------------------------------------------ | ----------------------------------------- | -------------------------------- |
-| FE-TYPOLOGY-018 | TypologyCanvasPage | Drag same rule multiple times                          | Multiple rule blocks appear independently | Confirms each instance is unique |
-| FE-TYPOLOGY-019 | TypologyCanvasPage | Undo last canvas action                                | Canvas reverts to previous state          | Useful for error correction      |
-| FE-TYPOLOGY-020 | TypologyCanvasPage | Redo after undo                                        | Canvas re-applies the reverted action     | Completes undo/redo coverage     |
-| FE-TYPOLOGY-021 | TypologyCanvasPage | View-only mode disables drag/drop                      | Rules cannot be added or deleted          | Supports reviewer permissions    |
-| FE-TYPOLOGY-022 | TypologyCanvasPage | Drag rule with missing config shows persistent warning | Tooltip or inline alert remains visible   | UX feedback test                 |
+| Test Case ID    | Page / Component   | Test Description                                       | Expected Result                           | Rationale                        | Status | Comment |
+| --------------- | ------------------ | ------------------------------------------------------ | ----------------------------------------- | -------------------------------- | -------- | ---------- |
+| FE-TYPOLOGY-018 | TypologyCanvasPage | Drag same rule multiple times                          | Multiple rule blocks appear independently | Confirms each instance is unique | Done | The name of the file is typology-canvas-page.spec.tsx |
+| FE-TYPOLOGY-019 | TypologyCanvasPage | Undo last canvas action                                | Canvas reverts to previous state          | Useful for error correction      | Not Required | This does not exist in the code because it's a functionality for the node, so it works but doesn't required a test |
+| FE-TYPOLOGY-020 | TypologyCanvasPage | Redo after undo                                        | Canvas re-applies the reverted action     | Completes undo/redo coverage     | Done | The name of the file is typology-canvas-page.spec.tsx |
+| FE-TYPOLOGY-021 | TypologyCanvasPage | View-only mode disables drag/drop                      | Rules cannot be added or deleted          | Supports reviewer permissions    | Done | The name of the file is typology-canvas-page.spec.tsx |
+| FE-TYPOLOGY-022 | TypologyCanvasPage | Drag rule with missing config shows persistent warning | Tooltip or inline alert remains visible   | UX feedback test                 | Not Required | This does not exist in a testable format in the code. |
 
 ---
 
 ### 🔹 Typology Scoring
+***NB: this is has the same test number as Typology Canvas***
 
-| Test Case ID    | Page / Component    | Test Description                                  | Expected Result                       | Rationale                        |
-| --------------- | ------------------- | ------------------------------------------------- | ------------------------------------- | -------------------------------- |
+| Test Case ID    | Page / Component    | Test Description                                  | Expected Result                       | Rationale                        | Status | Comment |
+| --------------- | ------------------- | ------------------------------------------------- | ------------------------------------- | -------------------------------- | --------- | --------- |
 | FE-TYPOLOGY-018 | TypologyScoringPage | Enter invalid score value (e.g., -1 or text)      | Input validation error displayed      | Data integrity                   |
 | FE-TYPOLOGY-019 | TypologyScoringPage | Hover over band shows tooltip with description    | Tooltip with band explanation appears | Improves usability               |
 | FE-TYPOLOGY-020 | TypologyScoringPage | Duplicate rule-band combination not allowed       | Error or prevent duplicate UI         | Prevents scoring logic conflicts |
@@ -355,25 +356,26 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 ---
 
 ### 🔹 Review Mode
+***NB: duplicate of FE-RULE-006/007/008***
 
-| Test Case ID  | Page / Component     | Test Description                                                   | Expected Result                  | Rationale                |
-| ------------- | -------------------- | ------------------------------------------------------------------ | -------------------------------- | ------------------------ |
-| FE-REVIEW-011 | RuleReviewPage       | Read-only fields are not editable even via browser dev tools       | Input stays disabled or rejected | Defends against spoofing |
-| FE-REVIEW-012 | RuleReviewPage       | Clicking "Submit for Review" with missing required metadata        | Blocked with message             | Enforces business rules  |
-| FE-REVIEW-013 | RuleReviewPage       | Reviewer role sees “Approve” button, editor does not               | Button visibility respects roles | Role-based access test   |
-| FE-REVIEW-014 | RuleConfigReviewPage | Band list renders with edge-case values (e.g., max=0, null reason) | Displays cleanly without crash   | Defensive coding test    |
-| FE-REVIEW-015 | RuleReviewPage       | Back button returns user to previous filtered table                | Filter state preserved           | UX consistency           |
+| Test Case ID  | Page / Component     | Test Description                                                   | Expected Result                  | Rationale                | Status | Comment |
+| ------------- | -------------------- | ------------------------------------------------------------------ | -------------------------------- | ------------------------ | ------- | -------- |
+| FE-REVIEW-011 | RuleReviewPage       | Read-only fields are not editable even via browser dev tools       | Input stays disabled or rejected | Defends against spoofing | Already Done | Duplicate |
+| FE-REVIEW-012 | RuleReviewPage       | Clicking "Submit for Review" with missing required metadata        | Blocked with message             | Enforces business rules  | Already Done | Duplicate |
+| FE-REVIEW-013 | RuleReviewPage       | Reviewer role sees “Approve” button, editor does not               | Button visibility respects roles | Role-based access test   | Already Done | Duplicate |
+| FE-REVIEW-014 | RuleConfigReviewPage | Band list renders with edge-case values (e.g., max=0, null reason) | Displays cleanly without crash   | Defensive coding test    | Not Required | None |
+| FE-REVIEW-015 | RuleReviewPage       | Back button returns user to previous filtered table                | Filter state preserved           | UX consistency           | Already Done | Duplicate |
 
 ---
 
 ## 🔄 Optional Cross-Cutting Tests (Reusable Patterns)
 
-| Test Case ID  | Page / Component        | Test Description                                         | Expected Result                       | Notes                  |
+| Test Case ID  | Page / Component        | Test Description                                         | Expected Result                       | Notes                  | Status | Comment |
 | ------------- | ----------------------- | -------------------------------------------------------- | ------------------------------------- | ---------------------- |
-| FE-GLOBAL-001 | Any Save Button         | Save button is disabled until required fields are filled | Prevents premature API calls          | Global form UX pattern |
-| FE-GLOBAL-002 | All Pages               | Component renders correctly on different screen sizes    | Responsive design verified            | Visual regression test |
-| FE-GLOBAL-003 | Canvas/Editor Pages     | Attempt navigation with unsaved changes                  | Prompt asks for confirmation          | Prevents data loss     |
-| FE-GLOBAL-004 | Typology + Review Pages | Session timeout logs user out gracefully                 | Redirect with save attempt or warning | Security + UX          |
+| FE-GLOBAL-001 | Any Save Button         | Save button is disabled until required fields are filled | Prevents premature API calls          | Global form UX pattern | Not Required | None |
+| FE-GLOBAL-002 | All Pages               | Component renders correctly on different screen sizes    | Responsive design verified            | Visual regression test | Not Required | None |
+| FE-GLOBAL-003 | Canvas/Editor Pages     | Attempt navigation with unsaved changes                  | Prompt asks for confirmation          | Prevents data loss     | Not Required | None |
+| FE-GLOBAL-004 | Typology + Review Pages | Session timeout logs user out gracefully                 | Redirect with save attempt or warning | Security + UX          | Not Required | Session Timeout is a frontend wide implementation and test already exist for it |
 
 ---
 
@@ -423,7 +425,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-### 🔹 Typology Canvas
+### 🔹 Typology Canvas (This is a Duplicate Test Register )
 
 | Test Case ID    | Page / Component   | Test Description                                       | Expected Result                           | Rationale                        |
 | --------------- | ------------------ | ------------------------------------------------------ | ----------------------------------------- | -------------------------------- |
@@ -435,7 +437,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-### 🔹 Typology Scoring
+### 🔹 Typology Scoring (This is a duplicate test register )
 
 | Test Case ID    | Page / Component    | Test Description                                  | Expected Result                       | Rationale                        |
 | --------------- | ------------------- | ------------------------------------------------- | ------------------------------------- | -------------------------------- |
@@ -447,7 +449,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-### 🔹 Network Map Page
+### 🔹 Network Map Page (This is a duplicate test register )
 
 | Test Case ID  | Page / Component   | Test Description                          | Expected Result                    | Rationale                          |
 | ------------- | ------------------ | ----------------------------------------- | ---------------------------------- | ---------------------------------- |
@@ -457,7 +459,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-### 🔹 Review Mode
+### 🔹 Review Mode (this is duplicate test register )
 
 | Test Case ID  | Page / Component     | Test Description                                                   | Expected Result                  | Rationale                |
 | ------------- | -------------------- | ------------------------------------------------------------------ | -------------------------------- | ------------------------ |
@@ -469,7 +471,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-## 🔄 Optional Cross-Cutting Tests (Reusable Patterns)
+## 🔄 Optional Cross-Cutting Tests (Reusable Patterns) (this is a duplicate test register )
 
 | Test Case ID  | Page / Component        | Test Description                                         | Expected Result                       | Notes                  |
 | ------------- | ----------------------- | -------------------------------------------------------- | ------------------------------------- | ---------------------- |
@@ -480,7 +482,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT (Not Required)
+***NB: SSL which is responsible for security is implemented and does not require testing***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -493,7 +496,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | SEC-007 | FileUpload | Security | maliciousFileUpload() | Upload of executable or malicious files | Reject non-JSON files and validate content | upload.security.spec.ts | File Validation | System security |  
 | SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  
 | SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
-## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
+## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA (Not Required)
+***NB: Yup is used for form input and validates data by default and does not require test***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
@@ -501,7 +505,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DATA-002 | RuleConfigService | Validation | decimalPrecisionHandling() | Handle decimal precision for financial calculations | Maintain precision to required decimal places | rule-config.validation.spec.ts | Math Libraries | Calculation accuracy |  
 | DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  
 | DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
-## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY
+## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY (Not Required)
+***NB: The transition which works hand in hand with the state machine is implement and the tests exist in the backend. A state machine test is part of the permissions in the most of the frontend test that requires access and privileges. A separate state machine existence test is not required because all the frontend tests 'mocked' the state machine where permission and transition are required***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -515,7 +520,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | WORK-008 | AuditWorkflow | Workflow | changeAuditTrail() | Complete audit trail for all configuration changes | Log all changes with user timestamps and reasons | audit.workflow.spec.ts | Audit Logging | Regulatory compliance |  
 | WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  
 | WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  
-## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS
+## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS (Not Reuired)
+***NB: this is dependent on System Ram and Running Server. Tests are not written for these***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -529,7 +535,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | PERF-008 | ExportService | Performance | largeExportGeneration() | Generate exports for large datasets | Export large configurations without timeout | export.performance.spec.ts | File Generation | Operational efficiency |  
 | PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  
 | PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  
-## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY
+## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY (Not Required)
+***NB: most of the tests outputs a message of either success or error, these can not be 'mocked' into a test because its a response that can be found in the 'expected function' of tests***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -543,7 +550,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | ERR-008 | NetworkService | Resilience | networkPartitionHandling() | Handle network partition scenarios | Maintain system functionality during network issues | network.resilience.spec.ts | Network Management | System availability |  
 | ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  
 | ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  
-## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY
+## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY (Not required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -557,7 +565,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | UX-008 | ContextualHelp | UX | tooltipsAndHelpText() | Contextual help for complex features | Helpful tooltips and guidance for complex operations | help.ux.spec.tsx | UI Components | User productivity |  
 | UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  
 | UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  
-## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY
+## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -570,7 +579,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | INT-007 | MultiUserConcurrency | Integration | concurrentUserInteractions() | Multiple users working on same configurations | Handle concurrent modifications gracefully | multi-user.integration.spec.ts | Concurrency Control | System reliability |  
 | INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  
 | INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  
-## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE
+## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE (Not required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -579,7 +589,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | E2E-TYPOLOGY-001 | Typology API | E2E | Complete typology management endpoints | All typology CRUD operations with scoring validation | All endpoints working with accurate scoring | typology.e2e-spec.ts | ArangoDB | Well tested - enhance with scoring accuracy |  
 | E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  
 | E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  
-## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE
+## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -588,12 +599,12 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  
 | FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | 
 
-## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
 | SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 
-## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS
+## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS (Not Required)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -603,7 +614,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  
 | DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  
 
-## MONITORING & OBSERVABILITY TESTS
+## MONITORING & OBSERVABILITY TESTS (Not Required)
+***NB: Tests for logging already exists in SEC-010***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -613,7 +625,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  
 | MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  
 
-## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
+## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -624,7 +637,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
 | DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  
 
-## Auth Service
+## Auth Service (Not Required)
+***NB: this is a duplicate of the AUTH service test in the backend***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -635,7 +649,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | AUTH-PERF-001 | AuthService | Concurrent login load | Performance | Test users seeded | Simulate 1000 simultaneous logins | Average response <500ms | | Not Run | Medium | No | PERF-REQ-002 | Planned |
 | AUTH-ACCESS-001 | Login Page | Screen reader navigation | Accessibility | Screen reader enabled | Tab through login form fields | Labels announced correctly | | Not Run | Medium | No | ACC-REQ-001 | Planned |
 
-## Rule Service
+## Rule Service (Not Required)
+***NB: This is a duplicate of the rule service API calls and service file***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -645,7 +660,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | RULE-SEC-001 | RuleService | SQL injection attempt | Security | Running server | Submit malicious name via API | Request rejected with validation error | | Not Run | High | Yes | RULE-REQ-004 | Planned |
 | RULE-PERF-001 | RuleService | Large rule import | Performance | File with 10k rules | Import file via batch endpoint | Completed within 2 minutes | | Not Run | Medium | No | RULE-REQ-005 | Planned |
 
-## Rule Configuration Service
+## Rule Configuration Service (Not Required)
+***NB: this is a duplicate of the rule config service file test***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -655,7 +671,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | RCFG-SEC-001 | RuleConfigService | XSS in description field | Security | None | Send script tag in description | Response sanitized, script not executed | | Not Run | High | Yes | SEC-REQ-015 | Planned |
 | RCFG-PERF-001 | RuleConfigService | Handle 100 band entries | Performance | None | Create config with 100 bands | Save completes <5s | | Not Run | Medium | No | RCFG-REQ-010 | Planned |
 
-## Typology Service
+## Typology Service (Not Required)
+***NB: this is a duplicate of the typology service file test***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -665,7 +682,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | TYPO-SEC-001 | TypologyService | Access control on edit | Security | User without edit role | Attempt PUT `/typology/{id}` | 403 Forbidden | | Not Run | High | Yes | SEC-REQ-020 | Planned |
 | TYPO-PERF-001 | TypologyService | Large canvas render | Performance | Canvas with 200 nodes | Measure render time | Under 2 seconds | | Not Run | Medium | No | TYPO-REQ-005 | Planned |
 
-## Network Map Service
+## Network Map Service (Not Required)
+***NB: This is a duplicate of the network map service file test***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -676,7 +694,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | NMAP-PERF-001 | NetworkMapService | Large map rendering | Performance | Map with 300 nodes | Load page and measure render time | Under 3 seconds | | Not Run | Medium | No | NMAP-REQ-010 | Planned |
 | NMAP-ACCESS-001 | Network Map UI | Keyboard navigation | Accessibility | Editor logged in | Use tab keys to navigate builder controls | Focus order logical and operable | | Not Run | Medium | No | ACC-REQ-004 | Planned |
 
-## Frontend Review Pages
+## Frontend Review Pages (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -685,7 +704,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | REV-E2E-001 | Review Workflow | Submit rule for review -> approve | E2E | Creator and approver accounts | Creator submits, approver approves | Rule state moves to APPROVED | | Not Run | High | Yes | REV-REQ-003 | Planned |
 | REV-SEC-001 | Review pages | Access without role | Security | Viewer logged in | Visit `/rule/{id}/review` | Access denied message | | Not Run | High | Yes | SEC-REQ-030 | Planned |
 
-## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE
+## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -707,15 +727,16 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ## STATE MANAGEMENT TESTING - XSTATE INTEGRATION
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
 | STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  
 | STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  
 | STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  
 | STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  
 | STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  
 
-## API INTEGRATION TESTING - ACTUAL ENDPOINTS
+## API INTEGRATION TESTING - ACTUAL ENDPOINTS (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -732,8 +753,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  
 | API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  
 
-## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES
-
+## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES (Not Required)
+***NB: Yup takes care of these and does not required testing***
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 | FIN-001 | BandsValidation | Unit | Financial band validation | Validate monetary amounts in bands | Proper validation of financial ranges | financialValidation.test.ts | Decimal.js | Financial accuracy |  
@@ -742,7 +763,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  
 | FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  
 
-## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS
+## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -754,15 +776,16 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ## INTERNATIONALIZATION TESTING - I18N SUPPORT
 
-| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |  
+| Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
 | I18N-001 | LanguageSupport | Unit | Language switching | Test language switching functionality | Proper language switching | languageSupport.test.ts | i18next | International support |  
 | I18N-002 | TextTranslation | Unit | Text translation coverage | Test all text elements are translated | Complete translation coverage | textTranslation.test.ts | i18next | International support |  
 | I18N-003 | NumberFormatting | Unit | Number formatting localization | Test number formatting for different locales | Proper locale-specific formatting | numberFormatting.test.ts | Intl API | Financial accuracy |  
 | I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  
 | I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  
 
-## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION
+## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION (Not Required)
+***NB: Yup handles these by default***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -773,7 +796,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  
 | REV-ACCESS-001 | Review pages | Screen reader headings | Accessibility | Screen reader enabled | Navigate through page landmarks | Not Run | ACC-REQ-005 | Planned |
 
-## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION
+## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION (Not Required )
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -798,8 +822,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
 | PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
 
-## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY
-
+## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY (Not Required)
+***NB: This is a duplicate test register***
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 | STATE-006 | RuleStateService | StateTransition | skipStateTransitionBlocked() | User cannot skip intermediate states in workflow | 400 Bad Request with workflow violation message | rule.state-transitions.spec.ts | State Management | Workflow integrity |  
@@ -808,7 +832,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  
 | STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  
 
-## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY
+## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY (Not Required)
+***NB: SSL takes care of this and does not require a test***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -828,7 +853,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  
 | INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  
 
-## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY
+## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -848,7 +874,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | VAL-014 | FileUploadController | Validation | oversizedFileUploadValidation() | Test oversized file upload prevention | Large files rejected with size validation error | file-upload.validation.spec.ts | Input Validation | System stability |  
 | VAL-015 | GlobalValidation | Validation | unicodeCharacterHandling() | Test unicode character handling across all inputs | Unicode characters properly handled or validated | global.validation.spec.ts | Input Validation | Internationalization |  
 
-## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -862,7 +889,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | SEC-008 | APIEndpoints | Security | corsConfiguration() | Cross-origin request validation | Only allow authorized origins | api.security.spec.ts | CORS Config | API security |  
 | SEC-009 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 
-## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
+## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA (Not Required)
+***NB: backend validation is handled by ArangoDB Schema, while Yup handles the frontend***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -871,7 +899,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DATA-003 | RuleConfigService | Validation | negativeAmountHandling() | Validate negative amounts in bands/cases | Handle negative values appropriately | rule-config.validation.spec.ts | Business Rules | Data consistency |  
 | DATA-004 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
 
-## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY
+## BUSINESS WORKFLOW TESTS - CRITICAL FOR OPERATIONAL INTEGRITY (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -886,7 +915,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | WORK-009 | RollbackWorkflow | Workflow | emergencyRollback() | Emergency rollback of faulty configurations | Quick rollback to last known good state | rollback.workflow.spec.ts | State Management | Operational recovery |  
 | WORK-010 | NotificationWorkflow | Workflow | stakeholderNotifications() | Notify stakeholders of workflow changes | Send appropriate notifications for state changes | notification.workflow.spec.ts | Notification System | Communication |  
 
-## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS
+## PERFORMANCE & SCALABILITY TESTS - CRITICAL FOR PRODUCTION READINESS (Not Required)
+***NB: this is dependent on system Ram and Server***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -901,7 +931,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | PERF-009 | MemoryManagement | Performance | memoryLeakDetection() | Detect memory leaks in long-running operations | No memory leaks in extended operations | memory.performance.spec.ts | Memory Profiling | System stability |  
 | PERF-010 | LoadBalancing | Performance | loadDistribution() | Validate load balancing across instances | Even distribution of load across all instances | load.performance.spec.ts | Load Balancer | System scalability |  
 
-## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY
+## ERROR HANDLING & RESILIENCE TESTS - CRITICAL FOR SYSTEM RELIABILITY (Not Required)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -916,7 +946,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | ERR-009 | QueueService | Resilience | messageQueueFailure() | Handle message queue failures | Graceful handling of queue unavailability | queue.resilience.spec.ts | Message Queue | System reliability |  
 | ERR-010 | MonitoringService | Resilience | alertingSystemFailure() | Handle monitoring system failures | Continue operations when monitoring is down | monitoring.resilience.spec.ts | Monitoring Tools | Operational visibility |  
 
-## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY
+## FRONTEND USER EXPERIENCE TESTS - CRITICAL FOR USABILITY (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -931,7 +962,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  
 | UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  
 
-## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY
+## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY 9Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -945,7 +977,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | INT-008 | DisasterRecovery | Integration | systemRecoveryProcedures() | Complete system recovery from failure | System fully recoverable from catastrophic failure | disaster-recovery.integration.spec.ts | Recovery Systems | Business continuity |  
 | INT-009 | CrossBrowserCompatibility | Integration | browserCompatibilityTesting() | Functionality across different browsers | Consistent functionality across major browsers | browser.integration.spec.ts | Browser Testing | User accessibility |  
 
-## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE
+## EXISTING COMPREHENSIVE TESTS - MAINTAIN AND ENHANCE (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -955,7 +988,8 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | E2E-NETWORKMAP-001 | Network Map API | E2E | Complete network map management endpoints | All network map CRUD operations with graph validation | All endpoints working with valid graph structures | network-map.e2e-spec.ts | ArangoDB | Well tested - enhance with graph validation |  
 | E2E-AUTH-001 | Auth API | E2E | Authentication and profile endpoints | Login and profile operations with security testing | Authentication working with security validation | auth.e2e-spec.ts | External Auth | Well tested - enhance security testing |  
 
-## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE
+## FRONTEND EXISTING TESTS - MAINTAIN AND ENHANCE (Not Required)
+***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -964,12 +998,13 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FE-PASS-001 | PasswordInputForm | Component | Password input with validation | Password validation and submission with strength checking | Password validation working with strength requirements | PasswordInputForm.test.tsx | None | Well tested - enhance password strength |  
 | FE-IMPORT-001 | ImportRuleConfig | Integration | Rule configuration import functionality | File upload and JSON processing with security validation | Import functionality working with security checks | import.test.tsx | File Upload | Well tested - enhance security validation | 
 
-## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT |
+## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT (Not Required - This is a duplicate test register)
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
 | SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
 
-## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS
+## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS (Not Required)
+***NB: the project does not have a backup system and most importantly it is server related***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -979,7 +1014,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DR-004 | FailoverTesting | DR | automaticFailoverProcedures() | Test automatic failover mechanisms | System automatically fails over to backup systems | failover.dr.spec.ts | Failover System | Business continuity |  
 | DR-005 | RecoveryValidation | DR | dataIntegrityAfterRecovery() | Validate data integrity after recovery | All data intact and consistent after recovery | integrity.dr.spec.ts | Data Validation | Business continuity |  
 
-## MONITORING & OBSERVABILITY TESTS
+## MONITORING & OBSERVABILITY TESTS (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -989,7 +1024,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | MON-004 | LogAggregation | Monitoring | centralizedLogging() | Centralized log aggregation and analysis | All logs centrally collected and searchable | logging.monitoring.spec.ts | Logging System | Troubleshooting |  
 | MON-005 | DistributedTracing | Monitoring | requestTracing() | Distributed tracing across services | Complete request traces across all services | tracing.monitoring.spec.ts | Tracing System | Troubleshooting |  
 
-## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA
+## DATA INTEGRITY & VALIDATION TESTS - CRITICAL FOR FINANCIAL DATA (Not Required - This is s duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1000,7 +1035,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | DATA-009 | RuleService | Validation | duplicatePreventionLogic() | Prevent duplicate rules with same version | Block creation of duplicate rule versions | rule.validation.spec.ts | Business Logic | Data quality |  
 | DATA-010 | NetworkMapService | Validation | graphCyclePrevention() | Prevent circular dependencies in network maps | Detect and prevent cyclic network structures | network-map.validation.spec.ts | Graph Algorithms | Logic integrity |  
 
-## Auth Service
+## Auth Service (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1011,7 +1046,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | AUTH-PERF-001 | AuthService | Concurrent login load | Performance | Test users seeded | Simulate 1000 simultaneous logins | Average response <500ms | | Not Run | Medium | No | PERF-REQ-002 | Planned |
 | AUTH-ACCESS-001 | Login Page | Screen reader navigation | Accessibility | Screen reader enabled | Tab through login form fields | Labels announced correctly | | Not Run | Medium | No | ACC-REQ-001 | Planned |
 
-## Rule Service
+## Rule Service (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1021,7 +1056,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | RULE-SEC-001 | RuleService | SQL injection attempt | Security | Running server | Submit malicious name via API | Request rejected with validation error | | Not Run | High | Yes | RULE-REQ-004 | Planned |
 | RULE-PERF-001 | RuleService | Large rule import | Performance | File with 10k rules | Import file via batch endpoint | Completed within 2 minutes | | Not Run | Medium | No | RULE-REQ-005 | Planned |
 
-## Rule Configuration Service
+## Rule Configuration Service (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1031,7 +1066,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | RCFG-SEC-001 | RuleConfigService | XSS in description field | Security | None | Send script tag in description | Response sanitized, script not executed | | Not Run | High | Yes | SEC-REQ-015 | Planned |
 | RCFG-PERF-001 | RuleConfigService | Handle 100 band entries | Performance | None | Create config with 100 bands | Save completes <5s | | Not Run | Medium | No | RCFG-REQ-010 | Planned |
 
-## Typology Service
+## Typology Service (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1041,7 +1076,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | TYPO-SEC-001 | TypologyService | Access control on edit | Security | User without edit role | Attempt PUT `/typology/{id}` | 403 Forbidden | | Not Run | High | Yes | SEC-REQ-020 | Planned |
 | TYPO-PERF-001 | TypologyService | Large canvas render | Performance | Canvas with 200 nodes | Measure render time | Under 2 seconds | | Not Run | Medium | No | TYPO-REQ-005 | Planned |
 
-## Network Map Service
+## Network Map Service (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1052,7 +1087,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | NMAP-PERF-001 | NetworkMapService | Large map rendering | Performance | Map with 300 nodes | Load page and measure render time | Under 3 seconds | | Not Run | Medium | No | NMAP-REQ-010 | Planned |
 | NMAP-ACCESS-001 | Network Map UI | Keyboard navigation | Accessibility | Editor logged in | Use tab keys to navigate builder controls | Focus order logical and operable | | Not Run | Medium | No | ACC-REQ-004 | Planned |
 
-## Frontend Review Pages
+## Frontend Review Pages (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component / Page | Feature / Function | Test Type | Preconditions | Test Steps | Expected Result | Actual Result | Test Status | Test Priority | Regression Critical | Linked Requirement | Automation Status |
 |--------------|-----------------|-------------------|-----------|---------------|------------|-----------------|---------------|-------------|---------------|--------------------|-------------------|------------------|
@@ -1061,7 +1096,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | REV-E2E-001 | Review Workflow | Submit rule for review -> approve | E2E | Creator and approver accounts | Creator submits, approver approves | Rule state moves to APPROVED | | Not Run | High | Yes | REV-REQ-003 | Planned |
 | REV-SEC-001 | Review pages | Access without role | Security | Viewer logged in | Visit `/rule/{id}/review` | Access denied message | | Not Run | High | Yes | SEC-REQ-030 | Planned |
 
-## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE
+## ADVANCED COMPONENT TESTING - BASED ON ACTUAL CODEBASE (Not required - this is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1081,7 +1116,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FE-REVIEW-001 | ReviewPage | Component | Review workflow interface | Review and approval functionality | Proper review workflow execution | ReviewPage.test.tsx | State Management | Business process |  
 | FE-REVIEW-002 | ApprovalButtons | Component | Approval action buttons | Approve, reject, withdraw actions | Proper action execution with validation | ApprovalButtons.test.tsx | State Management | Process integrity |  
 
-## STATE MANAGEMENT TESTING - XSTATE INTEGRATION
+## STATE MANAGEMENT TESTING - XSTATE INTEGRATION ( Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1091,7 +1126,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  
 | STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  
 
-## API INTEGRATION TESTING - ACTUAL ENDPOINTS
+## API INTEGRATION TESTING - ACTUAL ENDPOINTS (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1108,7 +1143,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | API-AUTH-001 | AuthAPI | Integration | POST /api/auth/login | User authentication | Successful login with JWT token | authAPI.test.ts | Backend API | Authentication |  
 | API-AUTH-002 | AuthAPI | Integration | GET /api/auth/profile | User profile retrieval | User profile data | authAPI.test.ts | Backend API | User management |  
 
-## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES
+## FINANCIAL VALIDATION TESTING - CRITICAL FOR FINANCIAL SERVICES (Not required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1118,7 +1153,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FIN-004 | NegativeAmounts | Unit | Negative amount handling | Test negative amounts in financial calculations | Proper handling of negative values | negativeAmounts.test.ts | Business Logic | Data consistency |  
 | FIN-005 | FinancialRanges | Unit | Financial range validation | Test range validation for bands | Proper range validation and overlap detection | financialRanges.test.ts | Business Logic | Data integrity |  
 
-## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS
+## ACCESSIBILITY TESTING - COMPLIANCE REQUIREMENTS (Not Required - this is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1128,7 +1163,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  
 | A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  
 
-## INTERNATIONALIZATION TESTING - I18N SUPPORT
+## INTERNATIONALIZATION TESTING - I18N SUPPORT (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1138,7 +1173,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | I18N-004 | DateFormatting | Unit | Date formatting localization | Test date formatting for different locales | Proper locale-specific date formatting | dateFormatting.test.ts | Intl API | User experience |  
 | I18N-005 | CurrencyFormatting | Unit | Currency formatting localization | Test currency formatting for different locales | Proper locale-specific currency formatting | currencyFormatting.test.ts | Intl API | Financial accuracy |  
 
-## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION
+## ADVANCED FORM TESTING - COMPLEX FORMS WITH VALIDATION (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1149,7 +1184,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | FORM-005 | FormRecovery | Unit | Form recovery after errors | Test form recovery mechanisms | Proper form state recovery | formRecovery.test.ts | Error Handling | User experience |  
 | REV-ACCESS-001 | Review pages | Screen reader headings | Accessibility | Screen reader enabled | Navigate through page landmarks | Not Run | ACC-REQ-005 | Planned |
 
-## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION
+## PERMISSION-BASED ACCESS CONTROL TESTS - CRITICAL FOR AUTHORIZATION (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1174,7 +1209,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | PERM-019 | AuthGuard | Permission | viewerRestrictionsValidation() | Viewer role restricted to read-only operations | Viewer blocked from all write operations | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
 | PERM-020 | AuthGuard | Permission | editorRestrictionsValidation() | Editor role can create/update but not approve/deploy | Editor blocked from approval and deployment actions | role-hierarchy.permissions.spec.ts | Role Management | Role restriction integrity |  
 
-## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY
+## STATE TRANSITION PERMISSION TESTS - CRITICAL FOR WORKFLOW INTEGRITY (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1184,7 +1219,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | STATE-009 | NetworkMapStateService | StateTransition | networkMapApprovalWorkflow() | Network map follows same approval workflow as rules | Network map transitions through correct states | network-map.state-transitions.spec.ts | State Management | Workflow integrity |  
 | STATE-010 | StateTransitionService | StateTransition | concurrentStateModificationPrevention() | System prevents concurrent state modifications | Only one state transition succeeds, others get conflict error | concurrent.state-transitions.spec.ts | Concurrency Control | Data integrity |  
 
-## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY
+## SQL/AQL INJECTION PREVENTION TESTS - CRITICAL FOR DATA SECURITY (Not Required - this is a Duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
@@ -1204,7 +1239,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | INJ-014 | CaseService | Security | aqlInjectionInCaseParameters() | Test AQL injection in rule case parameters | Input sanitized, no malicious query executed | case.injection.spec.ts | Input Sanitization | Data security |  
 | INJ-015 | SearchService | Security | aqlInjectionInSearchQueries() | Test AQL injection in global search functionality | Input sanitized, no malicious query executed | search.injection.spec.ts | Input Sanitization | Data security |  
 
-## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY
+## INPUT VALIDATION SECURITY TESTS - CRITICAL FOR DATA INTEGRITY (Not Required - This is a duplicate test register)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |  
