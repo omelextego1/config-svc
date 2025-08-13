@@ -337,28 +337,28 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 | Test Case ID    | Page / Component    | Test Description                                  | Expected Result                       | Rationale                        | Status | Comment |
 | --------------- | ------------------- | ------------------------------------------------- | ------------------------------------- | -------------------------------- | --------- | --------- |
-| FE-TYPOLOGY-018 | TypologyScoringPage | Enter invalid score value (e.g., -1 or text)      | Input validation error displayed      | Data integrity                   |
-| FE-TYPOLOGY-019 | TypologyScoringPage | Hover over band shows tooltip with description    | Tooltip with band explanation appears | Improves usability               |
-| FE-TYPOLOGY-020 | TypologyScoringPage | Duplicate rule-band combination not allowed       | Error or prevent duplicate UI         | Prevents scoring logic conflicts |
-| FE-TYPOLOGY-021 | TypologyScoringPage | Submit scoring while network is offline           | Retry or error message shown          | Offline UX resilience            |
-| FE-TYPOLOGY-022 | TypologyScoringPage | Save scoring and confirm graph persists on reload | Canvas reloads with same structure    | Ensures data persistence         |
+| FE-TYPOLOGY-018 | TypologyScoringPage | Enter invalid score value (e.g., -1 or text)      | Input validation error displayed      | Data integrity                   | Done | The file name is typology-scoring-page.spec.tsx |
+| FE-TYPOLOGY-019 | TypologyScoringPage | Hover over band shows tooltip with description    | Tooltip with band explanation appears | Improves usability               | Done | The file name is typology-scoring-page.spec.tsx |
+| FE-TYPOLOGY-020 | TypologyScoringPage | Duplicate rule-band combination not allowed       | Error or prevent duplicate UI         | Prevents scoring logic conflicts | Done | The file name is typology-scoring-page.spec.tsx |
+| FE-TYPOLOGY-021 | TypologyScoringPage | Submit scoring while network is offline           | Retry or error message shown          | Offline UX resilience            | Done | The file name is typology-scoring-page.spec.tsx |
+| FE-TYPOLOGY-022 | TypologyScoringPage | Save scoring and confirm graph persists on reload | Canvas reloads with same structure    | Ensures data persistence         | Done | The file name is typology-scoring-page.spec.tsx |
 
 ---
 
 ### 🔹 Network Map Page
 
-| Test Case ID  | Page / Component   | Test Description                          | Expected Result                    | Rationale                          |
-| ------------- | ------------------ | ----------------------------------------- | ---------------------------------- | ---------------------------------- |
-| FE-NETMAP-005 | NetworkMapListPage | Search bar filters by name or version     | Table updates in real time         | Improves navigation in large lists |
-| FE-NETMAP-006 | NetworkMapEditor   | Validation prevents blank required fields | Inline error shown near field      | Prevents invalid submissions       |
-| FE-NETMAP-007 | NetworkMapListPage | Sorting columns updates row order         | Sort icon toggles and list updates | UI standard behavior               |
+| Test Case ID  | Page / Component   | Test Description                          | Expected Result                    | Rationale                          | Status | Comment |
+| ------------- | ------------------ | ----------------------------------------- | ---------------------------------- | ---------------------------------- | ------- | -------- |
+| FE-NETMAP-005 | NetworkMapListPage | Search bar filters by name or version     | Table updates in real time         | Improves navigation in large lists | Done | The file name is network-map-list.spec.tsx |
+| FE-NETMAP-006 | NetworkMapEditor   | Validation prevents blank required fields | Inline error shown near field      | Prevents invalid submissions       | Done | The file name is network-map-list.spec.tsx |
+| FE-NETMAP-007 | NetworkMapListPage | Sorting columns updates row order         | Sort icon toggles and list updates | UI standard behavior               | Done | The file name is network-map-list.spec.tsx |
 
 ---
 
 ### 🔹 Review Mode
 ***NB: duplicate of FE-RULE-006/007/008***
 
-| Test Case ID  | Page / Component     | Test Description                                                   | Expected Result                  | Rationale                | Status | Comment |
+| Test Case ID  | Page / Component     | Test Description                                                   | Expected Result                  | Rationale | Status | Comment |
 | ------------- | -------------------- | ------------------------------------------------------------------ | -------------------------------- | ------------------------ | ------- | -------- |
 | FE-REVIEW-011 | RuleReviewPage       | Read-only fields are not editable even via browser dev tools       | Input stays disabled or rejected | Defends against spoofing | Already Done | Duplicate |
 | FE-REVIEW-012 | RuleReviewPage       | Clicking "Submit for Review" with missing required metadata        | Blocked with message             | Enforces business rules  | Already Done | Duplicate |
@@ -368,10 +368,10 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 ---
 
-## 🔄 Optional Cross-Cutting Tests (Reusable Patterns)
+## 🔄 Optional Cross-Cutting Tests (Reusable Patterns) 
 
 | Test Case ID  | Page / Component        | Test Description                                         | Expected Result                       | Notes                  | Status | Comment |
-| ------------- | ----------------------- | -------------------------------------------------------- | ------------------------------------- | ---------------------- |
+| ------------- | ----------------------- | -------------------------------------------------------- | ------------------------------------- | ---------------------- | ------- | --------- |
 | FE-GLOBAL-001 | Any Save Button         | Save button is disabled until required fields are filled | Prevents premature API calls          | Global form UX pattern | Not Required | None |
 | FE-GLOBAL-002 | All Pages               | Component renders correctly on different screen sizes    | Responsive design verified            | Visual regression test | Not Required | None |
 | FE-GLOBAL-003 | Canvas/Editor Pages     | Attempt navigation with unsaved changes                  | Prompt asks for confirmation          | Prevents data loss     | Not Required | None |
@@ -602,7 +602,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 ## SECURITY & COMPLIANCE TESTS - CRITICAL FOR FINANCIAL PRODUCT
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
-| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  
+| SEC-010 | AuditLogging | Security | securityEventLogging() | All security events are logged | Complete audit trail of security events | audit.security.spec.ts | Logging System | Compliance requirement |  Done | The file name is logger.spec.ts |
 
 ## DISASTER RECOVERY & BUSINESS CONTINUITY TESTS (Not Required)
 
@@ -729,11 +729,11 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
-| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  
-| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  
-| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  
-| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  
-| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  
+| STATE-001 | StateMachine | Unit | State transitions validation | Test all valid state transitions | Proper state transition execution | stateMachine.test.ts | XState | Workflow integrity |  Done | The file is stateMachine.spec.tsx |
+| STATE-002 | StateMachine | Unit | Invalid state transitions | Test invalid state transitions are blocked | Transitions rejected with proper errors | stateMachine.test.ts | XState | Data integrity |  Done | The file is stateMachine.spec.tsx |
+| STATE-003 | StateContext | Integration | State context provider | Test state context across components | Proper state sharing and updates | StateContext.test.tsx | XState | Component integration |  Not Required | None |
+| STATE-004 | StateGuards | Unit | State guard conditions | Test guard conditions for transitions | Guards properly block invalid transitions | StateGuards.test.ts | XState | Business rules |  Not Required | None |
+| STATE-005 | StateActions | Unit | State action execution | Test actions triggered by state changes | Actions execute correctly on transitions | StateActions.test.ts | XState | Side effects |  Not Required | None |
 
 ## API INTEGRATION TESTING - ACTUAL ENDPOINTS (Not Required)
 ***NB: some items here are already part of other tests that exists***
@@ -774,7 +774,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | A11Y-004 | ColorContrast | Accessibility | Color contrast validation | Test color contrast ratios | Meet WCAG contrast requirements | colorContrast.a11y.test.tsx | Color Analysis | Legal compliance |  
 | A11Y-005 | FormLabels | Accessibility | Form label association | Test form label associations | Proper label-input associations | formLabels.a11y.test.tsx | Form Validation | Legal compliance |  
 
-## INTERNATIONALIZATION TESTING - I18N SUPPORT
+## INTERNATIONALIZATION TESTING - I18N SUPPORT (Not Required - They are part of various tests)
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale | Status | Comment | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | ---- | ----- |  
@@ -962,7 +962,7 @@ Here are the **enhanced tests** grouped by feature. Each includes a rationale fo
 | UX-009 | ConfirmationDialogs | UX | destructiveActionConfirmation() | Confirmation for destructive actions | Confirmation dialogs for delete/disable operations | confirmation.ux.spec.tsx | UI Components | Data safety |  
 | UX-010 | AutoSave | UX | automaticFormSaving() | Auto-save functionality for long forms | Periodic auto-save prevents data loss | autosave.ux.spec.tsx | Local Storage | User experience |  
 
-## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY 9Not Required)
+## INTEGRATION & SYSTEM TESTS - CRITICAL FOR END-TO-END FUNCTIONALITY (Not Required)
 ***NB: some items here are already part of other tests that exists***
 
 | Test Case ID | Component | Test Type | Method/Target | Description | Expected Output | Test File | Dependencies | Rationale |  
